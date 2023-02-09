@@ -79,28 +79,37 @@ body{
     font-size: 20px;
     color: white;
     font-weight: bold;
+    position: relative;
+    top: -15px;
 }
 
 
 #forgot{
     position: relative;
-    top: -15px;
+    top: -10px;
     text-decoration: none;
     color: black;
+    font-size: 20px;
 }
 
 #create{
     position: relative;
-    top: -15px;
+    top: -30px;
     text-align: center;
     text-decoration: none;
     color: black;
+    font-size: 20px;
 }
 
 #female{
     height: 300px;
     
 }
+#male{
+    height: 300px;
+    
+}
+
 
 
 
@@ -126,16 +135,33 @@ body{
   }
 .butt_create{
     position: relative;
-    top: -50px;
+    top: -20px;
     display: flex;
     justify-content: center;
 }
 .butt_create p,a{
     position: relative;
-    top:-65px;
+    top:-35px;
     text-align: center;
     text-decoration: none;
     color: black;
+}
+.otp{
+    position: relative;
+    top: -80px;
+}
+#loginotp{
+    font-size: 20px;
+    position: relative;
+    top: -60px;
+}
+
+#loginnow {
+    font-size: 20px;
+}
+#agree{
+    position: relative;
+    top: -6px;
 }
   .butt_create input{
     width: 150px;
@@ -150,7 +176,7 @@ body{
   
   .login_signup{
     width: 250px;
-    height: 320px;
+    height: 310px;
     border: 1px solid black;
     border-radius: 50px;
     margin: auto;
@@ -159,11 +185,22 @@ body{
 }
 
 
-@media only screen and (min-width: 500px) and (max-width: 991px) {
+@media only screen and (min-width: 400px) and (max-width: 690px) {
     .container {
     position: relative;
     top: 10px;
     width: 80%;
     height: 100px;
     }
+    #male{
+        height: 300px;
+        position: relative;
+        left: -600px;
+    }
+    #female{
+        position: relative;
+        left: 50px;
+    }
+    
+
   }
