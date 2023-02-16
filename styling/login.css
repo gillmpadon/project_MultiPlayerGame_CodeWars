@@ -70,6 +70,7 @@ body{
 .button{
    display: flex;
    justify-content: center;
+   
 }
 .button {
     width: 150px;
@@ -94,16 +95,18 @@ body{
 
 }
 
-.button p {
+.button a {
     position: relative;
-    top: -10px;
+    top: 10px;
     font-weight: bold;
     font-size: 20px;
+    color: white;
+    text-decoration: none;
     text-shadow: 1px 2px rgb(30, 30, 30);
 }
 
 
-#create{
+#create {
     position: relative;
     top: -15px;
     text-align: center;
@@ -133,7 +136,7 @@ body{
     top: 20px;
     width: 80%;
     height: 100px;
-    left: -30px;
+    left: -10px;
     
     }
 
