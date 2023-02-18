@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loader</title>
+    <link rel="stylesheet" href="styling/index.css">
+</head>
+<body>
+    <div class="container">
+      <div class="loading-screen">
+        <img src="./images/background.png" alt="alienbackground" class="backImg">
+        <h1 id="title"></h1>
+        <div id="loading-bar"></div>
+        <div id="loading-text">Loading...</div>
+      </div>
+    </div>
+   
+   
+   
+      
+     
+
+      <script>
+        var codewars = ["","C","O","D","E"," ","W","A","R","S",""];
+        var title = document.getElementById("title");
+window.addEventListener("load", function() {
+  var loadingBar = document.getElementById("loading-bar");
+  var loadingText = document.getElementById("loading-text");
+  var progress = 0, code =0,iter=0;
+
+  var interval = setInterval(function() {
+    progress += 10;
+    code +=5;
+    iter +=1;
+    title.innerHTML=(codewars.slice(0,iter)).join("");
+    loadingBar.style.width = code + "%";
+    loadingText.innerHTML = "Loading... " + progress + "%";
+    if (code >= 50) {
+      clearInterval(interval);
+      loadingText.innerHTML = "Redirecting...";
+      setTimeout(function() {
+        window.location.href = "login.html"; // redirect to page2.html after 3 seconds
+        // location.reload();
+      }, 5000); 
+    }
+  }, 100);
+});
+
+      </script>
+</body>
+</html>
