@@ -1,0 +1,113 @@
+body{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  background-color: black;
+  /* overflow-y: hidden; */
+  position: relative;
+}
+
+.container{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+}
+
+.loading-screen {
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  width: 80%;
+  height: 90vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15em;
+}
+
+#title{
+  color:#00FF0C;
+  font-size:7vmin;
+}
+
+.backImg{
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  position: absolute;
+  bottom: 17em;
+  z-index: -1;
+}
+
+
+#loading-bar {
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: .9em solid #00FF0C;
+  margin-bottom: 2em;
+
+}
+
+#loading-text {
+  color: #fff;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px #1E1E1E;
+  margin-bottom: 6em;
+}
+
+/* @media only screen  and (min-width: 667px) and (min-height:375px) {
+  body{
+    padding: 0px;
+    margin: 0px;
+  }
+  #backgroundAlien{
+      position: relative;
+      top: -120px;
+      left: -10px;
+      text-align: center;
+      height: 500px;
+      width: 500px;
+  }
+
+  #loading-screen{
+    position: absolute;
+    top: -100px;
+    left: 5px;
+  }
+  #title{
+    position: relative;
+    top: -270px;
+  }
+} */
+
+
+/* 
+responsive in Iphone SE
+@media only screen  and (min-width: 600px) and (min-height:290px) {
+  body{
+    padding: 0px;
+    margin: 0px;
+  }
+  #backgroundAlien{
+      position: relative;
+      top: -120px;
+      left: -10px;
+      text-align: center;
+      height: 500px;
+      width: 500px;
+  }
+
+  #loading-screen{
+    position: absolute;
+    top: -100px;
+    left: 5px;
+  }
+  #title{
+    position: relative;
+    top: -270px;
+  }
+}
+
+*/

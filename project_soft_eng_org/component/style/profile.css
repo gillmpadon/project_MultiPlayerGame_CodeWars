@@ -1,0 +1,95 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: black;
+}
+.box{
+    background-color: #1E1E1E;
+    width: 300px;
+    height: 320px;
+    border-radius: 15px;
+    padding: 10px;
+    margin: auto;
+    position: relative;
+    top: 100px;
+}
+
+.boxSettings{
+    width: 200px;
+    height: 40px;
+    background-color: #008001;
+    border-radius: 15px;
+    margin: auto;
+    position: relative;
+    top: -20px;
+}
+.boxSettings h1{
+    color: white;
+    text-align: center;
+    text-shadow: 1px 2px black;
+}
+
+
+.Xbox{
+    width: 30px;
+    height: 30px;
+    border: 2px solid #008001;
+    border-radius: 10px;
+    transform: matrix(0.7, 0.72, -0.71, 0.71, 0, 0);
+    background-color: #1E1E1E;
+}
+
+.boxes{
+    /* border: 1px solid white; */
+    height: 40px;
+    display: flex;
+    position: relative;
+    left: 0px;
+    margin-bottom: 10px;
+}
+.boxes img{
+    height: 30px;
+    width: 30px;
+    transform: rotate(-45deg);
+
+}
+.content {
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: #008001;
+    position: relative;
+    left: 15px;
+    width: 200px;
+}
+
+.content h1{
+    font-size: 20px;
+    padding: 20px;
+    position: relative;
+    top: -25px;
+    color: white;
+    text-shadow: 1px 2px black;
+}
+
+#psuid{
+    height: 23px;
+    width: 23px;
+    position: relative;
+    top: 4px;
+    left: 4px;
+}
+
+#gender{
+    height: 23px;
+    width: 23px;
+    position: relative;
+    top: 4px;
+    left: 4px;
+}
+
+@media only screen and (min-width: 400px) and (max-width: 690px) {
+    .box{
+        position: relative;
+        top: 20px;
+    }
+}
