@@ -30,6 +30,7 @@
         let log = document.getElementById('login');
         let signlog = document.getElementById('signlog');
         let sign_up = document.getElementsByClassName("sign-up")
+
         let email = document.getElementById('email')
         log.addEventListener("click",()=>{ 
             let signlogVAL = document.getElementById('signlog').innerText;
@@ -44,21 +45,21 @@
                 log.innerText = "LOGIN"
                 signlogtextVAL.innerText = "Already have account?";
             }
-         })
-
+        })
+        
         signlog.addEventListener("click", ()=>{
             let signlogVAL = document.getElementById('signlog').innerText;
             let signlogtextVAL = document.getElementById('signlog-text');
-            email.classList.toggle("hide-email")
             if(signlogVAL=="SIGN UP"){
+                email.classList.toggle("hide-email")
                 signlog.innerText = "LOGIN";
                 log.innerText = "SIGN UP";
                 signlogtextVAL.innerText = "Don't have account?";
             } else {
+                //email.classList.toggle("hide-email")
                 window.location.href = "menu.html";
             }
-         })
-
+            })
     </script>
 </body>
 </html>
