@@ -1,6 +1,17 @@
-## ACS CODEWARS
+## CS CODEWARS
+
+### Team Collaboration
+[Trello Link](https://trello.com/invite/b/tnI3ug3L/ATTIf64c29a50c8cced0ecc33aa4697ef45660F6C5E4/code-wars)
+
+[Figma Link](https://www.figma.com/file/qzPefy79OihUmZz3Ys8qcU/CODEWARS-REVISE?node-id=0%3A1&t=8wPuRakHcnk9Gzl4-1)
 
 
+### CURRENT PHASE
+1. FINISHING FRONT END  - PROGRESS (SUNDAY ESTIMATED W/ RESPONSIVE 5.6 inch Display)
+2. FUNDAMENTALS OF PVP  - PROGRESS (HAVEN'T STARTED)
+3. PYTHON INTEGRATION   - DONE     (NEED STYLING AND PUT TO FRONT END)
 
 
+### PAPERS
+1. ONGOING CHAPTER 1    - PROGRESS (MONDAY ESTIMATED)
 
