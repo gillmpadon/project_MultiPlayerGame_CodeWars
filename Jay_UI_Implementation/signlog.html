@@ -16,7 +16,7 @@
             <input type="text" placeholder="USERNAME">
             <input type="text" placeholder="EMAIL" id="email" class="hide-email show-email">
             <input type="password" placeholder="PASSWORD">
-            <a href="menu.html"><button class="btn" id="signlog">LOGIN</button></a>
+            <button class="btn" id="signlog">LOGIN</button>
             <div class="signlog">
                 <div id="signlog-text">Don't have account?</div>
                 <button  id="login">
@@ -38,19 +38,26 @@
             if(signlogVAL=="SIGN UP"){
                 signlog.innerText = "LOGIN";
                 log.innerText = "SIGN UP";
-                signlogtextVAL.innerText = "Already have account?";
+                signlogtextVAL.innerText = "Don't have account?";
             } else {
                 signlog.innerText = "SIGN UP"
                 log.innerText = "LOGIN"
-                signlogtextVAL.innerText = "Don't have account?";
+                signlogtextVAL.innerText = "Already have account?";
             }
          })
 
-        // signlog.addEventListener("click", ()=>{
-          //  email.classList.toggle("hide-email")
-            //let signlogVAL = document.getElementById('signlog').innerText = "LOGIN";
-
-         //})
+        signlog.addEventListener("click", ()=>{
+            let signlogVAL = document.getElementById('signlog').innerText;
+            let signlogtextVAL = document.getElementById('signlog-text');
+            email.classList.toggle("hide-email")
+            if(signlogVAL=="SIGN UP"){
+                signlog.innerText = "LOGIN";
+                log.innerText = "SIGN UP";
+                signlogtextVAL.innerText = "Don't have account?";
+            } else {
+                window.location.href = "menu.html";
+            }
+         })
 
     </script>
 </body>
