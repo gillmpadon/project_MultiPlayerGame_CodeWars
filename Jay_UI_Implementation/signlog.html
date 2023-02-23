@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="./css/signlog.css">
+</head>
+<body>
+    <div class="container">
+        <img src="./img/4455.jpg" alt="bg">
+        <div class="container-box">
+            <h1>Code</h1>
+            <h1><span>Wars</span></h1>
+            <input type="text" placeholder="USERNAME">
+            <input type="text" placeholder="EMAIL" id="email" class="hide-email show-email">
+            <input type="password" placeholder="PASSWORD">
+            <a href="menu.html"><button class="btn" id="signlog">LOGIN</button></a>
+            <div class="signlog">
+                <div id="signlog-text">Don't have account?</div>
+                <button  id="login">
+                    SIGNUP
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let log = document.getElementById('login');
+        let signlog = document.getElementById('signlog');
+        let sign_up = document.getElementsByClassName("sign-up")
+        let email = document.getElementById('email')
+        log.addEventListener("click",()=>{ 
+            let signlogVAL = document.getElementById('signlog').innerText;
+            let signlogtextVAL = document.getElementById('signlog-text');
+            email.classList.toggle("hide-email")
+            if(signlogVAL=="SIGN UP"){
+                signlog.innerText = "LOGIN";
+                log.innerText = "SIGN UP";
+                signlogtextVAL.innerText = "Already have account?";
+            } else {
+                signlog.innerText = "SIGN UP"
+                log.innerText = "LOGIN"
+                signlogtextVAL.innerText = "Don't have account?";
+            }
+         })
+
+        // signlog.addEventListener("click", ()=>{
+          //  email.classList.toggle("hide-email")
+            //let signlogVAL = document.getElementById('signlog').innerText = "LOGIN";
+
+         //})
+
+    </script>
+</body>
+</html>
