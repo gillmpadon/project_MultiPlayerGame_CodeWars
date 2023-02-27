@@ -1,0 +1,73 @@
+.profile{
+    width: 15em;
+    height: 5em;
+    background-color: #DC4C3D;
+    position: absolute;
+    top: 1em;
+    left: -2em;
+    display: flex;
+    align-items: center;
+    padding-left: .5em;
+    padding-left: 2.5em;
+    border: 5px solid white;
+    border-right: none;
+    cursor: pointer;
+    z-index: 2;
+    color: white;
+}
+
+.t-profile{
+    position: absolute;
+
+}
+
+.t-profile{
+    height: 0;
+    width: 0;
+    border-top: 45px solid transparent;
+    border-left: 70px solid white;
+    border-bottom: 45px solid transparent;
+    position: absolute;
+    top: 16px;
+    left: 253px;
+    z-index: -1;
+}
+
+.t-profile::after{
+    content: '';
+    height: 0;
+    width: 0;
+    border-top: 40px solid transparent;
+    border-left: 61px solid #DC4C3D;
+    border-bottom: 40px solid transparent;
+    position: absolute;
+    top: -40px;
+    right: 11px;
+}
+
+.profile .nameid{
+    line-height: .2em;
+    margin-bottom: 1.5em;
+    margin-left: .5em;
+}
+
+.nameid p{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.pimage{
+    width: 70px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pimage img{
+    height: 50px;
+    width: 50px;
+    border: 7px solid #FFC700;
+    border-radius: 50%;
+}
+
