@@ -1,10 +1,11 @@
 const app = require("./app");
 const http = require("http");
+const config = require("./utils/config");
+const logger = require("./utils/logger");
 
-const PORT = 3003;
-
+const PORT = config.PORT || 3003;
 const server = http.createServer(app);
 
 server.listen(PORT, () => {
-  console.log("Listening to http://localhost:" + PORT);
+  logger.info(`Server running on localhost:${PORT}`);
 });
