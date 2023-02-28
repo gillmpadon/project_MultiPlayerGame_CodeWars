@@ -3,7 +3,7 @@
 ### Team Collaboration
 [Trello Link](https://trello.com/invite/b/tnI3ug3L/ATTIf64c29a50c8cced0ecc33aa4697ef45660F6C5E4/code-wars)
 
-[Figma Link](https://www.figma.com/file/qzPefy79OihUmZz3Ys8qcU/CODEWARS-REVISE?node-id=0%3A1&t=8wPuRakHcnk9Gzl4-1)
+[Figma Link](https://www.figma.com/file/KR3Tn7II7E7FsCbRkeHZ8E/Untitled?node-id=57%3A2&t=ClSuxoFhiG3wbPZy-1)
 
 
 ### CURRENT PHASE
