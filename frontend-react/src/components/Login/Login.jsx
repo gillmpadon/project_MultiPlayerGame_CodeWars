@@ -4,6 +4,8 @@ import "./Login.css";
 import bg from "../../assets/img/4455.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
@@ -12,10 +14,17 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
+  const notify = () => toast("Incorrect username or password");
+  const dupeError = () => toast("Username is already taken.");
+  const passLen = () => toast("Password should be 8-16 characters.");
+
   const onClick = () => {
     setIsLogin(!isLogin);
     let email = document.getElementById("email");
     email.classList.toggle("hide-email");
+    setPassword("");
+    setEmail("");
+    setUsername("");
   };
 
   const onLogin = async () => {
@@ -25,27 +34,43 @@ export default function Login() {
         password,
       };
 
-      const res = await axios.post("http://localhost:3003/api/login", data);
-
-      if (res.status === 200) {
-        console.log("navigate");
-        navigate("/home");
+      try {
+        const res = await axios.post("http://localhost:3003/api/login", data);
+        if (res.status === 200) {
+          console.log("navigate");
+          navigate("/home");
+        }
+      } catch (error) {
+        notify();
       }
-      console.log(res.status);
     }
 
     if (!isLogin) {
-      const data = {
-        username,
-        email,
-        password,
-      };
+      if (password.length < 8 || password.length > 16) {
+        passLen();
+      } else {
+        const data = {
+          username,
+          email,
+          password,
+        };
 
-      const res = await axios.post("http://localhost:3003/api/accounts", data);
-      if (res.status === 201) {
-        setIsLogin(!isLogin);
-        let email = document.getElementById("email");
-        email.classList.toggle("hide-email");
+        try {
+          const res = await axios.post(
+            "http://localhost:3003/api/accounts",
+            data
+          );
+          if (res.status === 201) {
+            setIsLogin(!isLogin);
+            let email = document.getElementById("email");
+            email.classList.toggle("hide-email");
+          }
+          setUsername("");
+          setPassword("");
+          setEmail("");
+        } catch (error) {
+          dupeError();
+        }
       }
     }
   };
@@ -90,6 +115,7 @@ export default function Login() {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

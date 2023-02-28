@@ -36,7 +36,7 @@ export default function settings() {
             <a href="#">CONTACT</a>{" "}
           </button>
         </div>
-        <Link to="/home">
+        <Link to="/userProfile">
           <button class="btn"> RETURN </button>
         </Link>
       </div>
