@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Login.css";
 import bg from "../../assets/img/4455.jpg";
 import axios from "axios";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateAccount } from "../../features/account/accountSlice";
 
 export default function Login() {
@@ -17,6 +17,14 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const account = useSelector((state) => state.account);
+
+  useEffect(() => {
+    if (account.username !== "") {
+      navigate("/home");
+    }
+  }, []);
 
   const notify = () => toast("Incorrect username or password");
   const dupeError = () => toast("Username/Email is already taken.");

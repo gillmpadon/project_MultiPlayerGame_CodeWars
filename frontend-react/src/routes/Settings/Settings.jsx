@@ -17,41 +17,35 @@ export default function settings() {
     }
   });
   return (
-    <div class="container">
+    <div className="container">
       <img src={bg} alt="bg" />
-      <div class="Settings-box">
+      <div className="Settings-box">
         <h1>Game</h1>
         <h1>
           <span>Settings</span>
         </h1>
-        <div class="audio">
+        <div className="audio">
           <p>MUSIC</p>
-          <div class="vol">
-            <div class="vol-oval">ON</div>
-            <div class="vol-circle"></div>
+          <div className="vol">
+            <div className="vol-oval">ON</div>
+            <div className="vol-circle"></div>
           </div>
         </div>
-        <div class="audio">
+        <div className="audio">
           <p>SOUND</p>
-          <div class="vol">
-            <div class="vol-oval">ON</div>
-            <div class="vol-circle"></div>
+          <div className="vol">
+            <div className="vol-oval">ON</div>
+            <div className="vol-circle"></div>
           </div>
         </div>
-        <div class="first-line">
-          <button class="btn">
-            {" "}
-            <a href="#">ABOUT</a>{" "}
-          </button>
+        <div className="first-line">
+          <button className="btn"> ABOUT </button>
           <Link to="/contact">
-            <button class="btn">
-              {" "}
-              <a href="#">CONTACT</a>{" "}
-            </button>
+            <button className="btn"> CONTACT </button>
           </Link>
         </div>
         <Link to="/userProfile">
-          <button class="btn"> RETURN </button>
+          <button className="btn"> RETURN </button>
         </Link>
       </div>
     </div>
