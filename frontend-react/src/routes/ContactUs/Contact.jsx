@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 
 export default function ContactUs() {
   return (
-    <div class="container">
+    <div className="container">
       <img src={bg} alt="bg" />
-      <div class="contactUs-box">
+      <div className="contactUs-box">
         <h1>Contact</h1>
         <h1>
           <span>Us</span>
@@ -16,25 +16,25 @@ export default function ContactUs() {
         <h2>HAVE A QUESTION?</h2>
         <input type="text" placeholder="USERNAME" />
         <input type="text" placeholder="EMAIL" id="email" />
-        <div class="logo">
+        <div className="logo">
           <img src={contactLogo} alt="contactLogo" />
         </div>
         <h3>MESSAGE</h3>
         <textarea
-          class="message"
+          className="message"
           name="message-box"
           id=""
           cols="40"
           rows="10"
         ></textarea>
 
-        <div class="button">
+        <div className="button">
           <Link to="/settings">
-            <button class="btn" id="signlog">
+            <button className="btn" id="signlog">
               RETURN
             </button>
           </Link>
-          <button class="btn">SEND</button>
+          <button className="btn">SEND</button>
         </div>
       </div>
     </div>
