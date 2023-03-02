@@ -1,0 +1,193 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  color: white;
+}
+
+.button{
+  width: 20em;
+  height: 5em;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  display: inline-flex;
+  gap: 4em;
+}
+.btn {
+  padding: 0.6rem 2.3em;
+  width: 10em;
+  background-color: #dc4c3d;
+  border: 3px solid white;
+  border-radius: 5px;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.btn a {
+  text-decoration: none;
+  color: white;
+}
+
+.btn:hover {
+  transition: 0.5s;
+  background-color: rgba(220, 76, 61, 0.7);
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  /* background: linear-gradient(rgba(152, 146, 146, 0.1),rgba(152, 146, 146, 0.1)); */
+}
+
+.container img {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+}
+
+.contactUs-box {
+  width: 50%;
+  height: 70vh;
+  max-width: 400px;
+  background: linear-gradient(
+    179.97deg,
+    rgba(200, 103, 69, 0.3) 18.08%,
+    rgba(223, 187, 137, 0.3) 47.71%
+  );
+  border-radius: 8px;
+  padding-top: 2em;
+  box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 3;
+  box-shadow: 3px 5px 5px 1px rgba(0, 0, 0, 0.25);
+}
+
+.contactUs-box h1 {
+  font-weight: bolder;
+  font-size: 5rem;
+  position: absolute;
+  top: -1.6em;
+  display: flex;
+  text-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.contactUs-box h2{
+  font-weight: bolder;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  margin-top: 2em;
+  margin-left: 3em;
+}
+.contactUs-box h3{
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: bolder;
+
+}
+.contactUs-box span {
+  position: absolute;
+  top: 0.8em;
+  right: -0.5em;
+}
+
+.contactUs-box input {
+  width: 80%;
+  height: 1em;
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid white;
+  padding-bottom: 3px;
+  margin: 1.4em 0;
+  color: white;
+  font-size: 1rem;
+}
+
+.contactUs-box input:focus {
+  outline: none;
+  color: white;
+}
+
+.contactUs-box input::placeholder {
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+.signlog {
+  margin-top: 3em;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.signlog a {
+  text-decoration: none;
+  color: white;
+}
+
+.hide-email {
+  display: none;
+}
+
+#contactUs {
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  color: white;
+  border: none;
+}
+
+.logo{
+  width: 7em;
+  height: 7em;
+  position: absolute;
+  top: 2em;
+  left: 1em;
+}
+
+.logo img{
+  width: auto;
+  height: 100%;
+}
+.message{
+  padding: 0.5em;
+  width: 23em;
+  height: 20em;
+  background-color: rgba(220, 76, 61, 0.4);
+  border: 3px solid white;
+  border-radius: 5px;
+  color: white;
+  font-weight: bolder;
+  cursor:text;
+
+}
+.message a {
+  text-decoration: none;
+  color: white;
+
+}
+.message:hover {
+  transition: 0.5s;
+  background-color: rgba(220, 76, 61, 0.7);
+}
+textarea:focus{
+  outline: none;
+}
+
+
