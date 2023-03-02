@@ -17,7 +17,9 @@ loginRouter.post("/", async (request, response) => {
     });
   }
 
-  response.status(200).send({ username: account.username, name: account.name });
+  response
+    .status(200)
+    .send({ username: account.username, email: account.email });
 });
 
 module.exports = loginRouter;
