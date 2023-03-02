@@ -15,7 +15,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const notify = () => toast("Incorrect username or password");
-  const dupeError = () => toast("Username is already taken.");
+  const dupeError = () => toast("Username/Email is already taken.");
   const passLen = () => toast("Password should be 8-16 characters.");
 
   const onClick = () => {
