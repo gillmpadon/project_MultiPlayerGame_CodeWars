@@ -3,7 +3,19 @@ import "./Settings.css";
 import bg from "../../assets/img/4455.jpg";
 import { Link } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function settings() {
+  const account = useSelector((state) => state.account);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (account.username === "") {
+      navigate("/");
+    }
+  });
   return (
     <div class="container">
       <img src={bg} alt="bg" />

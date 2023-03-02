@@ -1,9 +1,12 @@
 import React from "react";
 import dazai from "../../assets/img/dazai.png";
 import "./Profile.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-export default function Profile() {
+import { useSelector } from "react-redux";
+
+export default function Profile({ username }) {
   return (
     <Link to="/userProfile">
       <div>
@@ -13,7 +16,7 @@ export default function Profile() {
             <img src={dazai} />
           </div>
           <div className="nameid">
-            <p>Dazai</p>
+            <p>{username}</p>
             <small>ID: 123123</small>
           </div>
         </div>

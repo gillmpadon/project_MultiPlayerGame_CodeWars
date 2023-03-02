@@ -3,7 +3,27 @@ import "./UserProfile.css";
 import bg from "../../assets/img/4455.jpg";
 import { Link } from "react-router-dom";
 
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { removeAccount } from "../../features/account/accountSlice";
+
 export default function UserProfile() {
+  const account = useSelector((state) => state.account);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (account.username === "") {
+      navigate("/");
+    }
+  });
+
+  const onLogout = () => {
+    dispatch(removeAccount());
+    navigate("/");
+  };
+
   return (
     <div className="profile-container">
       <img src={bg} alt="bg" />
@@ -16,7 +36,7 @@ export default function UserProfile() {
         <div className="user-profile">
           <div className="user-info">
             <p>USERNAME:</p>
-            <p>Dazai</p>
+            <p>{account.username}</p>
           </div>
           <div className="user-info">
             <p>USER ID:</p>
@@ -24,7 +44,7 @@ export default function UserProfile() {
           </div>
           <div className="user-info">
             <p>Email:</p>
-            <p>Dazai@gmail.com</p>
+            <p>{account.email}</p>
           </div>
         </div>
 
@@ -32,9 +52,9 @@ export default function UserProfile() {
           <Link to="/settings">
             <button className="btn">SETTINGS</button>
           </Link>
-          <Link to="/">
-            <button className="btn">LOGOUT</button>
-          </Link>
+          <button className="btn" onClick={onLogout}>
+            LOGOUT
+          </button>
         </div>
         <Link to="/home">
           <button className="btn"> RETURN </button>

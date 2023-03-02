@@ -7,11 +7,15 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { useDispatch } from "react-redux";
+import { updateAccount } from "../../features/account/accountSlice";
+
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const notify = () => toast("Incorrect username or password");
@@ -37,7 +41,11 @@ export default function Login() {
       try {
         const res = await axios.post("http://localhost:3003/api/login", data);
         if (res.status === 200) {
-          console.log("navigate");
+          console.log(res);
+          const {
+            data: { username, email },
+          } = res;
+          dispatch(updateAccount({ username, email }));
           navigate("/home");
         }
       } catch (error) {
