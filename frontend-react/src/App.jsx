@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Settings from "./components/Settings/Settings";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ContactUs from "./components/ContactUs/Contact";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/settings",
     element: <Settings />,
+  },
+  {
+    path: "/contact",
+    element: <ContactUs />,
   },
 ]);
 
