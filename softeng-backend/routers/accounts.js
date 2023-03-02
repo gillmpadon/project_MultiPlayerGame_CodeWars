@@ -2,27 +2,6 @@ const accountRouter = require("express").Router();
 const bcrypt = require("bcrypt");
 const Account = require("../models/account");
 
-let test_data = {
-  accounts: [
-    {
-      username: "Dazai",
-      email: "test1@gmail.com",
-    },
-    {
-      username: "heyy",
-      email: "test1@gmail.com",
-    },
-    {
-      username: "hiii",
-      email: "test1@gmail.com",
-    },
-    {
-      username: "ikh4wlh4nGsh4p4tN4",
-      email: "test1@gmail.com",
-    },
-  ],
-};
-
 accountRouter.get("/", (req, res) => {
   res.status(200).json(test_data);
 });
@@ -45,7 +24,26 @@ accountRouter.post("/", async (req, res) => {
     console.log(error);
     res
       .status(409)
-      .json({ message: `Account with username ${username} has been found.` });
+      .json({ message: `Account with the credentials has been found.` });
+  }
+});
+
+accountRouter.put("/:un", async (req, res) => {
+  const { username, newPassword } = req.body;
+  const saltRounds = 10;
+  const passwordHash = await bcrypt.hash(newPassword, saltRounds);
+
+  try {
+    const userUpdate = await Account.findOneAndUpdate(
+      { username: username },
+      { passwordHash: passwordHash }
+    );
+    res
+      .status(200)
+      .json({ message: `${userUpdate.username}'s password has been updated.` });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: "An error has occurred." });
   }
 });
 
