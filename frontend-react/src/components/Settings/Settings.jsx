@@ -31,10 +31,12 @@ export default function settings() {
             {" "}
             <a href="#">ABOUT</a>{" "}
           </button>
-          <button class="btn">
-            {" "}
-            <a href="#">CONTACT</a>{" "}
-          </button>
+          <Link to="/contact">
+            <button class="btn">
+              {" "}
+              <a href="#">CONTACT</a>{" "}
+            </button>
+          </Link>
         </div>
         <Link to="/userProfile">
           <button class="btn"> RETURN </button>
