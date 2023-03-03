@@ -1,15 +1,18 @@
 import React from "react";
-// import "./SinglePlayer.css";
+import "./SinglePlayer.css";
 import { Link } from "react-router-dom";
+
 
 export default function SinglePlayer() {
   return (
-    <div className="container">
+
+    <div className="containerSingle">
+    
       <div className="solution">
         <h1>SOLUTION</h1>
         <div className="code">
           <textarea
-            spellcheck="false"
+            spellCheck="false"
             name="code"
             id="code"
             cols="65"
@@ -58,9 +61,11 @@ export default function SinglePlayer() {
         <div className="buttons">
           <input type="button" id="prev" value="next" />
           <input type="button" id="next" value="prev" />
-          {/* <Link to="/home"> */}
-          <input type="button" id="home" value="home" />
-          {/* </Link> */}
+          <Link to="/home">
+          <button id="home" value="home">
+            Home
+          </button>
+          </Link>
         </div>
       </div>
     </div>

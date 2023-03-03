@@ -1,6 +1,8 @@
 import React from "react";
 import charMan from "../../assets/img/final_male_anim_IDLE.gif";
 import "./BattleCharacter.css";
+import { Link } from "react-router-dom";
+
 
 export default function BattleCharacter() {
   return (
@@ -12,7 +14,9 @@ export default function BattleCharacter() {
         <div className="arrow">
           <div className="triangle"></div>
         </div>
+        <Link to="/singleplayer">
         <div className="btn btn-option">PVP</div>
+        </Link>
         <div className="arrow">
           <div className="triangle t-reverse"></div>
         </div>
