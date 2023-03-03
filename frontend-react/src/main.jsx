@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     element: <ContactUs />,
   },
   {
-    path: "/singleplayer",
+    path: "/single-player",
     element: <SinglePlayer />,
   },
 ]);
