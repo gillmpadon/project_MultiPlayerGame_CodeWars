@@ -7,18 +7,17 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useDispatch, useSelector } from "react-redux";
-import { updateAccount } from "../../features/account/accountSlice";
+import useAccountStore from "../../store/accountStore";
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const account = useSelector((state) => state.account);
+  const account = useAccountStore((state) => state.account);
+  const setAccount = useAccountStore((state) => state.setAccount);
 
   useEffect(() => {
     if (account.username !== "") {
@@ -53,7 +52,7 @@ export default function Login() {
           const {
             data: { username, email },
           } = res;
-          dispatch(updateAccount({ username, email }));
+          setAccount(username, email);
           navigate("/home");
         }
       } catch (error) {

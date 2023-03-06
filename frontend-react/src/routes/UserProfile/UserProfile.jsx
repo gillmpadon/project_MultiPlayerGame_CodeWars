@@ -3,15 +3,15 @@ import "./UserProfile.css";
 import bg from "../../assets/img/4455.jpg";
 import { Link } from "react-router-dom";
 
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { removeAccount } from "../../features/account/accountSlice";
+// import { removeAccount } from "../../features/account/accountSlice";
+import useAccountStore from "../../store/accountStore";
 
 export default function UserProfile() {
-  const account = useSelector((state) => state.account);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const account = useAccountStore((state) => state.account);
+  const removeAccount = useAccountStore((state) => state.removeAccount);
 
   useEffect(() => {
     if (account.username === "") {
@@ -20,7 +20,7 @@ export default function UserProfile() {
   });
 
   const onLogout = () => {
-    dispatch(removeAccount());
+    removeAccount();
     navigate("/");
   };
 

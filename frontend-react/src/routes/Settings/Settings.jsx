@@ -3,12 +3,12 @@ import "./Settings.css";
 import bg from "../../assets/img/4455.jpg";
 import { Link } from "react-router-dom";
 
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useAccountStore from "../../store/accountStore";
 
 export default function settings() {
-  const account = useSelector((state) => state.account);
+  const account = useAccountStore((state) => state.account);
   const navigate = useNavigate();
 
   useEffect(() => {

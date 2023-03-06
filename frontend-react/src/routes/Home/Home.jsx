@@ -5,19 +5,20 @@ import BattleCharacter from "../../components/BattleCharacter/BattleCharacter";
 import "./Home.css";
 import bg from "../../assets/img/4455.jpg";
 
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import useAccountStore from "../../store/accountStore";
+
 export default function Home() {
-  const account = useSelector((state) => state.account);
   const navigate = useNavigate();
+  const account = useAccountStore((state) => state.account);
 
   useEffect(() => {
     if (account.username === "") {
       navigate("/");
     }
-  });
+  }, []);
 
   return (
     <div className="container">
