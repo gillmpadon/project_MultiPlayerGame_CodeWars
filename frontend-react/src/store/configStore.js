@@ -1,12 +1,14 @@
 import { create } from "zustand";
 
-const useAccountStore = create((set) => ({
+const useConfigStore = create((set) => ({
   account: { username: "", email: "" },
+  isPlaying: true,
   setAccount: (username, email) =>
     set({
       account: { username, email },
     }),
   removeAccount: () => set({ account: { username: "", email: "" } }),
+  togglePlaying: () => set((state) => ({isPlaying: !state.isPlaying}))
 }));
 
-export default useAccountStore;
+export default useConfigStore;

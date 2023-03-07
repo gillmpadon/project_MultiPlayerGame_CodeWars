@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useAccountStore from "../../store/accountStore";
+import useConfigStore from "../../store/configStore";
+import AudioButton from "../../components/AudioButton/AudioButton";
 
 export default function settings() {
-  const account = useAccountStore((state) => state.account);
+  const account = useConfigStore((state) => state.account);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,10 +27,7 @@ export default function settings() {
         </h1>
         <div className="audio">
           <p>MUSIC</p>
-          <div className="vol">
-            <div className="vol-oval">ON</div>
-            <div className="vol-circle"></div>
-          </div>
+          <AudioButton />
         </div>
         <div className="audio">
           <p>SOUND</p>

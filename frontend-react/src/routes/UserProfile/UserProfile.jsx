@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import { removeAccount } from "../../features/account/accountSlice";
-import useAccountStore from "../../store/accountStore";
+import useConfigStore from "../../store/configStore";
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const account = useAccountStore((state) => state.account);
-  const removeAccount = useAccountStore((state) => state.removeAccount);
+  const account = useConfigStore((state) => state.account);
+  const removeAccount = useConfigStore((state) => state.removeAccount);
 
   useEffect(() => {
     if (account.username === "") {

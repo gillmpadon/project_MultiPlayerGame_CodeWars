@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import useAccountStore from "../../store/accountStore";
+import useConfigStore from "../../store/configStore";
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
@@ -16,8 +16,8 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  const account = useAccountStore((state) => state.account);
-  const setAccount = useAccountStore((state) => state.setAccount);
+  const account = useConfigStore((state) => state.account);
+  const setAccount = useConfigStore((state) => state.setAccount);
 
   useEffect(() => {
     if (account.username !== "") {

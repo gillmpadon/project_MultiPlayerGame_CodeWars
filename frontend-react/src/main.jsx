@@ -7,6 +7,9 @@ import Settings from "./routes/Settings/Settings";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContactUs from "./routes/ContactUs/Contact";
 import SinglePlayer from "./routes/SinglePlayer/SinglePlayer";
+import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+
+import useConfigStore from "./store/configStore";
 
 const router = createBrowserRouter([
   {
@@ -35,8 +38,18 @@ const router = createBrowserRouter([
   },
 ]);
 
+const App = () => {
+  const isPlaying = useConfigStore(state => state.isPlaying)
+  return (
+    <div>
+      <AudioPlayer isPlaying={isPlaying}/>
+      <RouterProvider router={router} />
+    </div>
+  )
+}
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );

@@ -8,11 +8,11 @@ import bg from "../../assets/img/4455.jpg";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useAccountStore from "../../store/accountStore";
+import useConfigStore from "../../store/configStore";
 
 export default function Home() {
   const navigate = useNavigate();
-  const account = useAccountStore((state) => state.account);
+  const account = useConfigStore((state) => state.account);
 
   useEffect(() => {
     if (account.username === "") {
