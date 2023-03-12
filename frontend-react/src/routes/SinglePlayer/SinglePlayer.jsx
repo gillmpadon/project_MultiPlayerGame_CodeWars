@@ -15,7 +15,7 @@ export default function SinglePlayer() {
             spellCheck="false"
             name="code"
             id="code"
-            cols="65"
+            cols="54"
             rows="10"
           ></textarea>
         </div>
@@ -39,7 +39,7 @@ export default function SinglePlayer() {
             </div>
 
             <div className="content">
-              <h3>QUESTION?</h3>
+            <h3>QUESTION</h3>
               <div className="pane">
                 <p id="questionProblem">
                   Write a function that compute the sum of two inputs
@@ -62,9 +62,7 @@ export default function SinglePlayer() {
           <input type="button" id="prev" value="next" />
           <input type="button" id="next" value="prev" />
           <Link to="/home">
-          <button id="home" value="home">
-            Home
-          </button>
+          <input type="button" id="home" value="home" />
           </Link>
         </div>
       </div>
