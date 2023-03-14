@@ -12,6 +12,8 @@ export default function UserProfile() {
   const navigate = useNavigate();
   const account = useConfigStore((state) => state.account);
   const removeAccount = useConfigStore((state) => state.removeAccount);
+  const toggle = useConfigStore((state) => state.togglePlaying);
+  const isPlaying = useConfigStore((state) => state.isPlaying);
 
   useEffect(() => {
     if (account.username === "") {
@@ -21,6 +23,10 @@ export default function UserProfile() {
 
   const onLogout = () => {
     removeAccount();
+    window.localStorage.clear();
+    if (isPlaying) {
+      toggle();
+    }
     navigate("/");
   };
 

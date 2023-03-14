@@ -20,7 +20,10 @@ export default function Login() {
   const setAccount = useConfigStore((state) => state.setAccount);
 
   useEffect(() => {
-    if (account.username !== "") {
+    const userLog = window.localStorage.getItem("loggedUser");
+    if (userLog) {
+      const { username, email } = JSON.parse(userLog);
+      setAccount(username, email);
       navigate("/home");
     }
   }, []);
@@ -52,10 +55,12 @@ export default function Login() {
           const {
             data: { username, email },
           } = res;
+          window.localStorage.setItem("loggedUser", JSON.stringify(res.data));
           setAccount(username, email);
           navigate("/home");
         }
       } catch (error) {
+        console.log(error);
         notify();
       }
     }
