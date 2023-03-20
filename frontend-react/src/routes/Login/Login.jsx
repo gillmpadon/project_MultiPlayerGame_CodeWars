@@ -6,6 +6,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+
 
 import useConfigStore from "../../store/configStore";
 
@@ -15,6 +17,12 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const [passwordType, setPasswordType] = useState("password")
+
+  const togglePassword = () => {
+    if(passwordType==="password"){setPasswordType("text")}
+    else {setPasswordType("password")}
+  }
 
   const account = useConfigStore((state) => state.account);
   const setAccount = useConfigStore((state) => state.setAccount);
@@ -31,6 +39,7 @@ export default function Login() {
   const notify = () => toast("Incorrect username or password");
   const dupeError = () => toast("Username/Email is already taken.");
   const passLen = () => toast("Password should be 8-16 characters.");
+  const signSuccessful = () => toast("Your account has been created")
 
   const onClick = () => {
     setIsLogin(!isLogin);
@@ -81,6 +90,7 @@ export default function Login() {
             data
           );
           if (res.status === 201) {
+            signSuccessful();
             setIsLogin(!isLogin);
             let email = document.getElementById("email");
             email.classList.toggle("hide-email");
@@ -117,12 +127,16 @@ export default function Login() {
           className="hide-email show-email"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="PASSWORD"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="passfield">
+          <input
+            type={passwordType}
+            placeholder="PASSWORD"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            />
+          <button className="icon-toggle" onClick={togglePassword}>{passwordType==="password" ? <FaRegEyeSlash/> : <FaRegEye/>}</button>
+        </div>
+
         <button className="btn" id="signlog" onClick={onLogin}>
           {isLogin ? "LOGIN" : "SIGN UP"}
         </button>

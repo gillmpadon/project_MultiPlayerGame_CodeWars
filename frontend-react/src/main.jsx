@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContactUs from "./routes/ContactUs/Contact";
 import SinglePlayer from "./routes/SinglePlayer/SinglePlayer";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+// import { IconName } from "react-icons/fa";
 
 import useConfigStore from "./store/configStore";
 
