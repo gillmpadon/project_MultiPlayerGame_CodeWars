@@ -8,7 +8,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContactUs from "./routes/ContactUs/Contact";
 import SinglePlayer from "./routes/SinglePlayer/SinglePlayer";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
-// import { IconName } from "react-icons/fa";
+import RequestPass from "./routes/RequestPass/RequestPass";
+import UpdatePass from "./routes/UpdatePass/UpdatePass";
 
 import useConfigStore from "./store/configStore";
 
@@ -37,6 +38,15 @@ const router = createBrowserRouter([
     path: "/single-player",
     element: <SinglePlayer />,
   },
+  {
+    path: "/requestPassword",
+    element: <RequestPass />,
+  },
+  {
+    path: "/updatePassword",
+    element: <UpdatePass />,
+  },
+
 ]);
 
 const App = () => {
