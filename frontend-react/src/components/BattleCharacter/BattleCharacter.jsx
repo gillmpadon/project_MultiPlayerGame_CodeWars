@@ -13,7 +13,7 @@ export default function BattleCharacter() {
         <div className="arrow">
           <div className="triangle"></div>
         </div>
-        <Link to="/single-player">
+        <Link to="/pvp">
           <div className="btn btn-option">PVP</div>
         </Link>
         <div className="arrow">
