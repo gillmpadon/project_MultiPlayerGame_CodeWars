@@ -10,6 +10,7 @@ import SinglePlayer from "./routes/SinglePlayer/SinglePlayer";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import RequestPass from "./routes/RequestPass/RequestPass";
 import UpdatePass from "./routes/UpdatePass/UpdatePass";
+import PVP from "./routes/PVP/PVP"
 
 import useConfigStore from "./store/configStore";
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
     path: "/updatePassword",
     element: <UpdatePass />,
   },
+  {
+    path: "/pvp",
+    element: <PVP/>
+  }
 
 ]);
 

@@ -1,0 +1,206 @@
+.pvp-container{
+    height: 95vh;
+    width: 90%;
+}
+
+.pvptop{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+    margin-top: .5em;
+}
+
+.pvptop-left,
+.pvptop-right{
+    width: 45%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.pvptop-center{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    right: 50%;
+    transform: translate(50%);
+}
+
+.round h2{
+    color: black;
+    font-weight: bolder;
+    margin: 5px 0 0 0;
+}
+
+.clock{
+    width: 5em;
+    height: 5em;
+
+}
+
+.clock img{
+    width: 5em;
+    height: 5em;
+}
+
+.hpbar{
+    width: 90%;
+    height: 2.5em;
+    background: linear-gradient(180deg, rgba(207, 34, 34, 0.95) 62.87%, #831616 71.55%);
+    border: 4px solid #FFFFFF;
+    border-radius: 10px;
+    position: relative;
+}
+
+.hpbar-left::before,
+.hpbar-right::after{
+    content: '';
+    background-image: url(../../assets/img/heart.png);
+    background-position:center;
+    background-size: 5em 5em;
+    background-repeat: no-repeat;
+    height: 5em;
+    width: 5em;
+    position: absolute;
+}
+
+.hpbar-left::before{
+    top: -18px;
+    left: -18px;
+}
+
+.hpbar-right::after{
+    top: -18px;
+    right: -18px;
+}
+
+.pvp-characters{
+    width: 100%;
+    height: 23em;
+    display: flex;
+    gap: 12em;
+    justify-content: space-evenly;
+}
+
+.pvp-characters img{
+    height: 23em;
+    width: 20em;
+}
+
+.firstchar,
+.secondchar{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.firstchar img{
+    transform: rotateY(180deg);
+}
+
+.pvpbottom{
+    width: 100%;
+    height: 38vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom-left{
+    width: 68%;
+    height: 38vh;
+    background: linear-gradient(179.97deg, rgba(200, 103, 69, 0.3) 0.02%, rgba(223, 187, 137, 0.3) 74.46%);
+    box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.question{
+    width: 92%;
+    height: 3em;
+    background: rgba(217, 217, 217, 0.4);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 0 1em;
+}
+
+.userinput{
+    width: 92%;
+    height: 12em;
+    background: rgba(217, 217, 217, 0.4);
+    border-radius: 15px;
+    padding: 0 1em;
+    position: relative;
+}
+
+.userinput textarea{
+    margin-top: .7em;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    color: white;
+}
+
+.buttons{
+    position: absolute;
+    width: 20em;
+    z-index: 2;
+    bottom: 2em;
+    right: 12px;
+    display: flex;
+    justify-content: end;
+    gap: .5em;
+    margin: 0;
+    padding: 0;
+}
+
+.submitbtn,
+.clearbtn{
+    height: 1em;
+    width: 17%;
+    margin: 0;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitbtn:hover{
+    background-color: rgba(61, 220, 125,0.7);
+}
+
+.submitbtn{
+    background-color: rgb(61, 220, 125);
+}
+
+.bottom-right{
+    width: 30%;
+    background: linear-gradient(179.97deg, rgba(200, 103, 69, 0.3) 0.02%, rgba(223, 187, 137, 0.3) 74.46%);
+    box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.output{
+    width: 85%;
+    height: 28vh;
+    padding: 0 1em;
+    margin: 5px 0 10px 0;
+}
+
+.btn-exit{
+    text-align: center;
+    width: 20%;
+    border-radius: 25px;
+    margin-top: 0;
+}

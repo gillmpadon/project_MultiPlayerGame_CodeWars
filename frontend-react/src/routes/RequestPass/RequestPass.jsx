@@ -31,11 +31,11 @@ export default function RequestPass () {
                 
                 <div className="reqpass-signlog">
                     <div id="signlog-text">Back to 
-                    <Link to="/">
-                    <button id="login">
-                        LOGIN
-                    </button>
-                    </Link>
+                        <Link to="/">
+                        <button id="login">
+                            LOGIN
+                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
