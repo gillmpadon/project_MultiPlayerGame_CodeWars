@@ -77,6 +77,26 @@
     right: -18px;
 }
 
+.settings{
+    position: absolute;
+    right: -3em;
+    top: -.5em;
+    cursor: pointer;
+    width: 3em;
+    height: 3em;
+    transition: 0.5s;
+    z-index: 99;
+}
+
+.settings:hover{
+    transform: scale(1.1);
+}
+
+.settings img{
+    height: 3em;
+    width: 3em;
+}
+
 .pvp-characters{
     width: 100%;
     height: 23em;
@@ -204,3 +224,13 @@
     border-radius: 25px;
     margin-top: 0;
 }
+
+.on{
+    z-index: 5;
+}
+
+.off{
+    z-index: -3;
+}
+
+

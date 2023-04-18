@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Settings.css";
 import bg from "../../assets/img/4455.jpg";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import useConfigStore from "../../store/configStore";
 import AudioButton from "../../components/AudioButton/AudioButton";
 
-export default function settings() {
+export default function settings({isTransparent}) {
   const account = useConfigStore((state) => state.account);
   const navigate = useNavigate();
 
@@ -19,8 +19,7 @@ export default function settings() {
   });
   return (
     <div className="container">
-      <img src={bg} alt="bg" />
-      <div className="Settings-box">
+      <div  className={`Settings-box ${isTransparent ? "settings-pvp" : ""}`}>
         <h1>Game</h1>
         <h1>
           <span>Settings</span>
