@@ -35,8 +35,11 @@ export default function settings({isTransparent}) {
             <div className="vol-circle"></div>
           </div>
         </div>
+        
         <div className="first-line">
-          <button className="btn"> ABOUT </button>
+          <Link to="/about">
+            <button className="btn"> ABOUT </button>
+          </Link>
           <Link to="/contact">
             <button className="btn"> CONTACT </button>
           </Link>

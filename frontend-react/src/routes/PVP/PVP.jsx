@@ -27,7 +27,7 @@ export default function PVP() {
                 <Settings isTransparent={true}/>
             </div>
             <div className="container container-pvp">
-                <img src={bg} alt="bg" />
+                <img src={bg} alt="bg" className="pvp-bg" />
                 <div className="pvp-container">
                     <div className="pvptop">
                         <div className="pvptop-left">

@@ -30,7 +30,7 @@
 }
 
 .round h2{
-    color: black;
+    color: white;
     font-weight: bolder;
     margin: 5px 0 0 0;
 }
@@ -230,7 +230,12 @@
 }
 
 .off{
-    z-index: -3;
+    z-index: -1;
 }
 
+.container .pvp-bg{
+    width: 150%;
+    height: 115vh;
+    margin-bottom: 20em;
+}
 
