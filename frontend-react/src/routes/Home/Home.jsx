@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import useConfigStore from "../../store/configStore";
 
 export default function Home() {
+
   const navigate = useNavigate();
   const account = useConfigStore((state) => state.account);
 
@@ -19,7 +20,7 @@ export default function Home() {
       navigate("/");
     }
   }, []);
-
+  
   return (
     <div className="container">
       <img src={bg} alt="" />

@@ -17,8 +17,11 @@ export default function settings({isTransparent}) {
       navigate("/");
     }
   });
+
+
   return (
     <div className="container">
+      {!isTransparent && <img src={bg} alt="bg"/>} 
       <div  className={`Settings-box ${isTransparent ? "settings-pvp" : ""}`}>
         <h1>Game</h1>
         <h1>
@@ -45,7 +48,7 @@ export default function settings({isTransparent}) {
           </Link>
         </div>
         <Link to="/userProfile">
-          <button className="btn"> RETURN </button>
+          { !isTransparent && <button className="btn"> RETURN </button> }
         </Link>
       </div>
     </div>

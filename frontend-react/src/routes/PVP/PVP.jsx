@@ -78,7 +78,9 @@ export default function PVP() {
                             <div className="output">
                                 <h3>OUTPUT</h3>
                             </div>
-                            <div className="btn btn-exit">EXIT</div>
+                            <Link to="/">
+                                <div className="btn btn-exit">EXIT</div>
+                            </Link>
                         </div>
                     </div>
                 </div>
