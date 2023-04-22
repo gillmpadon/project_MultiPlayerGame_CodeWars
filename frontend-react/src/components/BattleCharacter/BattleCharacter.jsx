@@ -18,7 +18,7 @@ export default function BattleCharacter() {
           <div className="triangle"></div>
         </div>
         <Link to={option ? "/pvp" : "/single-player"}>
-          <div className="btn btn-option">{ option ? "PVP" : "PRACTICE" }</div>
+          <div className="btn btn-option" style={{border:"5px solid white"}}>{ option ? "PVP" : "PRACTICE" }</div>
         </Link>
         <div className="arrow"  onClick={optionClicked}>
           <div className="triangle t-reverse"></div>
