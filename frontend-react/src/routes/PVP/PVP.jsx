@@ -18,6 +18,7 @@ import setting from "../../assets/img/settingbtn.png";
 export default function PVP() {
     const[sett, showSettings] = useState(false);
     const[surrender, showSurrender] = useState(false);
+    const[confirm, showconfirm] = useState(false);
 
     
     const toggleSettings = () => {
@@ -26,6 +27,11 @@ export default function PVP() {
 
     const toggleSurrender = () => {
         showSurrender(!surrender)
+    }
+
+    const toggleConfirm = () => {
+        showconfirm(!confirm)
+        showSurrender(surrender)
     }
 
     return(
@@ -96,13 +102,21 @@ export default function PVP() {
                         <h1>Are you sure you want to surrender?</h1>
                         <h1>You will lose a Star </h1>
                         <div className="surr-buttons">
-                            <Link to="/">
-                                <div className="btn confirmbtn">CONFIRM</div>
-                            </Link>
+                            <div className="btn confirmbtn" onClick={ () => {toggleConfirm();  toggleSurrender();}}>CONFIRM</div>
                             <div className="btn" onClick={toggleSurrender}>CANCEL</div>
                         </div>
                     </div>
                 </div>
+                }
+                { confirm && 
+                    <div className="lose">
+                         <Link to="/">
+                            <div className="lose-container">
+                                <h1>You Lose T_T</h1>
+                                <p>Click anywhere to return to lobby</p>
+                            </div>
+                        </Link>
+                    </div>
                 }
             </div>
         </>

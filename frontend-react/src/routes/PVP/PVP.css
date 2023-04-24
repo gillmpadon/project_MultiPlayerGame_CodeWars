@@ -85,7 +85,7 @@
     width: 3em;
     height: 3em;
     transition: 0.5s;
-    z-index: 99;
+    z-index: 50;
 }
 
 .settings:hover{
@@ -240,7 +240,8 @@
     margin-bottom: 20em;
 }
 
-.surrender{
+.surrender,
+.lose{
     width: 100%;
     height: 100vh;
     position: absolute;
@@ -249,8 +250,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 100;
     text-align: center;
+}
+
+.lose{
+    z-index: 101;
 }
 
 .surrender h1{
@@ -268,4 +273,23 @@
 .surr-buttons .btn {
     text-align: center;
     padding: .8em 0;
+}
+
+.lose-container{
+    width: 100vw;
+    height: 100vh;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lose-container h1{
+    color: white;
+    font-size: 4rem;
+}
+
+.lose-container p{
+    color: white;
 }
