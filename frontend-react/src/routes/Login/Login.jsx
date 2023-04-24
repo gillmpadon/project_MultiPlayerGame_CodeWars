@@ -134,7 +134,7 @@ export default function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             />
-          <button className="icon-toggle" onClick={togglePassword}>{passwordType==="password" ? <FaRegEyeSlash/> : <FaRegEye/>}</button>
+          <button className="icon-toggle" onClick={togglePassword}>{passwordType==="password" ? <FaRegEye/> : <FaRegEyeSlash/> }</button>
         </div>
 
         <button className="btn" id="signlog" onClick={onLogin}>

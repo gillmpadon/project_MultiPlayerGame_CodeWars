@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import { FaRegStar} from "react-icons/fa";
 
 
 import useConfigStore from "../../store/configStore";
@@ -16,9 +17,15 @@ import setting from "../../assets/img/settingbtn.png";
 
 export default function PVP() {
     const[sett, showSettings] = useState(false);
+    const[surrender, showSurrender] = useState(false);
+
     
     const toggleSettings = () => {
         showSettings(!sett)
+    }
+
+    const toggleSurrender = () => {
+        showSurrender(!surrender)
     }
 
     return(
@@ -78,12 +85,25 @@ export default function PVP() {
                             <div className="output">
                                 <h3>OUTPUT</h3>
                             </div>
-                            <Link to="/">
-                                <div className="btn btn-exit">EXIT</div>
-                            </Link>
+                            <div className="btn btn-exit" onClick={toggleSurrender}>EXIT</div>
+                          
                         </div>
                     </div>
                 </div>
+                { surrender &&
+                    <div className="surrender">
+                    <div className="surrender-container">
+                        <h1>Are you sure you want to surrender?</h1>
+                        <h1>You will lose a Star </h1>
+                        <div className="surr-buttons">
+                            <Link to="/">
+                                <div className="btn confirmbtn">CONFIRM</div>
+                            </Link>
+                            <div className="btn" onClick={toggleSurrender}>CANCEL</div>
+                        </div>
+                    </div>
+                </div>
+                }
             </div>
         </>
     )
