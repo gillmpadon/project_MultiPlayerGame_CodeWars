@@ -1,5 +1,6 @@
 import {React, useState} from "react";
 import charMan from "../../assets/img/final_male_anim_IDLE.gif";
+import charWoman from "../../assets/img/final_female_anim_IDLE(fixed frames).gif";
 import "./BattleCharacter.css";
 import { Link } from "react-router-dom";
 import mouseclick from '../../assets/audio/mouseclick.mp3';
@@ -15,7 +16,7 @@ export default function BattleCharacter() {
   return (
     <div className="battle-mode">
       <div className="battle-mode-img">
-        <img src={charMan} alt="" />
+        <img src={option ? charMan : charWoman} alt="" />
       </div>
       <div className="option">
         <div className="arrow" onClick={optionClicked}>

@@ -41,10 +41,10 @@ export default function settings({isTransparent}) {
         
         <div className="first-line">
           <Link to="/about">
-            <button className="btn"> ABOUT </button>
+          { !isTransparent && <button className="btn"> ABOUT </button> }
           </Link>
           <Link to="/contact">
-            <button className="btn"> CONTACT </button>
+          { !isTransparent && <button className="btn"> CONTACT </button> }
           </Link>
         </div>
         <Link to="/userProfile">
