@@ -12,6 +12,8 @@ import clock from "../../assets/img/clock.png";
 import charMan from "../../assets/img/final_male_anim_IDLE.gif";
 import charWoman from "../../assets/img/final_female_anim_IDLE(fixed frames).gif";
 import setting from "../../assets/img/settingbtn.png";
+import lose from '../../assets/audio/lose.mp3';
+import win from '../../assets/audio/win.mp3';
 
 
 
@@ -19,19 +21,21 @@ export default function PVP() {
     const[sett, showSettings] = useState(false);
     const[surrender, showSurrender] = useState(false);
     const[confirm, showconfirm] = useState(false);
+    const [playlosersound, setPlayLoserSound] = useState(false);
 
     
     const toggleSettings = () => {
-        showSettings(!sett)
+        showSettings(!sett);
     }
 
     const toggleSurrender = () => {
-        showSurrender(!surrender)
+        showSurrender(!surrender);
     }
 
     const toggleConfirm = () => {
-        showconfirm(!confirm)
-        showSurrender(surrender)
+        showconfirm(!confirm);
+        showSurrender(surrender);
+        setPlayLoserSound(true); setTimeout(() => setPlaySound(false), 3000);
     }
 
     return(
@@ -118,6 +122,11 @@ export default function PVP() {
                         </Link>
                     </div>
                 }
+                {playlosersound && <div>
+                    <audio autoPlay src={lose} type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>}
             </div>
         </>
     )
