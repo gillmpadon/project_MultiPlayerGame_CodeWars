@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
-import { FaRegStar} from "react-icons/fa";
+import { FaRegStar, FaCheck} from "react-icons/fa";
 
 
 import useConfigStore from "../../store/configStore";
@@ -103,11 +103,19 @@ export default function PVP() {
                 { surrender &&
                     <div className="surrender">
                     <div className="surrender-container">
-                        <h1>Are you sure you want to surrender?</h1>
-                        <h1>You will lose a Star </h1>
-                        <div className="surr-buttons">
-                            <div className="btn confirmbtn" onClick={ () => {toggleConfirm();  toggleSurrender();}}>CONFIRM</div>
-                            <div className="btn" onClick={toggleSurrender}>CANCEL</div>
+                        <div className="surrender-top">
+                            <h1>Surrender</h1>
+                            <h1>
+                                <span>Game</span>
+                            </h1>
+                        </div>
+                        <div className="surrender-content">
+                            <h2>Do you want to surrender?</h2>
+                            <h2>You will lose a Star </h2>
+                            <div className="surr-buttons">
+                                <div className="btn confirmbtn" onClick={ () => {toggleConfirm();  toggleSurrender();}}><FaCheck className="check"/></div>
+                                <div className="btn" onClick={toggleSurrender}><span>X</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>

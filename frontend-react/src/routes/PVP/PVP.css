@@ -192,11 +192,13 @@
     align-items: center;
 }
 
-.submitbtn:hover{
+.submitbtn:hover,
+.confirmbtn:hover{
     background-color: rgba(61, 220, 125,0.7);
 }
 
-.submitbtn{
+.submitbtn,
+.confirmbtn{
     background-color: rgb(61, 220, 125);
 }
 
@@ -246,7 +248,7 @@
     height: 100vh;
     position: absolute;
     top: 0;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -258,21 +260,72 @@
     z-index: 101;
 }
 
-.surrender h1{
-    font-size: 3rem;
+.surrender-container{
+    width: 50%;
+    height: 55vh;
+    max-width: 400px;
+    background: linear-gradient(
+      179.97deg,
+      rgba(200, 103, 69, 0.4) 18.08%,
+      rgba(223, 187, 137, 0.4) 47.71%
+    );
+    border-radius: 8px;
+    padding-top: 3em;
+    display: flex;
+ 
+    flex-direction: column;
+    position: relative;
+    z-index: 3;
+}
+
+
+.surrender-top h1{
+    font-weight: bolder;
+    font-size: 5rem;
+    position: absolute;
+    top: -1.6em;
+    right: .7em;
+    text-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.surrender-top span{
+    position: absolute;
+    top: 0.8em;
+    right: -.65em;
+}
+
+.surrender-content{
+    margin-top: 5.2em;
+}
+
+.surrender-content h2{
+    font-size: 1.75rem;
 }
 
 .surr-buttons{
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 2em;
+
 }
 
 .surr-buttons .btn {
     text-align: center;
-    padding: .8em 0;
+    width: 40%;
+    padding: .4em 0;
+
+}
+
+.check{
+    font-size: 1.5rem;
+}
+
+.surr-buttons .btn span{
+    font-size: 1.5rem;
+    font-weight: bolder;
 }
 
 .lose-container{
