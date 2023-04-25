@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FaRegStar, FaCheck} from "react-icons/fa";
+import { FaRegStar, FaCheck } from "react-icons/fa";
+
 
 import useConfigStore from "../../store/configStore";
 import AudioButton from "../../components/AudioButton/AudioButton";
@@ -15,47 +16,19 @@ import lose from '../../assets/audio/lose.mp3';
 import win from '../../assets/audio/win.mp3';
 
 import CodeMirror from '@uiw/react-codemirror';
-import { tags as t } from '@lezer/highlight';
-import { createTheme } from '@uiw/codemirror-themes';
-import { javascript } from '@codemirror/lang-javascript';
-import { python } from "@codemirror/lang-python";
+import {python, pythonLanguage} from "@codemirror/lang-python"
 
-const myTheme = createTheme({
-    theme: 'light',
-    settings: {
-      background: '#000000',
-      foreground: '#000000',
-      caret: '#5d00ff',
-      selection: '#036dd626',
-      selectionMatch: '#036dd626',
-      lineHighlight: '#8a91991a',
-      gutterBackground: '#fff',
-      gutterForeground: '#8a919966',
-    },
-    styles: [
-      { tag: t.comment, color: '#787b8099' },
-      { tag: t.variableName, color: '#0080ff' },
-      { tag: [t.string, t.special(t.brace)], color: '#5c6166' },
-      { tag: t.number, color: '#5c6166' },
-      { tag: t.bool, color: '#5c6166' },
-      { tag: t.null, color: '#5c6166' },
-      { tag: t.keyword, color: '#5c6166' },
-      { tag: t.operator, color: '#5c6166' },
-      { tag: t.className, color: '#5c6166' },
-      { tag: t.definition(t.typeName), color: '#5c6166' },
-      { tag: t.typeName, color: '#5c6166' },
-      { tag: t.angleBracket, color: '#5c6166' },
-      { tag: t.tagName, color: '#5c6166' },
-      { tag: t.attributeName, color: '#5c6166' },
-    ],
-  });
+import Console from "../../components/Console/Console";
+
 
 export default function PVP() {
-    const[sett, showSettings] = useState(false);
-    const[surrender, showSurrender] = useState(false);
-    const[confirm, showconfirm] = useState(false);
+    const [sett, showSettings] = useState(false);
+    const [surrender, showSurrender] = useState(false);
+    const [confirm, showconfirm] = useState(false);
     const [playlosersound, setPlayLoserSound] = useState(false);
-    
+    const [input, setInput] = useState("");
+    const [output, setOutput] = useState("");
+
     const toggleSettings = () => {
         showSettings(!sett);
     }
@@ -70,14 +43,39 @@ export default function PVP() {
         setPlayLoserSound(true); setTimeout(() => setPlaySound(false), 3000);
     }
 
-    const onChange = React.useCallback((value, viewUpdate) => {
-        console.log('value:', value);
-      }, []);
+    const getOutput = (value) => {
+        if (value) {
+            return value.toUpperCase();
+        } else {
+            return '';
+        }
+    };
 
-    return(
+
+    const handleInputChange = (value) => {
+        setInput(value);
+    };
+
+    const handleClick = () => {
+        console.log(input);
+        const code = input;
+    
+        try {
+            const result = eval(code);
+            setOutput(result);
+        } catch (error) {
+            setOutput(`Error: ${error.message}`);
+        }
+        };
+
+    const handleReset = () => {
+        setInput("");
+    };
+
+    return (
         <>
             <div className={`settings-pvp  ${sett ? 'on' : 'off'}`} >
-                <Settings isTransparent={true}/>
+                <Settings isTransparent={true} />
             </div>
             <div className="container container-pvp">
                 <img src={bg} alt="bg" className="pvp-bg" />
@@ -90,7 +88,7 @@ export default function PVP() {
                         </div>
                         <div className="pvptop-center">
                             <div className="clock">
-                                <img src={clock}/>
+                                <img src={clock} />
                             </div>
                             <div className="round">
                                 <h2>ROUND 1</h2>
@@ -98,11 +96,11 @@ export default function PVP() {
                         </div>
                         <div className="pvptop-right">
                             <div className="hpbar hpbar-right">
-                                
+
                             </div>
                         </div>
                         <div className="settings">
-                            <img src={setting} alt="" onClick={toggleSettings}/>
+                            <img src={setting} alt="" onClick={toggleSettings} />
                         </div>
                     </div>
                     <div className="pvp-characters">
@@ -120,61 +118,59 @@ export default function PVP() {
                             </div>
                             <div className="userinput">
                                 <CodeMirror
-                                    value=""
+                                    value={input}
+                                    onChange={handleInputChange}
                                     height="140px"
-                                    extensions={[javascript({ jsx: true })]}
-                                    onChange={onChange}
-                                    background="transparent"
                                     className="codemirror"
+                                    extensions={pythonLanguage}
                                     options={{
-                                        theme: {myTheme},
+                                        theme: 'dark-one',
                                         lineNumbers: true,
                                         scrollbarStyle: null,
                                         lineWrapping: true,
-                                        mode: {python},
-                                      }}
-
-                                      style={{ background: "#282c34" }}
+                                        mode:"python",
+                                    }}
                                 />
                                 <div className="buttons">
-                                    <div className="btn submitbtn">SUBMIT</div>
-                                    <div className="btn clearbtn">CLEAR</div>
+                                    <div className="btn submitbtn" onClick={handleClick}>SUBMIT</div>
+                                    <div className="btn clearbtn" onClick={handleReset}>CLEAR</div>
                                 </div>
 
                             </div>
                         </div>
                         <div className="bottom-right">
                             <div className="output">
-                                <h3>OUTPUT</h3>
+                                <h3>OUTPUT:</h3>
+                                <h2>{output}</h2>
                             </div>
                             <div className="btn btn-exit" onClick={toggleSurrender}>EXIT</div>
-                          
+
                         </div>
                     </div>
                 </div>
-                { surrender &&
+                {surrender &&
                     <div className="surrender">
-                    <div className="surrender-container">
-                        <div className="surrender-top">
-                            <h1>Surrender</h1>
-                            <h1>
-                                <span>Game</span>
-                            </h1>
-                        </div>
-                        <div className="surrender-content">
-                            <h2>Do you want to surrender?</h2>
-                            <h2>You will lose a Star </h2>
-                            <div className="surr-buttons">
-                                <div className="btn confirmbtn" onClick={ () => {toggleConfirm();  toggleSurrender();}}><FaCheck className="check"/></div>
-                                <div className="btn" onClick={toggleSurrender}><span>X</span></div>
+                        <div className="surrender-container">
+                            <div className="surrender-top">
+                                <h1>Surrender</h1>
+                                <h1>
+                                    <span>Game</span>
+                                </h1>
+                            </div>
+                            <div className="surrender-content">
+                                <h2>Do you want to surrender?</h2>
+                                <h2>You will lose a Star </h2>
+                                <div className="surr-buttons">
+                                    <div className="btn confirmbtn" onClick={() => { toggleConfirm(); toggleSurrender(); }}><FaCheck className="check" /></div>
+                                    <div className="btn" onClick={toggleSurrender}><span>X</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 }
-                { confirm && 
+                {confirm &&
                     <div className="lose">
-                         <Link to="/">
+                        <Link to="/">
                             <div className="lose-container">
                                 <h1>You Lose T_T</h1>
                                 <p>Click anywhere to return to lobby</p>
