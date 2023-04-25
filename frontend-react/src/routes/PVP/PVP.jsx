@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { FaRegStar, FaCheck} from "react-icons/fa";
 
-
 import useConfigStore from "../../store/configStore";
 import AudioButton from "../../components/AudioButton/AudioButton";
 import Settings from "../Settings/Settings";
@@ -15,14 +14,47 @@ import setting from "../../assets/img/settingbtn.png";
 import lose from '../../assets/audio/lose.mp3';
 import win from '../../assets/audio/win.mp3';
 
+import CodeMirror from '@uiw/react-codemirror';
+import { tags as t } from '@lezer/highlight';
+import { createTheme } from '@uiw/codemirror-themes';
+import { javascript } from '@codemirror/lang-javascript';
+import { python } from "@codemirror/lang-python";
 
+const myTheme = createTheme({
+    theme: 'light',
+    settings: {
+      background: '#000000',
+      foreground: '#000000',
+      caret: '#5d00ff',
+      selection: '#036dd626',
+      selectionMatch: '#036dd626',
+      lineHighlight: '#8a91991a',
+      gutterBackground: '#fff',
+      gutterForeground: '#8a919966',
+    },
+    styles: [
+      { tag: t.comment, color: '#787b8099' },
+      { tag: t.variableName, color: '#0080ff' },
+      { tag: [t.string, t.special(t.brace)], color: '#5c6166' },
+      { tag: t.number, color: '#5c6166' },
+      { tag: t.bool, color: '#5c6166' },
+      { tag: t.null, color: '#5c6166' },
+      { tag: t.keyword, color: '#5c6166' },
+      { tag: t.operator, color: '#5c6166' },
+      { tag: t.className, color: '#5c6166' },
+      { tag: t.definition(t.typeName), color: '#5c6166' },
+      { tag: t.typeName, color: '#5c6166' },
+      { tag: t.angleBracket, color: '#5c6166' },
+      { tag: t.tagName, color: '#5c6166' },
+      { tag: t.attributeName, color: '#5c6166' },
+    ],
+  });
 
 export default function PVP() {
     const[sett, showSettings] = useState(false);
     const[surrender, showSurrender] = useState(false);
     const[confirm, showconfirm] = useState(false);
     const [playlosersound, setPlayLoserSound] = useState(false);
-
     
     const toggleSettings = () => {
         showSettings(!sett);
@@ -37,6 +69,10 @@ export default function PVP() {
         showSurrender(surrender);
         setPlayLoserSound(true); setTimeout(() => setPlaySound(false), 3000);
     }
+
+    const onChange = React.useCallback((value, viewUpdate) => {
+        console.log('value:', value);
+      }, []);
 
     return(
         <>
@@ -83,7 +119,23 @@ export default function PVP() {
                                 <p><strong>Q:</strong> WRITE A FUNCTION THAT COMPUTE THE SUM OF TWO INPUTS</p>
                             </div>
                             <div className="userinput">
-                                <textarea name="" id="" cols="96" rows="9"></textarea>
+                                <CodeMirror
+                                    value=""
+                                    height="140px"
+                                    extensions={[javascript({ jsx: true })]}
+                                    onChange={onChange}
+                                    background="transparent"
+                                    className="codemirror"
+                                    options={{
+                                        theme: {myTheme},
+                                        lineNumbers: true,
+                                        scrollbarStyle: null,
+                                        lineWrapping: true,
+                                        mode: {python},
+                                      }}
+
+                                      style={{ background: "#282c34" }}
+                                />
                                 <div className="buttons">
                                     <div className="btn submitbtn">SUBMIT</div>
                                     <div className="btn clearbtn">CLEAR</div>
