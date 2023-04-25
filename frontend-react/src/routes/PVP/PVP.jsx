@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaRegStar, FaCheck } from "react-icons/fa";
 
@@ -16,8 +16,7 @@ import lose from '../../assets/audio/lose.mp3';
 import win from '../../assets/audio/win.mp3';
 
 import CodeMirror from '@uiw/react-codemirror';
-import {python, pythonLanguage} from "@codemirror/lang-python"
-
+import { javascript } from '@codemirror/lang-javascript';
 import Console from "../../components/Console/Console";
 
 
@@ -28,6 +27,22 @@ export default function PVP() {
     const [playlosersound, setPlayLoserSound] = useState(false);
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
+    const [seconds, setSeconds] = useState(60);
+
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        setSeconds(seconds => {
+            if (seconds === 0) {
+              clearInterval(intervalId); // Stop the timer
+              return 0;
+            } else {
+              return seconds - 1;
+            }
+          });
+        }, 1000);
+  
+      return () => clearInterval(intervalId);
+    }, []);
 
     const toggleSettings = () => {
         showSettings(!sett);
@@ -80,55 +95,61 @@ export default function PVP() {
             <div className="container container-pvp">
                 <img src={bg} alt="bg" className="pvp-bg" />
                 <div className="pvp-container">
-                    <div className="pvptop">
-                        <div className="pvptop-left">
-                            <div className="hpbar hpbar-left">
+                    <div className="pvp-container-content">
+                        <div className="pvp-container-left"> 
+                            <div className="pvp-left-content">
+                                <div className="question">
+                                        <p><strong>Q:</strong> WRITE A FUNCTION THAT COMPUTE THE SUM OF TWO INPUTS</p>
+                                    </div>
+                                </div> 
+                            </div>
+                        <div className="pvp-container-right">
+                            <div className="pvptop">
+                                <div className="pvptop-left">
+                                    <div className="hpbar hpbar-left">
+                                    </div>
+                                </div>
+                                <div className="pvptop-center">
+                                    <div className="clock">
+                                        <img src={clock} />
+                                    </div>
+                                    <div className="round">
+                                        <h2>{seconds}</h2>
+                                    </div>
+                                </div>
+                                <div className="pvptop-right">
+                                    <div className="hpbar hpbar-right">
 
+                                    </div>
+                                </div>
+                                <div className="settings">
+                                    <img src={setting} alt="" onClick={toggleSettings} />
+                                </div>
                             </div>
-                        </div>
-                        <div className="pvptop-center">
-                            <div className="clock">
-                                <img src={clock} />
+                            <div className="pvp-characters">
+                                <div className="firstchar">
+                                    <img src={charMan} alt="" />
+                                </div>
+                                <div className="secondchar">
+                                    <img src={charWoman} alt="" />
+                                </div>
                             </div>
-                            <div className="round">
-                                <h2>ROUND 1</h2>
-                            </div>
-                        </div>
-                        <div className="pvptop-right">
-                            <div className="hpbar hpbar-right">
-
-                            </div>
-                        </div>
-                        <div className="settings">
-                            <img src={setting} alt="" onClick={toggleSettings} />
-                        </div>
-                    </div>
-                    <div className="pvp-characters">
-                        <div className="firstchar">
-                            <img src={charMan} alt="" />
-                        </div>
-                        <div className="secondchar">
-                            <img src={charWoman} alt="" />
                         </div>
                     </div>
                     <div className="pvpbottom">
-                        <div className="bottom-left">
-                            <div className="question">
-                                <p><strong>Q:</strong> WRITE A FUNCTION THAT COMPUTE THE SUM OF TWO INPUTS</p>
-                            </div>
+                        <div className="bottom-left">   
                             <div className="userinput">
                                 <CodeMirror
                                     value={input}
                                     onChange={handleInputChange}
-                                    height="140px"
+                                    height="190px"
                                     className="codemirror"
-                                    extensions={pythonLanguage}
+                                    extensions={[javascript({ jsx: true })]}
                                     options={{
                                         theme: 'dark-one',
                                         lineNumbers: true,
                                         scrollbarStyle: null,
                                         lineWrapping: true,
-                                        mode:"python",
                                     }}
                                 />
                                 <div className="buttons">
