@@ -17,6 +17,7 @@ import win from '../../assets/audio/win.mp3';
 
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
+import { python } from '@codemirror/lang-python';
 import Console from "../../components/Console/Console";
 
 
@@ -28,53 +29,62 @@ export default function PVP() {
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
     const [seconds, setSeconds] = useState(60);
+    
+    const questions = ["1+1", "2+3"];
+    const answer = [2,5];
 
-    useEffect(() => {
-      const intervalId = setInterval(() => {
-        setSeconds(seconds => {
-            if (seconds === 0) {
-              clearInterval(intervalId); // Stop the timer
-              return 0;
-            } else {
-              return seconds - 1;
-            }
-          });
-        }, 1000);
+    const [hpbar1, hpbar2, hpbar3,hpbar4, hpbar5, hpbar6] = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
+
+    // generate a random number for question and answer
+    const rand = Math.floor(Math.random()*questions.length);
+
+    // useEffect(() => {
+    //   const intervalId = setInterval(() => {
+    //     setSeconds(seconds => {
+    //         if (seconds === 0) {
+    //           clearInterval(intervalId); // Stop the timer
+    //           return 0;
+    //         } else {
+    //           return seconds - 1;
+    //         }
+    //       });
+    //     }, 1000);
   
-      return () => clearInterval(intervalId);
-    }, []);
+    //   return () => clearInterval(intervalId);
+    // }, []);
 
+
+    // display the settings UI
     const toggleSettings = () => {
         showSettings(!sett);
     }
 
+    // display the surrender UI
     const toggleSurrender = () => {
         showSurrender(!surrender);
     }
 
+    //Triggers when use click the confirm or check button
     const toggleConfirm = () => {
         showconfirm(!confirm);
         showSurrender(surrender);
         setPlayLoserSound(true); setTimeout(() => setPlaySound(false), 3000);
     }
 
-    const getOutput = (value) => {
-        if (value) {
-            return value.toUpperCase();
-        } else {
-            return '';
-        }
-    };
-
-
+    // get the value inputted by user
     const handleInputChange = (value) => {
         setInput(value);
     };
 
+      // for reset button to clear the text
+      const handleReset = () => {
+        setInput("");
+    };
+
+    // get the input then evaluate then display in the output container
     const handleClick = () => {
         console.log(input);
         const code = input;
-    
         try {
             const result = eval(code);
             setOutput(result);
@@ -83,9 +93,12 @@ export default function PVP() {
         }
         };
 
-    const handleReset = () => {
-        setInput("");
+    // confirmation if the output is equal to expected output
+    if(output==answer[rand]){
+        hpbar4.current.style.width = 0;
+        hpbar4.current.style.transition = '2s';
     };
+
 
     return (
         <>
@@ -99,7 +112,7 @@ export default function PVP() {
                         <div className="pvp-container-left"> 
                             <div className="pvp-left-content">
                                 <div className="question">
-                                        <p><strong>Q:</strong> WRITE A FUNCTION THAT COMPUTE THE SUM OF TWO INPUTS</p>
+                                        <p><strong>Q:</strong> {questions[rand]}</p>
                                     </div>
                                 </div> 
                             </div>
@@ -107,6 +120,9 @@ export default function PVP() {
                             <div className="pvptop">
                                 <div className="pvptop-left">
                                     <div className="hpbar hpbar-left">
+                                        <div className="hpbar1" ref={hpbar1}></div>
+                                        <div className="hpbar2" ref={hpbar2}></div>
+                                        <div className="hpbar3" ref={hpbar3}></div>
                                     </div>
                                 </div>
                                 <div className="pvptop-center">
@@ -119,7 +135,9 @@ export default function PVP() {
                                 </div>
                                 <div className="pvptop-right">
                                     <div className="hpbar hpbar-right">
-
+                                        <div className="hpbar4" ref={hpbar4}></div>
+                                        <div className="hpbar5" ref={hpbar5}></div>
+                                        <div className="hpbar6" ref={hpbar6}></div>
                                     </div>
                                 </div>
                                 <div className="settings">
@@ -145,6 +163,7 @@ export default function PVP() {
                                     height="190px"
                                     className="codemirror"
                                     extensions={[javascript({ jsx: true })]}
+                                    // extensions={[python()]}
                                     options={{
                                         theme: 'dark-one',
                                         lineNumbers: true,
@@ -160,10 +179,17 @@ export default function PVP() {
                             </div>
                         </div>
                         <div className="bottom-right">
-                            <div className="output">
-                                <h3>OUTPUT:</h3>
-                                <h2>{output}</h2>
+                            <div className="outputs">
+                                <div className="display-output">
+                                    <h4>OUTPUT:</h4>
+                                    <h2>{output}</h2>
+                                </div>
+                                <div className="expected-output">
+                                    <h4>EXPECTED OUTPUT:</h4>
+                                    <h2>{answer[rand]}</h2>
+                                </div>
                             </div>
+
                             <div className="btn btn-exit" onClick={toggleSurrender}>EXIT</div>
 
                         </div>
@@ -199,6 +225,17 @@ export default function PVP() {
                         </Link>
                     </div>
                 }
+                
+                    <div className="win">
+                        <Link to="/">
+                            <div className="lose-container">
+                                <h1>You Win</h1>
+                                <p>Click anywhere to return to lobby</p>
+                            </div>
+                        </Link>
+                    </div>
+
+
                 {playlosersound && <div>
                     <audio autoPlay src={lose} type="audio/mpeg">
                         Your browser does not support the audio element.
