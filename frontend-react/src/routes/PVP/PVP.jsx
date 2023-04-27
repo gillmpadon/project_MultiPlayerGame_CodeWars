@@ -12,6 +12,7 @@ import clock from "../../assets/img/clock.png";
 import charMan from "../../assets/img/final_male_anim_IDLE.gif";
 import charWoman from "../../assets/img/final_female_anim_IDLE(fixed frames).gif";
 import setting from "../../assets/img/settingbtn.png";
+import xbtn from "../../assets/img/x.png";
 import lose from '../../assets/audio/lose.mp3';
 import win from '../../assets/audio/win.mp3';
 
@@ -141,7 +142,7 @@ export default function PVP() {
                                     </div>
                                 </div>
                                 <div className="settings">
-                                    <img src={setting} alt="" onClick={toggleSettings} />
+                                    <img src={!sett? setting : xbtn} alt="" onClick={toggleSettings} />
                                 </div>
                             </div>
                             <div className="pvp-characters">
@@ -206,7 +207,10 @@ export default function PVP() {
                             </div>
                             <div className="surrender-content">
                                 <h2>Do you want to surrender?</h2>
-                                <h2>You will lose a Star </h2>
+                                <div className="surr-star">
+                                    <h2>You will lose a</h2>
+                                    <span className="star">&#9733;</span>
+                                </div>
                                 <div className="surr-buttons">
                                     <div className="btn confirmbtn" onClick={() => { toggleConfirm(); toggleSurrender(); }}><FaCheck className="check" /></div>
                                     <div className="btn" onClick={toggleSurrender}><span>X</span></div>
@@ -219,8 +223,8 @@ export default function PVP() {
                     <div className="lose">
                         <Link to="/">
                             <div className="lose-container">
-                                <h1>You Lose T_T</h1>
-                                <p>Click anywhere to return to lobby</p>
+                                <h1>DEFEAT</h1>
+                                <p>Click anywhere to return...</p>
                             </div>
                         </Link>
                     </div>
@@ -229,8 +233,8 @@ export default function PVP() {
                     <div className="win">
                         <Link to="/">
                             <div className="lose-container">
-                                <h1>You Win</h1>
-                                <p>Click anywhere to return to lobby</p>
+                                <h1>Victory</h1>
+                                <p>Click anywhere to return...</p>
                             </div>
                         </Link>
                     </div>

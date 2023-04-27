@@ -317,7 +317,7 @@
     height: 100vh;
     position: absolute;
     top: 0;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -339,9 +339,10 @@
     max-width: 400px;
     background: linear-gradient(
       179.97deg,
-      rgba(200, 103, 69, 0.4) 18.08%,
-      rgba(223, 187, 137, 0.4) 47.71%
+      rgba(200, 103, 69, 0.5) 18.08%,
+      rgba(223, 187, 137, 0.6) 
     );
+    box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     padding-top: 3em;
     display: flex;
@@ -349,6 +350,29 @@
     flex-direction: column;
     position: relative;
     z-index: 3;
+}
+
+.surr-star{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    position: relative;
+}
+
+.surr-star h2{
+    margin-top: .5em;
+    margin-right: 2em;
+}
+
+.star{
+    color: yellow;
+    font-size: 4rem;
+    position: absolute;
+    right: 1.2em;
+    top: -.3em;
 }
 
 
@@ -368,7 +392,7 @@
 }
 
 .surrender-content{
-    margin-top: 5.2em;
+    margin-top: 4.5em;
 }
 
 .surrender-content h2{
@@ -381,7 +405,6 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-top: 2em;
 
 }
 
@@ -401,6 +424,11 @@
     font-weight: bolder;
 }
 
+
+.lose{
+    animation: lose 4s forwards;
+}
+
 .lose-container{
     width: 100vw;
     height: 100vh;
@@ -412,11 +440,31 @@
 }
 
 .lose-container h1{
-    color: white;
-    font-size: 4rem;
+    color: silver;
+    font-size: 8rem;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: inset 2px 2px 3px black;
+    margin-bottom: .2em;
+    margin-top: 0;
+    animation: youlose 4s forwards;
 }
 
 .lose-container p{
     color: white;
+    animation: clicklobby 6s;
 }
 
+@keyframes lose {
+    0% {background-color: rgba(4,9,30,0.1)}
+    100% {background-color: rgba(4,9,30,0.6)}
+}
+
+@keyframes youlose {
+    0%{scale: 0;}
+    100%{scale: 1;}
+}
+
+@keyframes clicklobby {
+    0%{opacity: 0;}
+    100%{opacity: 0;}
+}
