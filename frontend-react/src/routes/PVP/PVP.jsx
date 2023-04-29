@@ -34,7 +34,8 @@ export default function PVP() {
     const questions = ["1+1", "2+3"];
     const answer = [2,5];
 
-    const [hpbar1, hpbar2, hpbar3,hpbar4, hpbar5, hpbar6] = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
+    let hpremain = 100;
+    const hpright = useRef();
 
     // generate a random number for question and answer
     const rand = Math.floor(Math.random()*questions.length);
@@ -94,10 +95,16 @@ export default function PVP() {
         }
         };
 
+
     // confirmation if the output is equal to expected output
     if(output==answer[rand]){
-        hpbar4.current.style.width = 0;
-        hpbar4.current.style.transition = '2s';
+        hpremain-=100;
+        console.log(hpremain)
+        hpright.current.style.width = `${hpremain}%`;
+        hpright.current.style.transition = '2s';
+        if(hpremain == 0){
+            showconfirm(!confirm);
+        }
     };
 
 
@@ -120,10 +127,11 @@ export default function PVP() {
                         <div className="pvp-container-right">
                             <div className="pvptop">
                                 <div className="pvptop-left">
-                                    <div className="hpbar hpbar-left">
-                                        <div className="hpbar1" ref={hpbar1}></div>
-                                        <div className="hpbar2" ref={hpbar2}></div>
-                                        <div className="hpbar3" ref={hpbar3}></div>
+                                    <div className="hpbar">
+                                        <div className="hpbar-left" ref={hpright}></div>
+                                    </div>
+                                    <div className="firstchar">
+                                        <img src={charMan} alt="" />
                                     </div>
                                 </div>
                                 <div className="pvptop-center">
@@ -135,22 +143,15 @@ export default function PVP() {
                                     </div>
                                 </div>
                                 <div className="pvptop-right">
-                                    <div className="hpbar hpbar-right">
-                                        <div className="hpbar4" ref={hpbar4}></div>
-                                        <div className="hpbar5" ref={hpbar5}></div>
-                                        <div className="hpbar6" ref={hpbar6}></div>
+                                    <div className="hpbar">
+                                        <div className="hpbar-right" ref={hpright}></div>
+                                    </div>
+                                    <div className="secondchar">
+                                        <img src={charWoman} alt="" />
                                     </div>
                                 </div>
                                 <div className="settings">
                                     <img src={!sett? setting : xbtn} alt="" onClick={toggleSettings} />
-                                </div>
-                            </div>
-                            <div className="pvp-characters">
-                                <div className="firstchar">
-                                    <img src={charMan} alt="" />
-                                </div>
-                                <div className="secondchar">
-                                    <img src={charWoman} alt="" />
                                 </div>
                             </div>
                         </div>

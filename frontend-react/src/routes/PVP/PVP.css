@@ -5,16 +5,17 @@
 
 .pvp-container-content{
     display: flex;
-    justify-content: space-between;
+    gap: 2em;
     width: 100%;
+    margin-bottom: 1.5em;
 }
 
 .pvp-container-left{
-    width: 30%;
+    width: 25%;
 }
 
 .pvp-left-content{
-    width: 80%;
+    width: 100%;
     height: 25em;
     background: linear-gradient(179.97deg, rgba(200, 103, 69, .7) 0.02%, rgba(223, 187, 137, .7) 74.46%);
     box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
@@ -41,15 +42,31 @@
     width: 100%;
     justify-content: space-between;
     position: relative;
-    margin-top: .5em;
 }
 
 .pvptop-left,
 .pvptop-right{
-    width: 45%;
+    width: 43%;
+    height: 24em;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 
+.firstchar,
+.secondchar{    
+    height: 24em;
+    width: 20em;
+}
+
+.firstchar img,
+.secondchar img{
+    height: 24em;
+    width: 20em;
+}
+
+.firstchar img{
+    transform: rotateY(180deg);
 }
 
 .pvptop-center{
@@ -80,24 +97,22 @@
 }
 
 .hpbar{
-    width: 90%;
+    width: 100%;
     height: 2.5em;
     border: 4px solid #FFFFFF;
     border-radius: 10px;
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
 }
 
-.hpbar1,
-.hpbar2,
-.hpbar3,
-.hpbar4,
-.hpbar5,
-.hpbar6{
+.hpbar-right,
+.hpbar-left{
     width: 100%;
     height: 2.5em;
     background: linear-gradient(180deg, rgba(207, 34, 34, 0.95) 62.87%, #831616 71.55%);
+}
+
+.hpbar-right{
+    margin-left: auto;
 }
 
 
@@ -125,7 +140,7 @@
 
 .settings{
     position: absolute;
-    right: -3em;
+    right: -5.5em;
     top: -.5em;
     cursor: pointer;
     width: 3em;
@@ -141,30 +156,6 @@
 .settings img{
     height: 3em;
     width: 3em;
-}
-
-.pvp-characters{
-    width: 100%;
-    height: 23em;
-    display: flex;
-    gap: 12em;
-    justify-content: space-evenly;
-}
-
-.pvp-characters img{
-    height: 23em;
-    width: 20em;
-}
-
-.firstchar,
-.secondchar{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-}
-
-.firstchar img{
-    transform: rotateY(180deg);
 }
 
 .pvpbottom{
