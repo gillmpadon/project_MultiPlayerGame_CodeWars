@@ -12,23 +12,24 @@ import { useNavigate } from "react-router-dom";
 import useConfigStore from "../../store/configStore";
 
 export default function Home() {
-
   const navigate = useNavigate();
   const account = useConfigStore((state) => state.account);
+
+  const [find, findMatch] = useState(false);
 
   useEffect(() => {
     if (account.username === "") {
       navigate("/");
     }
   }, []);
-  
+
   return (
     <div className="container">
       <img src={bg} alt="" />
-      <Match />
+      <Match showFind={find} cancelFind={findMatch} />
       <Profile username={account.username} />
       <div className="container-box">
-        <BattleCharacter />
+        <BattleCharacter findMatch={findMatch} />
         <Leaderboards />
       </div>
     </div>
