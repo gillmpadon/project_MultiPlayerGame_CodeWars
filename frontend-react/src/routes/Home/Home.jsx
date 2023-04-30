@@ -5,9 +5,9 @@ import BattleCharacter from "../../components/BattleCharacter/BattleCharacter";
 import Match from "../../components/Match/Match";
 import "./Home.css";
 import bg from "../../assets/img/4455.jpg";
-
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { socket } from "../../socket";
 
 import useConfigStore from "../../store/configStore";
 
@@ -21,6 +21,8 @@ export default function Home() {
     if (account.username === "") {
       navigate("/");
     }
+
+    socket.connect();
   }, []);
 
   return (

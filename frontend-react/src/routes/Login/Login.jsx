@@ -38,7 +38,7 @@ export default function Login() {
     }
   }, []);
 
-  const notify = () => toast("Incorrect username or password");
+  const notify = (err) => toast(err);
   const dupeError = () => toast("Username/Email is already taken.");
   const passLen = () => toast("Password should be 8-16 characters.");
   const signSuccessful = () => toast("Your account has been created");
@@ -53,6 +53,7 @@ export default function Login() {
   };
 
   const onLogin = async () => {
+    console.log("Login");
     if (isLogin) {
       const data = {
         username,
@@ -72,7 +73,7 @@ export default function Login() {
         }
       } catch (error) {
         console.log(error);
-        notify();
+        notify(error.message);
       }
     }
 

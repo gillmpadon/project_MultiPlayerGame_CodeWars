@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import { removeAccount } from "../../features/account/accountSlice";
+import { socket } from "../../socket";
 import useConfigStore from "../../store/configStore";
 
 export default function UserProfile() {
@@ -23,6 +23,7 @@ export default function UserProfile() {
 
   const onLogout = () => {
     removeAccount();
+    socket.disconnect();
     window.localStorage.clear();
     if (isPlaying) {
       toggle();

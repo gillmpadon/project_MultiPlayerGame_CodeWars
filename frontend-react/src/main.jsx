@@ -11,8 +11,10 @@ import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import RequestPass from "./routes/RequestPass/RequestPass";
 import UpdatePass from "./routes/UpdatePass/UpdatePass";
 import About from "./routes/About/About";
-import PVP from "./routes/PVP/PVP"
+import PVP from "./routes/PVP/PVP";
+import { useEffect } from "react";
 
+import { socket } from "./socket";
 import useConfigStore from "./store/configStore";
 
 const router = createBrowserRouter([
@@ -50,24 +52,29 @@ const router = createBrowserRouter([
   },
   {
     path: "/pvp",
-    element: <PVP/>
+    element: <PVP />,
   },
   {
     path: "/about",
-    element: <About/>
+    element: <About />,
   },
-
 ]);
 
 const App = () => {
-  const isPlaying = useConfigStore(state => state.isPlaying)
+  const isPlaying = useConfigStore((state) => state.isPlaying);
+  const setIsConnected = useConfigStore((state) => state.setIsConnected);
+  useEffect(() => {
+    const onConnect = () => setIsConnected(true);
+
+    socket.on("connect", onConnect);
+  }, []);
   return (
     <div>
-      <AudioPlayer isPlaying={isPlaying}/>
+      <AudioPlayer isPlaying={isPlaying} />
       <RouterProvider router={router} />
     </div>
-  )
-}
+  );
+};
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
