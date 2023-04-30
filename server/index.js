@@ -36,7 +36,6 @@ io.on("connection", (socket) => {
   // });
 
   socket.on("surrender", async ({ room_id, userId }) => {
-    console.log(room_id, userId);
     const sockets = await io.in(room_id).fetchSockets();
     const socket_ids = sockets.map((s) => s.id);
     const loserIndex = socket_ids.indexOf(userId);
@@ -44,12 +43,14 @@ io.on("connection", (socket) => {
     const winner = io.sockets.sockets.get(socket_ids[winnerIndex]);
     const loser = io.sockets.sockets.get(socket_ids[loserIndex]);
 
-    console.log(winner, loser);
-
     winner.emit("match_result", { msg: "You won!", surrendered: false });
     loser.emit("match_result", { msg: "You lost", surrendered: true });
     winner.leave(room_id);
     loser.leave(room_id);
+  });
+
+  socket.on("match_submit", ({ room_id, code, playerDetails }) => {
+    io.to(room_id).emit("player_code_submit", code);
   });
 });
 
