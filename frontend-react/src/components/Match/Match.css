@@ -1,0 +1,58 @@
+.match-container{
+    position: absolute;
+    backdrop-filter: blur(15px);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5;
+}
+
+.magnifyglass{
+    width: 5%;
+    height: 5em;
+    margin-bottom: .5em;   
+}
+
+.search-icon{
+    width: 100%;
+    height: 100%;
+    rotate: 90deg;
+    position: relative;
+    animation: find 2s infinite linear;
+}
+
+.match-container h1{
+    font-size: 3.5rem;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: inset 2px 2px 3px black;
+}
+
+.btn.cancelbtn{
+    text-align: center;
+    padding: .8em 2em;
+    width: 5%;
+    margin-top: 0.5em;
+}
+
+.match-container span{
+    opacity: 0;
+    animation: dots 2s infinite linear;
+}
+
+@keyframes find {
+    0%   {left:0px; top:0px;}
+    25%  {left:15px; top:0px;}
+    50%  {left:15px; top:15px;}
+    75%  {left:0px; top:15px;}
+    100% {left:0px; top:0px;}
+}
+
+@keyframes dots {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+
