@@ -1,34 +1,9 @@
-.btn{
-    padding: .6rem 2.3em;
-    width: 10em;
-    background-color: #DC4C3D;
-    border: 3px solid white;
-    border-radius: 5px;
-    color: white;
-    font-weight: bolder;
-    cursor: pointer;
-
-    /* margin-top: 2em; */
-}
-
-.btn a{
-    text-decoration: none;
-    color: white;
-}
-
-.btn:hover{
-    transition: .5s;
-    background-color: rgba(220, 76, 61,0.7);
-}
-
 .btn-option{
     font-size: 2rem;
     border-radius: 25px;
     margin-top: 0;
     text-align: center;
-    border: 5px solid white;
 }
-
 
 .container .battle-mode{
     width: 30%;
@@ -80,6 +55,16 @@
     position: relative;
 }
 
+
+.t-right{
+    rotate: 180deg;
+}
+
+.t-left:active,
+.t-right:active{
+    transform: scale(0.9);
+}
+
 .triangle::after{
     content: '';
     height: 0;
@@ -92,7 +77,5 @@
     left: 9px;
 }
 
-.t-reverse{
-    transform: rotate(180deg);
-}
+
 

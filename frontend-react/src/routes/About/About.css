@@ -1,0 +1,61 @@
+.aboutUs-box {
+    width: 50%;
+    height: 70vh;
+    max-width: 400px;
+    background: linear-gradient(
+      179.97deg,
+      rgba(200, 103, 69, 0.3) 18.08%,
+      rgba(223, 187, 137, 0.3) 47.71%
+    );
+    border-radius: 8px;
+    padding: 2em 1em 0 1em;
+    box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 3;
+    box-shadow: 3px 5px 5px 1px rgba(0, 0, 0, 0.25);
+  }
+
+  .aboutUs-box h1 {
+    font-weight: bolder;
+    font-size: 5rem;
+    position: absolute;
+    top: -1.6em;
+    display: flex;
+    text-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .aboutUs-box h4 {
+    font-weight: bolder;
+    font-size: 22px;
+    margin-bottom: 1em;
+    margin-top: 2em;
+    text-shadow:
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+  }
+
+  .aboutUs-box h5 {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 1.5em;
+    padding: 0 2.2em;
+  }
+
+  .aboutUs-box p{
+    margin-bottom: 0.5em;
+  }
+
+  
+  .aboutUs-box span {
+    position: absolute;
+    top: 0.8em;
+    right: 50%;
+    transform: translateX(50%);
+  }

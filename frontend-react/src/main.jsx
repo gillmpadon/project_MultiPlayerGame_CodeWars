@@ -8,6 +8,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContactUs from "./routes/ContactUs/Contact";
 import SinglePlayer from "./routes/SinglePlayer/SinglePlayer";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+import RequestPass from "./routes/RequestPass/RequestPass";
+import UpdatePass from "./routes/UpdatePass/UpdatePass";
+import About from "./routes/About/About";
+import PVP from "./routes/PVP/PVP"
 
 import useConfigStore from "./store/configStore";
 
@@ -36,6 +40,23 @@ const router = createBrowserRouter([
     path: "/single-player",
     element: <SinglePlayer />,
   },
+  {
+    path: "/requestPassword",
+    element: <RequestPass />,
+  },
+  {
+    path: "/updatePassword",
+    element: <UpdatePass />,
+  },
+  {
+    path: "/pvp",
+    element: <PVP/>
+  },
+  {
+    path: "/about",
+    element: <About/>
+  },
+
 ]);
 
 const App = () => {

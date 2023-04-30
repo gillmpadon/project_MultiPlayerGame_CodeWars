@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Settings.css";
 import bg from "../../assets/img/4455.jpg";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import useConfigStore from "../../store/configStore";
 import AudioButton from "../../components/AudioButton/AudioButton";
 
-export default function settings() {
+export default function settings({isTransparent}) {
   const account = useConfigStore((state) => state.account);
   const navigate = useNavigate();
 
@@ -17,10 +17,12 @@ export default function settings() {
       navigate("/");
     }
   });
+
+
   return (
     <div className="container">
-      <img src={bg} alt="bg" />
-      <div className="Settings-box">
+      {!isTransparent && <img src={bg} alt="bg"/>} 
+      <div  className={`Settings-box ${isTransparent ? "settings-pvp" : ""}`}>
         <h1>Game</h1>
         <h1>
           <span>Settings</span>
@@ -36,14 +38,17 @@ export default function settings() {
             <div className="vol-circle"></div>
           </div>
         </div>
+        
         <div className="first-line">
-          <button className="btn"> ABOUT </button>
+          <Link to="/about">
+          { !isTransparent && <button className="btn"> ABOUT </button> }
+          </Link>
           <Link to="/contact">
-            <button className="btn"> CONTACT </button>
+          { !isTransparent && <button className="btn"> CONTACT </button> }
           </Link>
         </div>
         <Link to="/userProfile">
-          <button className="btn"> RETURN </button>
+          { !isTransparent && <button className="btn"> RETURN </button> }
         </Link>
       </div>
     </div>

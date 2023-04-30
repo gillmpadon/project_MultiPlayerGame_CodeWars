@@ -1,0 +1,113 @@
+body{
+    margin: 0;
+    padding: 0;
+
+    position: fixed;
+
+    background-color: rgb(41, 35, 35);
+}
+
+.wrapper{
+    margin: 20px;
+}
+
+.health-bars{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+#timer{
+    border: white 3px solid;
+    color: white;
+
+    padding: 40px 30px 40px;
+
+    margin: 0px 20px 0px;
+
+    border-radius: 100px;
+}
+
+#player-one-health, #player-two-health{
+    border: lightgreen 2px solid;
+    height: 40px;
+    width: 640px;
+
+    
+}
+
+#health-left-p1{
+    background-color: green;
+    height: 40px;
+    width: 250px;
+
+    float:left;
+}
+
+#health-left-p2{
+    background-color: green;
+    height: 40px;
+    width: 250px;
+
+    float: right;
+}
+
+#round-counter{
+    display: flex;
+    justify-content: center;
+    
+    color: white;
+}
+
+#player-one{
+    transform: scaleX(-1);
+
+    height: 300px;
+    width: 300px;
+
+    float: left;
+}
+
+#player-two{
+    transform: scaleX(1);
+
+    height: 300px;
+    width: 300px;
+
+    float: right;
+}
+
+#player-one,#player-two{
+    margin: 0px 100px 0px;
+}
+
+#skills-p1{
+    height: 100px;
+    width: 100px;
+
+    float: left;
+}
+
+#skills-p2{
+    height: 100px;
+    width: 100px;
+
+    float: right;
+}
+
+#skills-p1, #skills-p2{
+    margin: 0px 10px 0px;
+}
+
+#start-icon{
+    color: white;
+
+    display: flex;
+    justify-content: center;
+
+    margin-top: 120px;
+
+    font-size: 100px;
+}

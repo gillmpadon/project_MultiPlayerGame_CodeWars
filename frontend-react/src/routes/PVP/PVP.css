@@ -1,0 +1,461 @@
+.pvp-container{
+    height: 95vh;
+    width: 90%;
+}
+
+.pvp-container-content{
+    display: flex;
+    gap: 2em;
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+
+.pvp-container-left{
+    width: 25%;
+}
+
+.pvp-left-content{
+    width: 100%;
+    height: 25em;
+    background: linear-gradient(179.97deg, rgba(200, 103, 69, .7) 0.02%, rgba(223, 187, 137, .7) 74.46%);
+    box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question{
+    width: 80%;
+    height: 23em;
+    background: rgba(217, 217, 217, 0.4);
+    border-radius: 15px;
+    padding: 0em 1em 0 1em;
+}
+
+.pvp-container-right{
+    width: 70%;
+}
+
+.pvptop{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+}
+
+.pvptop-left,
+.pvptop-right{
+    width: 43%;
+    height: 24em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.firstchar,
+.secondchar{    
+    height: 24em;
+    width: 20em;
+}
+
+.firstchar img,
+.secondchar img{
+    height: 24em;
+    width: 20em;
+}
+
+.firstchar img{
+    transform: rotateY(180deg);
+}
+
+.pvptop-center{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    right: 50%;
+    transform: translate(50%);
+}
+
+.round h2{
+    color: white;
+    font-weight: bolder;
+    margin: 5px 0 0 0;
+}
+
+.clock{
+    width: 5em;
+    height: 5em;
+
+}
+
+.clock img{
+    width: 5em;
+    height: 5em;
+}
+
+.hpbar{
+    width: 100%;
+    height: 2.5em;
+    border: 4px solid #FFFFFF;
+    border-radius: 10px;
+    position: relative;
+}
+
+.hpbar-right,
+.hpbar-left{
+    width: 100%;
+    height: 2.5em;
+    background: linear-gradient(180deg, rgba(207, 34, 34, 0.95) 62.87%, #831616 71.55%);
+}
+
+.hpbar-right{
+    margin-left: auto;
+}
+
+
+.hpbar-left::before,
+.hpbar-right::after{
+    content: '';
+    background-image: url(../../assets/img/heart.png);
+    background-position:center;
+    background-size: 5em 5em;
+    background-repeat: no-repeat;
+    height: 5em;
+    width: 5em;
+    position: absolute;
+}
+
+.hpbar-left::before{
+    top: -18px;
+    left: -18px;
+}
+
+.hpbar-right::after{
+    top: -18px;
+    right: -18px;
+}
+
+.settings{
+    position: absolute;
+    right: -5.5em;
+    top: -.5em;
+    cursor: pointer;
+    width: 3em;
+    height: 3em;
+    transition: 0.5s;
+    z-index: 50;
+}
+
+.settings:hover{
+    transform: scale(1.1);
+}
+
+.settings img{
+    height: 3em;
+    width: 3em;
+}
+
+.pvpbottom{
+    width: 100%;
+    height: 38vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom-left{
+    width: 68%;
+    height: 38vh;
+    background: linear-gradient(179.97deg, rgba(200, 103, 69, 0.3) 0.02%, rgba(223, 187, 137, 0.3) 74.46%);
+    box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userinput{
+    width: 96%;
+    height: 16em;
+    background: rgba(217, 217, 217, 0.8);
+    border-radius: 15px;
+    position: relative;
+}
+
+.codemirror{
+    color: black;
+    outline: none !important;
+}
+
+.cm-editor{
+    background: transparent;
+    padding: .5em;
+}
+
+.cm-activeLine.cm-line{
+    background: transparent;
+    outline: none !important;
+}
+
+
+.cm-gutter.cm-foldGutter,
+.cm-gutter.cm-lineNumbers{
+    width: 0;
+    height: 0;
+}
+
+.cm-gutters{
+    opacity: 0;
+}
+
+.buttons{
+    position: absolute;
+    width: 20em;
+    z-index: 2;
+    bottom: 2em;
+    right: 12px;
+    display: flex;
+    justify-content: end;
+    gap: .5em;
+    margin: 0;
+    padding: 0;
+}
+
+.submitbtn,
+.clearbtn{
+    height: 1em;
+    width: 17%;
+    margin: 0;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitbtn:hover,
+.confirmbtn:hover{
+    background-color: rgba(61, 220, 125,0.7);
+}
+
+.submitbtn,
+.confirmbtn{
+    background-color: rgb(61, 220, 125);
+}
+
+.bottom-right{
+    width: 30%;
+    background: linear-gradient(179.97deg, rgba(200, 103, 69, 0.3) 0.02%, rgba(223, 187, 137, 0.3) 74.46%);
+    box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+}
+
+.outputs{
+    width: 85%;
+    height: 28vh;
+    padding: 0 1em;
+    margin: 5px 0 10px 0;
+    border-radius: 16px;
+    background: rgba(217, 217, 217, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.outputs h4{
+    margin: .5em 0 0 0;
+}
+
+.display-output,
+.expected-output{
+    height: 49%;
+    width: 100%;
+
+}
+
+
+.btn-exit{
+    text-align: center;
+    width: 20%;
+    border-radius: 25px;
+    margin-top: 0;
+    width: 5em;
+}
+
+.on{
+    z-index: 5;
+}
+
+.off{
+    z-index: -1;
+}
+
+.container .pvp-bg{
+    width: 150%;
+    height: 115vh;
+    margin-bottom: 20em;
+}
+
+.surrender,
+.lose,
+.win{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    text-align: center;
+}
+
+.lose{
+    z-index: 101;
+}
+
+.win{
+    display: none;
+}
+
+.surrender-container{
+    width: 50%;
+    height: 55vh;
+    max-width: 400px;
+    background: linear-gradient(
+      179.97deg,
+      rgba(200, 103, 69, 0.5) 18.08%,
+      rgba(223, 187, 137, 0.6) 
+    );
+    box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding-top: 3em;
+    display: flex;
+ 
+    flex-direction: column;
+    position: relative;
+    z-index: 3;
+}
+
+.surr-star{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    position: relative;
+}
+
+.surr-star h2{
+    margin-top: .5em;
+    margin-right: 2em;
+}
+
+.star{
+    color: yellow;
+    font-size: 4rem;
+    position: absolute;
+    right: 1.2em;
+    top: -.3em;
+}
+
+
+.surrender-top h1{
+    font-weight: bolder;
+    font-size: 5rem;
+    position: absolute;
+    top: -1.6em;
+    right: .7em;
+    text-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.surrender-top span{
+    position: absolute;
+    top: 0.8em;
+    right: -.65em;
+}
+
+.surrender-content{
+    margin-top: 4.5em;
+}
+
+.surrender-content h2{
+    font-size: 1.75rem;
+}
+
+.surr-buttons{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.surr-buttons .btn {
+    text-align: center;
+    width: 40%;
+    padding: .4em 0;
+
+}
+
+.check{
+    font-size: 1.5rem;
+}
+
+.surr-buttons .btn span{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+
+.lose{
+    animation: lose 4s forwards;
+}
+
+.lose-container{
+    width: 100vw;
+    height: 100vh;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lose-container h1{
+    color: silver;
+    font-size: 8rem;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: inset 2px 2px 3px black;
+    margin-bottom: .2em;
+    margin-top: 0;
+    animation: youlose 4s forwards;
+}
+
+.lose-container p{
+    color: white;
+    animation: clicklobby 6s;
+}
+
+@keyframes lose {
+    0% {background-color: rgba(4,9,30,0.1)}
+    100% {background-color: rgba(4,9,30,0.6)}
+}
+
+@keyframes youlose {
+    0%{scale: 0;}
+    100%{scale: 1;}
+}
+
+@keyframes clicklobby {
+    0%{opacity: 0;}
+    100%{opacity: 0;}
+}
