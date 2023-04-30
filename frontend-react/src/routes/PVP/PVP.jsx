@@ -31,6 +31,7 @@ export default function PVP() {
   const [output, setOutput] = useState("");
   const [seconds, setSeconds] = useState(60);
   const [victory, showVictory] = useState(false);
+  const navigate = useNavigate();
 
   const questions = ["1+1", "2+3"];
   const answer = [2, 5];
@@ -50,6 +51,14 @@ export default function PVP() {
       if (data.msg === "You won!") {
         showVictory(true);
       }
+    });
+
+    socket.on("player_code_submit", (code) => {
+      setOutput(code);
+    });
+
+    socket.on("disconnect", () => {
+      navigate("/home");
     });
   }, []);
 
@@ -105,14 +114,18 @@ export default function PVP() {
 
   // get the input then evaluate then display in the output container
   const handleClick = () => {
-    console.log(input);
+    // console.log(input);
     const code = input;
-    try {
-      const result = eval(code);
-      setOutput(result);
-    } catch (error) {
-      setOutput(`Error: ${error.message}`);
-    }
+    // try {
+    //   const result = eval(code);
+    //   setOutput(result);
+    // } catch (error) {
+    //   setOutput(`Error: ${error.message}`);
+    // }
+    const playerDetails = {
+      userId,
+    };
+    socket.emit("match_submit", { room_id, code, playerDetails });
   };
 
   // confirmation if the output is equal to expected output
