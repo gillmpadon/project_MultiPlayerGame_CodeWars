@@ -46,8 +46,8 @@ io.on("connection", (socket) => {
 
     console.log(winner, loser);
 
-    winner.emit("match_result", "You won!");
-    loser.emit("match_result", "You lost");
+    winner.emit("match_result", { msg: "You won!", surrendered: false });
+    loser.emit("match_result", { msg: "You lost", surrendered: true });
     winner.leave(room_id);
     loser.leave(room_id);
   });

@@ -54,3 +54,8 @@ The server will be listening for calls in [http://localhost:3003](http://localho
 
 Runs the server in development mode.\
 The server will be listening for calls in [http://localhost:3003](http://localhost:3003).
+
+### Test Accounts
+
+- Username: Dazai, Password: test
+- Username: test, Password: test1234

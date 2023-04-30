@@ -2,11 +2,14 @@ import { useState } from "react";
 import React from "react";
 import "./Match.css";
 import glass from "../../assets/img/manifyglass.png";
+import { socket } from "../../socket";
 import { FaSearch } from "react-icons/fa";
 
 export default function Match({ showFind, cancelFind }) {
-  // const [match, findMatch] = useState(false);
-
+  const onCancel = () => {
+    cancelFind(false);
+    socket.emit("queue", false);
+  };
   return (
     <>
       {showFind && (
@@ -19,7 +22,7 @@ export default function Match({ showFind, cancelFind }) {
             <span>.</span>
             <span>.</span>
           </h1>
-          <div className="btn cancelbtn" onClick={() => cancelFind(false)}>
+          <div className="btn cancelbtn" onClick={onCancel}>
             CANCEL
           </div>
         </div>

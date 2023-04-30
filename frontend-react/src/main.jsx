@@ -51,7 +51,7 @@ const router = createBrowserRouter([
     element: <UpdatePass />,
   },
   {
-    path: "/pvp",
+    path: "/pvp/:matchid",
     element: <PVP />,
   },
   {

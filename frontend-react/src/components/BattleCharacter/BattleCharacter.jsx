@@ -1,13 +1,16 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import charMan from "../../assets/img/final_male_anim_IDLE.gif";
 import charWoman from "../../assets/img/final_female_anim_IDLE(fixed frames).gif";
 import "./BattleCharacter.css";
 import { Link } from "react-router-dom";
 import mouseclick from "../../assets/audio/mouseclick.mp3";
+import { socket } from "../../socket";
+import { useNavigate } from "react-router-dom";
 
 export default function BattleCharacter({ findMatch }) {
   const [option, setOption] = useState(true);
   const [playSound, setPlaySound] = useState(false);
+  const navigate = useNavigate();
 
   const optionClicked = () => setOption(option == false);
 
@@ -15,6 +18,20 @@ export default function BattleCharacter({ findMatch }) {
     setPlaySound(true);
     setTimeout(() => setPlaySound(false), 500);
   };
+
+  const onQueue = () => {
+    findMatch(true);
+    socket.emit("queue", true);
+  };
+
+  useEffect(() => {
+    socket.on("leave-queue", ({ room_id, id }) => {
+      console.log(room_id, id);
+      navigate(`/pvp/${room_id}`, {
+        state: id,
+      });
+    });
+  }, []);
 
   return (
     <div className="battle-mode">
@@ -37,7 +54,7 @@ export default function BattleCharacter({ findMatch }) {
         <div
           className="btn btn-option"
           style={{ border: "5px solid white" }}
-          onClick={findMatch}
+          onClick={onQueue}
         >
           {option ? "PVP" : "PRACTICE"}
         </div>
