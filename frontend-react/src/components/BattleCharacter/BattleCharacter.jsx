@@ -25,7 +25,7 @@ export default function BattleCharacter({ findMatch }) {
   };
 
   useEffect(() => {
-    socket.on("leave-queue", ({ room_id, id }) => {
+    socket.on("join-match", ({ room_id, id }) => {
       console.log(room_id, id);
       navigate(`/pvp/${room_id}`, {
         state: id,

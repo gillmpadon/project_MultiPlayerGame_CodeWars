@@ -64,6 +64,9 @@ io.of("/").adapter.on("join-room", async (room, id) => {
       // should only work in "queue-room"
       const s1 = io.sockets.sockets.get(socket_ids[0]);
       const s2 = io.sockets.sockets.get(socket_ids[1]);
+      s1.emit("join-match", { room_id, id: socket_ids[0] });
+      s2.emit("join-match", { room_id, id: socket_ids[1] });
+
       s1.leave("queue-room");
       s2.leave("queue-room");
       s1.join(room_id);
@@ -83,10 +86,6 @@ io.of("/").adapter.on("join-room", async (room, id) => {
 
 io.of("/").adapter.on("leave-room", (room, id) => {
   console.log(`socket ${id} has left room ${room}`);
-  if (room === "queue-room") {
-    const s = io.sockets.sockets.get(id);
-    s.emit("leave-queue", { room_id, id });
-  }
 });
 
 server.listen(PORT, () => {
