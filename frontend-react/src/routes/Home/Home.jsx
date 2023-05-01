@@ -9,6 +9,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { socket } from "../../socket";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import useConfigStore from "../../store/configStore";
 
 export default function Home() {
@@ -16,6 +19,8 @@ export default function Home() {
   const account = useConfigStore((state) => state.account);
   const isConnected = useConfigStore((state) => state.isConnected);
   console.log(isConnected);
+
+  const notify = () => toast("Socket forcefully disconnected.");
 
   const [find, findMatch] = useState(false);
 
@@ -30,12 +35,17 @@ export default function Home() {
   return (
     <div className="container">
       <img src={bg} alt="" />
-      <Match showFind={find} cancelFind={findMatch} />
+      <Match
+        showFind={find}
+        findMatch={findMatch}
+        onSocketDisconnect={notify}
+      />
       <Profile username={account.username} />
       <div className="container-box">
         <BattleCharacter findMatch={findMatch} />
         <Leaderboards />
       </div>
+      <ToastContainer />
     </div>
   );
 }

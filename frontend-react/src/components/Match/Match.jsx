@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import "./Match.css";
 import glass from "../../assets/img/manifyglass.png";
 import { socket } from "../../socket";
 import { FaSearch } from "react-icons/fa";
 
-export default function Match({ showFind, cancelFind }) {
+export default function Match({ showFind, findMatch, onSocketDisconnect }) {
   const onCancel = () => {
-    cancelFind(false);
+    findMatch(false);
     socket.emit("queue", false);
   };
+
+  useEffect(() => {
+    socket.on("disconnect", () => {
+      findMatch(false);
+      onSocketDisconnect();
+    });
+  }, []);
   return (
     <>
       {showFind && (
