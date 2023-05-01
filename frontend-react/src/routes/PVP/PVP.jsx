@@ -33,14 +33,33 @@ export default function PVP() {
   const [victory, showVictory] = useState(false);
   const navigate = useNavigate();
 
-  const questions = ["1+1", "2+3"];
-  const answer = [2, 5];
+  const question = [
+    {
+      question: "Write a function that returns the sum of two numbers",
+      template: "def addTwo(a, b):",
+      testCases: [
+        {
+          exe: "print(addTwo(3,5), end='')",
+          answer: "8",
+        },
+        {
+          exe: "print(addTwo(-3,-7), end='')",
+          answer: "-10",
+        },
+        {
+          exe: "print(addTwo(100,3000), end='')",
+          answer: "3100",
+        },
+      ],
+    },
+  ];
 
   let hpremain = 100;
   const hpright = useRef();
 
   // generate a random number for question and answer
-  const rand = Math.floor(Math.random() * questions.length);
+  // const rand = Math.floor(Math.random() * questions.length);
+  const rand = 0;
   const location = useLocation();
   const userId = location.state;
   const room_id = useParams(":matchid").matchid;
@@ -54,6 +73,7 @@ export default function PVP() {
 
     socket.on("player_code_submit", (code) => {
       setOutput(code);
+      console.log("hi", code);
     });
 
     socket.on("disconnect", () => {
@@ -113,30 +133,28 @@ export default function PVP() {
 
   // get the input then evaluate then display in the output container
   const handleClick = () => {
-    // console.log(input);
     const code = input;
-    // try {
-    //   const result = eval(code);
-    //   setOutput(result);
-    // } catch (error) {
-    //   setOutput(`Error: ${error.message}`);
-    // }
     const playerDetails = {
       userId,
     };
-    socket.emit("match_submit", { room_id, code, playerDetails });
+    socket.emit("match_submit", {
+      room_id,
+      code,
+      playerDetails,
+      questionDetails: question[0],
+    });
   };
 
   // confirmation if the output is equal to expected output
-  if (output == answer[rand]) {
-    hpremain -= 100;
-    console.log(hpremain);
-    hpright.current.style.width = `${hpremain}%`;
-    hpright.current.style.transition = "2s";
-    if (hpremain == 0) {
-      showconfirm(!confirm);
-    }
-  }
+  // if (output == answer[rand]) {
+  //   hpremain -= 100;
+  //   console.log(hpremain);
+  //   hpright.current.style.width = `${hpremain}%`;
+  //   hpright.current.style.transition = "2s";
+  //   if (hpremain == 0) {
+  //     showconfirm(!confirm);
+  //   }
+  // }
 
   return (
     <>
@@ -151,7 +169,7 @@ export default function PVP() {
               <div className="pvp-left-content">
                 <div className="question">
                   <p>
-                    <strong>Q:</strong> {questions[rand]}
+                    <strong>Q:</strong> {question[rand].question}
                   </p>
                 </div>
               </div>
@@ -196,7 +214,7 @@ export default function PVP() {
             <div className="bottom-left">
               <div className="userinput">
                 <CodeMirror
-                  value={input}
+                  value={question[rand].template}
                   onChange={handleInputChange}
                   height="190px"
                   className="codemirror"
@@ -227,7 +245,8 @@ export default function PVP() {
                 </div>
                 <div className="expected-output">
                   <h4>EXPECTED OUTPUT:</h4>
-                  <h2>{answer[rand]}</h2>
+                  {/* <h2>{answer[rand].testCases}</h2> */}
+                  <h2>nyao</h2>
                 </div>
               </div>
 
