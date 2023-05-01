@@ -110,7 +110,7 @@ export default function PVP() {
     showSurrender(!surrender);
   };
 
-  //Triggers when use click the confirm or check button
+  //Triggers when user clicks the confirm or check button
   const toggleConfirm = () => {
     showconfirm(!confirm);
     showSurrender(surrender);
@@ -178,7 +178,7 @@ export default function PVP() {
               <div className="pvptop">
                 <div className="pvptop-left">
                   <div className="hpbar">
-                    <div className="hpbar-left" ref={hpright}></div>
+                    <div className="hpbar-left" ref={hpleft}></div>
                   </div>
                   <div className="firstchar">
                     <img src={charMan} alt="" />

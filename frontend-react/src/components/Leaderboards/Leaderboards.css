@@ -1,7 +1,7 @@
 .lboards {
   width: 55%;
-  height: 70vh;
-  max-width: 500px;
+  height: 80vh;
+  max-width: 560px;
   background: linear-gradient(
     179.97deg,
     rgba(200, 103, 69, 0.3) 18.08%,
@@ -13,7 +13,7 @@
   flex-direction: column;
   box-shadow: 9px 10px 4px 1px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  margin-bottom: 6em;
+  margin-bottom: 8em;
   z-index: -1;
 }
 
@@ -26,7 +26,7 @@
   font-size: 4rem;
   position: absolute;
   top: -1.6em;
-  right: 3em;
+  right: 3.3em;
   text-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -60,15 +60,55 @@
 .bronze-img {
   width: 100px;
   height: 85px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.placement img {
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  z-index: 5;
+}
+
+.placement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3.5em;
+  gap: 7em;
+  position: relative;
+}
+
+.placement .silver,
+.placement .bronze {
+  margin-top: 4em;
 }
 
 .placement .gold,
 .placement .silver,
 .placement .bronze {
+  width: 11.5em;
+  height: 16em;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  background-color: rgb(220, 76, 61);
 }
+
+.gold{
+  border: 9px solid gold;
+  position: absolute;
+}
+.silver{
+  border: 9px solid silver;
+}
+.bronze{
+  border: 9px solid rgb(199, 123, 48);
+}
+
 
 .text {
   text-align: center;
@@ -85,21 +125,36 @@
   font-size: 0.7rem;
 }
 
-.placement .gold img {
-  border: 10px solid #ffc700;
-}
-
-.placement .silver img {
-  border: 10px solid #f8f6f7;
-}
-
-.placement .bronze img {
-  border: 10px solid #de5548;
-}
-
 .other-place {
-  margin: 2em 0 0 2.5em;
+  margin: 0.5em 0 0 2.5em;
   line-height: 1em;
   font-size: 1.3rem;
   font-weight: bolder;
+}
+
+.other-place-content{
+  display: flex;
+  gap: .5em;
+}
+
+.other-place-content p{
+  margin: .5em 0;
+  margin-left: -1.5em;
+}
+
+.lboardstar{
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: .2em;
+}
+
+.lboardstar p{
+  margin: 0em 0;
+}
+
+.lstar{
+  color: yellow;
+  font-size: 1.5rem;
+  padding-bottom: .2em;
 }
