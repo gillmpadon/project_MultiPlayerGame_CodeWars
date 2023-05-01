@@ -4,6 +4,7 @@ const { Server } = require("socket.io");
 const config = require("./utils/config");
 const logger = require("./utils/logger");
 const { v4: uuidv4 } = require("uuid");
+const runCode = require("./python_interpreter");
 
 const PORT = config.PORT || 3003;
 const server = http.createServer(app);
@@ -50,7 +51,10 @@ io.on("connection", (socket) => {
   });
 
   socket.on("match_submit", ({ room_id, code, playerDetails }) => {
-    io.to(room_id).emit("player_code_submit", code);
+    const result = runCode(code, (res) => {
+      console.log(res);
+      io.to(room_id).emit("player_code_submit", res);
+    });
   });
 });
 
