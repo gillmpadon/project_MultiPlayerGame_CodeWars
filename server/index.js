@@ -50,12 +50,30 @@ io.on("connection", (socket) => {
     loser.leave(room_id);
   });
 
-  socket.on("match_submit", ({ room_id, code, playerDetails }) => {
-    const result = runCode(code, (res) => {
-      console.log(res);
-      io.to(room_id).emit("player_code_submit", res);
-    });
-  });
+  socket.on(
+    "match_submit",
+    async ({ room_id, code, playerDetails, questionDetails }) => {
+      const total = questionDetails.testCases.length;
+      let correct = 0;
+      const runCodePromises = questionDetails.testCases.map(
+        async (testCase) => {
+          const toRun = code + "\n" + testCase.exe;
+          const res = await runCode(toRun);
+          console.log({ res, answer: testCase.answer });
+          if (res === testCase.answer) {
+            correct += 1;
+          }
+        }
+      );
+      // Wait for all the promises to resolve using `Promise.all()`
+      await Promise.all(runCodePromises);
+
+      console.log(correct);
+
+      // Move the `io.to(room_id).emit()` call outside the `forEach()` loop
+      io.to(room_id).emit("player_code_submit", correct);
+    }
+  );
 });
 
 io.of("/").adapter.on("join-room", async (room, id) => {

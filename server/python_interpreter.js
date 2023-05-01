@@ -1,22 +1,22 @@
 const { spawn } = require("child_process");
 
-const runCode = (code, callback) => {
-  const child = spawn("python", ["-c", code]);
+const runCode = (code) => {
+  return new Promise((resolve) => {
+    const child = spawn("python", ["-c", code]);
 
-  let result = "";
-  child.stdout.on("data", (data) => {
-    result += data.toString();
+    let result = "";
+    child.stdout.on("data", (data) => {
+      result += data.toString();
+    });
+
+    child.stderr.on("data", (data) => {
+      result += data.toString();
+    });
+
+    child.on("close", () => {
+      resolve(result);
+    });
   });
-
-  child.stderr.on("data", (data) => {
-    result += data.toString();
-  });
-
-  child.on("close", () => {
-    callback(result);
-  });
-
-  return result;
 };
 
 module.exports = runCode;
