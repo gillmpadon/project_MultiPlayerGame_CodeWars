@@ -18,7 +18,6 @@ export default function Home() {
   const navigate = useNavigate();
   const account = useConfigStore((state) => state.account);
   const isConnected = useConfigStore((state) => state.isConnected);
-  console.log(isConnected);
 
   const notify = () => toast("Socket forcefully disconnected.");
 

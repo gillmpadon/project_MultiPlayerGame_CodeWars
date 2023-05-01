@@ -1,26 +1,25 @@
-import React, { useEffect, useRef } from 'react';
-import backgroundMusic from '../../assets/audio/music.mp3';
+import React, { useEffect, useRef } from "react";
+import backgroundMusic from "../../assets/audio/music.mp3";
 
-export default function AudioPlayer ({isPlaying}) {
-  console.log({isPlaying})
+export default function AudioPlayer({ isPlaying }) {
   return (
     <div>
-      {isPlaying && <div>
-        <audio autoPlay loop src={backgroundMusic} type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>}
+      {isPlaying && (
+        <div>
+          <audio autoPlay loop src={backgroundMusic} type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      )}
     </div>
   );
 }
-
-
 
 // const [isMuted, setIsMuted] = useState(false);
 // const toggleMute = () => {
 //   audioRef.current.muted = !isMuted;
 //   setIsMuted(!isMuted);
-// };  
+// };
 
 // export default function AudioButton () {
 //   return(
@@ -33,7 +32,7 @@ export default function AudioPlayer ({isPlaying}) {
 // }
 
 // export default function AudioPlayer () {
-//     return(      
+//     return(
 //       <audio autoPlay loop src={backgroundMusic} type="audio/mpeg" ref={audioRef}>
 //           Your browser does not support the audio element.
 //       </audio>

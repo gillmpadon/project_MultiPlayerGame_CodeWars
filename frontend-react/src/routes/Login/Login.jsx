@@ -53,7 +53,6 @@ export default function Login() {
   };
 
   const onLogin = async () => {
-    console.log("Login");
     if (isLogin) {
       const data = {
         username,

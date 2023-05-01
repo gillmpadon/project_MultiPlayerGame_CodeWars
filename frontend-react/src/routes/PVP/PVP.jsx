@@ -47,7 +47,6 @@ export default function PVP() {
 
   useEffect(() => {
     socket.on("match_result", async (data) => {
-      console.log(data.msg);
       if (data.msg === "You won!") {
         showVictory(true);
       }
