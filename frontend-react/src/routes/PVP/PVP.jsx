@@ -56,6 +56,7 @@ export default function PVP() {
 
   let hpremain = 100;
   const hpright = useRef();
+ 
 
   // generate a random number for question and answer
   // const rand = Math.floor(Math.random() * questions.length);
@@ -178,9 +179,13 @@ export default function PVP() {
               <div className="pvptop">
                 <div className="pvptop-left">
                   <div className="hpbar">
-                    <div className="hpbar-left" ref={hpleft}></div>
+                    <div className="hpbar-left" ref={hpright}></div>
                   </div>
                   <div className="firstchar">
+                  <div className="username username1">
+                        <h4>Dazai</h4>
+                        <div className="username-triangle username-triange2"></div>
+                  </div>
                     <img src={charMan} alt="" />
                   </div>
                 </div>
@@ -197,6 +202,10 @@ export default function PVP() {
                     <div className="hpbar-right" ref={hpright}></div>
                   </div>
                   <div className="secondchar">
+                  <div className="username username2">
+                        <h4>Test</h4>
+                        <div className="username-triangle"></div>
+                  </div>
                     <img src={charWoman} alt="" />
                   </div>
                 </div>
@@ -240,13 +249,18 @@ export default function PVP() {
             <div className="bottom-right">
               <div className="outputs">
                 <div className="display-output">
-                  <h4>OUTPUT:</h4>
-                  <h2>{output}</h2>
-                </div>
-                <div className="expected-output">
-                  <h4>EXPECTED OUTPUT:</h4>
-                  {/* <h2>{answer[rand].testCases}</h2> */}
-                  <h2>nyao</h2>
+                  <div className="test-case">
+                    <h3>TEST CASES:</h3>
+                    <p>Test 1: [5+5]</p>
+                    <p>Test 2: [6+999]</p>
+                    <p>Test 3: [0+0]</p>
+                  </div>
+                  <div className="output-test">
+                    <h3>OUTPUT:</h3>
+                    <p>10</p>
+                    <p>1005</p>
+                    <p>0</p>
+                  </div>
                 </div>
               </div>
 
@@ -304,7 +318,7 @@ export default function PVP() {
           <div className="win">
             <Link to="/">
               <div className="lose-container">
-                <h1>Victory</h1>
+                <h1>VICTORY</h1>
                 <p>Click anywhere to return...</p>
               </div>
             </Link>
@@ -314,6 +328,14 @@ export default function PVP() {
         {playlosersound && (
           <div>
             <audio autoPlay src={lose} type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        )}
+
+        {victory && (
+          <div>
+            <audio autoPlay src={win} type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
           </div>
