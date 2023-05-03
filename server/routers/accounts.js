@@ -15,6 +15,7 @@ accountRouter.post("/", async (req, res) => {
     username,
     email,
     passwordHash,
+    stars: 50,
   });
 
   try {

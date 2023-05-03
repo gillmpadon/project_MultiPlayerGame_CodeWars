@@ -12,6 +12,7 @@ const accountSchema = new mongoose.Schema({
     unique: true,
   },
   passwordHash: String,
+  stars: Number,
 });
 
 accountSchema.set("toJSON", {
