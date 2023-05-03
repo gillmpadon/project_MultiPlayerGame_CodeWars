@@ -177,6 +177,23 @@ export default function PVP() {
       <div className={`settings-pvp  ${sett ? "on" : "off"}`}>
         <Settings isTransparent={true} />
       </div>
+      <div className="pvpmatchfound">
+        <div className="yourchar">
+          <h2>Dazai</h2>
+          <div className="charImg1">
+            <img src={charMan}/>
+          </div>
+        </div>
+        <div className="vs">
+            <p>VS</p>
+        </div>
+        <div className="opponentchar">
+          <h2>Test123</h2>
+          <div className="charImg2">
+            <img src={charWoman}/>
+          </div>
+        </div>
+      </div>
       <div className="container container-pvp">
         <img src={bg} alt="bg" className="pvp-bg" />
         <div className="pvp-container">
@@ -337,8 +354,7 @@ export default function PVP() {
         )}
 
         {starPage && (
-          <>
-          <Link to="/" ref={linkRef}></Link>
+          <Link to="/" ref={linkRef}>
             <div className="starpage">
               <div className="starpage-content">
                 <div className="starpage-star">
@@ -353,8 +369,9 @@ export default function PVP() {
                   </div>
                 </div>
               </div>
+              <p>Click anywhere to continue...</p>
             </div>
-          </>
+          </Link>
         )
         }
 

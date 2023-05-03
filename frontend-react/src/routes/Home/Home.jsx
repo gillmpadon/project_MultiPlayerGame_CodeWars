@@ -36,7 +36,7 @@ export default function Home() {
     <div className="container">
       <img src={bg} alt="" />
       <LoadingPage/>
-      {/* <Match
+      <Match
         showFind={find}
         findMatch={findMatch}
         onSocketDisconnect={notify}
@@ -46,7 +46,7 @@ export default function Home() {
         <BattleCharacter findMatch={findMatch} />
         <Leaderboards />
       </div>
-      <ToastContainer /> */}
+      <ToastContainer />
     </div>
   );
 }

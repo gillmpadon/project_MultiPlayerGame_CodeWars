@@ -3,6 +3,79 @@ a{
   cursor: default;
 }
 
+.pvpmatchfound{
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  background-image: url(../../assets/img/4455.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: matchfound 1s 12s forwards;
+}
+
+.yourchar,
+.opponentchar{
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.yourchar{
+  animation: yourchar 3s 2s forwards;
+  opacity: 0;
+}
+
+.opponentchar{
+  opacity: 0;
+  animation: opponentchar 3s 7s forwards;
+}
+
+.yourchar h2,
+.opponentchar h2{
+  margin: 0;
+  font-size: 4rem;
+}
+
+.charImg1,
+.charImg2{
+  width: 60%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.charImg1 img,
+.charImg2 img{
+  height: 100%;
+  width: 100%;
+}
+
+.charImg1 img{
+  transform: rotateY(180deg);
+}
+
+.vs{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 7rem;
+  font-weight: bolder;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  animation: vs 2s 5s forwards;
+}
+
 .pvp-container {
   height: 95vh;
   width: 90%;
@@ -572,6 +645,7 @@ a{
   animation: youlose 4s forwards;
 }
 
+
 .lose-container p {
   color: white;
   animation: clicklobby 6s;
@@ -588,6 +662,12 @@ a{
   z-index: 200;
   top: 0;
   left: 0;
+}
+
+.starpage p{
+  margin: 0;
+  animation: starp 1s 3s forwards;
+  opacity: 0;
 }
 
 .starpage-content{
@@ -644,6 +724,25 @@ a{
   animation: appear 1s forwards;
 }
 
+@keyframes matchfound {
+  100%{opacity: 0; z-index: -20;}
+}
+
+@keyframes yourchar {
+  0%{margin-left: -4em; opacity: 1;}
+  100%{margin-left: 0; opacity: 1;}
+}
+
+@keyframes opponentchar {
+  0%{margin-right: -4em; opacity: 1;}
+  100%{margin-left: 0; opacity: 1;}
+}
+
+@keyframes vs {
+  0%{opacity: 0;}
+  100%{font-size: 8rem; opacity: 1;}
+}
+
 @keyframes lose {
   0% {
     background-color: rgba(4, 9, 30, 0.1);
@@ -694,4 +793,9 @@ a{
 @keyframes stargain {
   0%{top: -4em;}
   100%{top: 0; opacity: 1;}
+}
+
+@keyframes starp {
+  100%{opacity: 1;}
+  
 }

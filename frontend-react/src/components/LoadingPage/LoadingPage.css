@@ -1,5 +1,5 @@
 .App{
-    /* animation: loading 3s 5s forwards; */
+    animation: loading 1s 8s forwards;
     height: 100vh;
     width: 100%;
     position: absolute;
@@ -38,11 +38,28 @@ border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+}
+
+.game-title{
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    font-size: 7.5rem;
+    bottom: -1.2em;
+    text-align: center;
+    font-weight: bolder;
+    z-index: 10;
+    animation: fallp 5s forwards ease-in-out;
+}
+
+.game-title p{
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
 }
 
 .charMan,
 .charWoman{
-    width: 19em;
+    width: 22em;
     height: 100%;
 }
 
@@ -55,8 +72,20 @@ border-radius: 8px;
 .charWoman{
     transform: rotateY(180deg);
 }
+
+.loading-progress{
+    position: absolute;
+    bottom: -.6em;
+    font-size: 3.5rem;
+    font-weight: bolder;
+}
   
-/* 
+
 @keyframes loading {
-    100%{opacity: 0;}
-} */
+    100%{opacity: 0; z-index: -20;}
+}
+
+@keyframes fallp {
+    0%{bottom: 4.3em; rotate: 0;}
+    100%{bottom: -1.2em; rotate: 0;}
+}

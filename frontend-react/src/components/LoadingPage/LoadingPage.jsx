@@ -26,6 +26,9 @@ export default function LoadingPage() {
       <div className="App">
         <img src={bg} alt="" />
         <div className='character-content'>
+            <div className='game-title'>
+              <p>CODE WARS</p>
+            </div>
             <div className='charWoman'>
                 <img src={charWoman}/>
             </div>
@@ -36,6 +39,9 @@ export default function LoadingPage() {
         <div className="loading-bar">
           <div className="loading-bar-fill" style={{ width: `${loadingProgress}%` }}></div>
         </div>
+        <div className='loading-progress'>
+              <p>{loadingProgress}%</p>
+            </div>
       </div>
     );
 };
