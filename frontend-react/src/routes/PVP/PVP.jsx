@@ -31,6 +31,7 @@ export default function PVP() {
   const [output, setOutput] = useState("");
   const [seconds, setSeconds] = useState(60);
   const [victory, showVictory] = useState(false);
+  const [starPage, showStarPage] = useState(false);
   const navigate = useNavigate();
 
   const question = [
@@ -56,6 +57,8 @@ export default function PVP() {
 
   let hpremain = 100;
   const hpright = useRef();
+  const linkRef = useRef();
+  const stars = 500;
  
 
   // generate a random number for question and answer
@@ -101,6 +104,14 @@ export default function PVP() {
   //   return () => clearInterval(intervalId);
   // }, []);
 
+  // Delay for returning lobby 
+  useEffect(() => {
+    setTimeout(() => {
+      linkRef.current.click();
+    }, 3000); // delay in milliseconds (3 seconds)
+  }, []);
+
+
   // display the settings UI
   const toggleSettings = () => {
     showSettings(!sett);
@@ -121,6 +132,10 @@ export default function PVP() {
       setPlaySound(false);
     }, 3000);
   };
+
+  const toggleStarPage = () =>{
+    showStarPage(!starPage);
+  }
 
   // get the value inputted by user
   const handleInputChange = (value) => {
@@ -183,8 +198,8 @@ export default function PVP() {
                   </div>
                   <div className="firstchar">
                   <div className="username username1">
-                        <h4>Dazai</h4>
-                        <div className="username-triangle username-triange2"></div>
+                      <h4>Dazai</h4>
+                      <div className="username-triangle username-triange2"></div>
                   </div>
                     <img src={charMan} alt="" />
                   </div>
@@ -251,9 +266,9 @@ export default function PVP() {
                 <div className="display-output">
                   <div className="test-case">
                     <h3>TEST CASES:</h3>
-                    <p>Test 1: [5+5]</p>
-                    <p>Test 2: [6+999]</p>
-                    <p>Test 3: [0+0]</p>
+                    <p>Case 1: [5+5]</p>
+                    <p>Case 2: [6+999]</p>
+                    <p>Case 3: [0+0]</p>
                   </div>
                   <div className="output-test">
                     <h3>OUTPUT:</h3>
@@ -265,7 +280,7 @@ export default function PVP() {
               </div>
 
               <div className="btn btn-exit" onClick={toggleSurrender}>
-                EXIT
+                GIVE UP
               </div>
             </div>
           </div>
@@ -304,26 +319,44 @@ export default function PVP() {
           </div>
         )}
         {confirm && (
-          <div className="lose">
-            <Link to="/">
-              <div className="lose-container">
+          <div className="lose" onClick={toggleStarPage}>
+              <div className="lose-container" style={{display: starPage ? "none" : ""}}>
                 <h1>DEFEAT</h1>
-                <p>Click anywhere to return...</p>
+                <p>Click anywhere to continue...</p>
               </div>
-            </Link>
           </div>
         )}
 
         {victory && (
-          <div className="win">
-            <Link to="/">
-              <div className="lose-container">
-                <h1>VICTORY</h1>
-                <p>Click anywhere to return...</p>
-              </div>
-            </Link>
+          <div className="win" onClick={toggleStarPage}>
+            <div className="lose-container" style={{display: starPage ? "none" : ""}}>
+              <h1>VICTORY</h1>
+              <p>Click anywhere to continue...</p>
+            </div>
           </div>
         )}
+
+        {starPage && (
+          <>
+          <Link to="/" ref={linkRef}></Link>
+            <div className="starpage">
+              <div className="starpage-content">
+                <div className="starpage-star">
+                  <div className={`${victory? "stargain" : "starfall"}`}><h2>&#9733;</h2></div>
+                  <h2>&#9733;</h2>
+                </div>
+                <div className="starcount">
+                  <h2 className="currentstar">{stars}</h2>
+                  <h2 className="updatedstar">{victory ? stars+1 : stars-1} </h2>
+                  <div className="addorminus" style={{color: victory ? "yellow" : "red"}}>
+                    <h2>{victory ? "+1" : "-1"}</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )
+        }
 
         {playlosersound && (
           <div>
@@ -343,4 +376,4 @@ export default function PVP() {
       </div>
     </>
   );
-}
+};

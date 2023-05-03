@@ -1,3 +1,8 @@
+a{
+  color: white;
+  cursor: default;
+}
+
 .pvp-container {
   height: 95vh;
   width: 90%;
@@ -31,10 +36,12 @@
 
 .question {
   width: 80%;
-  height: 23em;
-  background: rgba(217, 217, 217, 0.4);
+  height: 21em;
+  background: rgba(217, 217, 217, 0.8);
   border-radius: 15px;
+  color: black;
   padding: 0em 1em 0 1em;
+  font-size: 1.1rem;
 }
 
 .pvp-container-right {
@@ -113,7 +120,7 @@
 }
 
 .username.username2{
-  left: 73%;
+  left: 76%;
   border-left: 4px solid white;
   border-right: none;
 }
@@ -129,7 +136,7 @@
   background-color: rgb(208, 38, 37); 
   position: absolute;
   top: -.2em;
-  left: 2.2em;
+  left: 1.65em;
   z-index: -1;
   border-bottom: 4px solid white;
   border-right: 4px solid white;
@@ -206,6 +213,7 @@
     rgba(207, 34, 34, 0.95) 62.87%,
     #831616 71.55%
   );
+  border-radius: 6px;
 }
 
 .hpbar-right {
@@ -222,6 +230,7 @@
   height: 5em;
   width: 5em;
   position: absolute;
+  z-index: 2;
 }
 
 .hpbar-left::before {
@@ -293,6 +302,7 @@
 .cm-editor {
   background: transparent;
   padding: 0.5em;
+  font-size: 1.1rem;
 }
 
 .cm-activeLine.cm-line {
@@ -361,7 +371,7 @@
 
 .outputs {
   width: 85%;
-  height: 28vh;
+  height: 27vh;
   padding: 0 1em;
   margin: 5px 0 10px 0;
   border-radius: 16px;
@@ -370,8 +380,13 @@
   flex-direction: column;
 }
 
-.outputs h4 {
-  margin: 0.5em 0 0 0;
+.outputs p{
+  color: black;
+  font-weight: bold;
+}
+
+.outputs h3 {
+  font-size: 1.4rem;
 }
 
 .display-output {
@@ -388,6 +403,14 @@
 
 .output-test p{
   text-align: center;
+}
+
+.test-case h3{
+  color: black;
+}
+
+.output-test h3{
+  color: black;
 }
 
 .btn-exit {
@@ -524,7 +547,8 @@
   font-weight: bolder;
 }
 
-.lose {
+.lose,
+.win {
   animation: lose 4s forwards;
 }
 
@@ -553,6 +577,73 @@
   animation: clicklobby 6s;
 }
 
+.starpage{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  z-index: 200;
+  top: 0;
+  left: 0;
+}
+
+.starpage-content{
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+.starpage-content h2{
+  font-size: 5rem;
+}
+
+.starpage-star{
+  position: relative;
+}
+
+.starpage-star h2{
+  color: yellow;
+  margin-bottom: 1em;
+  font-size: 8rem;
+}
+
+.starfall{
+  position: absolute;
+  top: 0;
+  right: 0;
+  animation: starfall 2s forwards;
+}
+
+.stargain{
+  position: absolute;
+  top: -4em;
+  right: 0;
+  animation: stargain 2s forwards;
+}
+
+.starcount{
+  display: flex;
+  gap: 1.5em;
+}
+
+.currentstar{
+  animation: currentstar 2s forwards;
+}
+
+.updatedstar{
+  opacity: 0;
+  position: absolute;
+  animation: updatedstar 2s forwards;
+}
+
+.addorminus{
+  position: relative;
+  animation: appear 1s forwards;
+}
+
 @keyframes lose {
   0% {
     background-color: rgba(4, 9, 30, 0.1);
@@ -571,6 +662,16 @@
   }
 }
 
+@keyframes currentstar {
+  0%{opacity: 1;}
+  100%{opacity: 0;}
+}
+
+@keyframes updatedstar {
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+
 @keyframes clicklobby {
   0% {
     opacity: 0;
@@ -578,4 +679,19 @@
   100% {
     opacity: 0;
   }
+}
+
+@keyframes appear {
+  0% {left:2em; opacity: 1;}
+  100% {left: -5em; opacity: 0;}
+}
+
+@keyframes starfall {
+  0%{top: 0em;}
+  100%{top: 4em; rotate: 10deg; opacity: 0;}
+}
+
+@keyframes stargain {
+  0%{top: -4em;}
+  100%{top: 0; opacity: 1;}
 }

@@ -13,7 +13,7 @@ let room_id = uuidv4();
 const io = new Server(server, {
   path: "/socket",
   cors: {
-    origin: "http://localhost:5173",
+    origin: "*",
   },
 });
 
