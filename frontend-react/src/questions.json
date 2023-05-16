@@ -180,12 +180,12 @@
     ]
   },
   {
-    "question": "Write a function to calculate the area of a triangle",
+    "question": "Write a function to calculate the area of a right triangle",
     "template": "def area_triangle(base, height):",
     "testCases": [
       {
         "exe": "print(area_triangle(5, 10), end='')",
-        "answer": "25"
+        "answer": "25.0"
       },
       {
         "exe": "print(area_triangle(7, 3), end='')",
@@ -193,7 +193,7 @@
       },
       {
         "exe": "print(area_triangle(2.5, 4), end='')",
-        "answer": "5"
+        "answer": "5.0"
       }
     ]
   },

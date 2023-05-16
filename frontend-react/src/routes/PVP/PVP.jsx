@@ -22,6 +22,7 @@ import Console from "../../components/Console/Console";
 import { motion, useMotionValue } from "framer-motion";
 import { socket } from "../../socket";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
+import questions from "../../questions.json";
 
 export default function PVP() {
   const [sett, showSettings] = useState(false);
@@ -63,7 +64,7 @@ export default function PVP() {
 
   // generate a random number for question and answer
   // const rand = Math.floor(Math.random() * questions.length);
-  const rand = 0;
+  const [qnum, setQnum] = useState(0);
   const location = useLocation();
   const userId = location.state;
   const room_id = useParams(":matchid").matchid;
@@ -98,12 +99,14 @@ export default function PVP() {
       // console.log(res.correct && socket.id === res.socketId);
       if (res.correct && socket.id === res.socketId) {
         setHprval(hprval - 25);
-        console.log(hprval);
+        setQnum(res.question_index);
+        console.log(hprval, qnum);
         // hpright.current.style.width = `${hprval.current}%`;
         // hpright.current.style.transition = "2s";
       } else if (res.correct && socket.id !== res.socketId) {
         setHplval(hplval - 25);
-        console.log(hplval);
+        setQnum(res.question_index);
+        console.log(hplval, qnum);
         // hpleft.current.style.width = `${hplval.current}%`;
         // hpleft.current.style.transition = "2s";
       }
@@ -193,12 +196,12 @@ export default function PVP() {
       room_id,
       code,
       socketId: socket.id,
-      questionDetails: question[0],
+      questionDetails: questions[qnum],
     });
   };
 
   // confirmation if the output is equal to expected output
-  // if (output == answer[rand]) {
+  // if (output == answer[qnum]) {
   // hpremain -= 100;
   // console.log(hpremain);
   // hpright.current.style.width = `${hpremain}%`;
@@ -238,7 +241,7 @@ export default function PVP() {
               <div className="pvp-left-content">
                 <div className="question">
                   <p>
-                    <strong>Q:</strong> {question[rand].question}
+                    <strong>Q:</strong> {questions[qnum].question}
                   </p>
                 </div>
               </div>
@@ -323,7 +326,7 @@ export default function PVP() {
             <div className="bottom-left">
               <div className="userinput">
                 <CodeMirror
-                  value={question[rand].template}
+                  value={questions[qnum].template}
                   onChange={handleInputChange}
                   height="190px"
                   className="codemirror"
