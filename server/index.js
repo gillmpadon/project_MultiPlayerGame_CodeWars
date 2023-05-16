@@ -52,7 +52,7 @@ io.on("connection", (socket) => {
 
   socket.on(
     "match_submit",
-    async ({ room_id, code, playerDetails, questionDetails }) => {
+    async ({ room_id, code, socketId, questionDetails }) => {
       const total = questionDetails.testCases.length;
       let correct = 0;
       const runCodePromises = questionDetails.testCases.map(
@@ -71,9 +71,17 @@ io.on("connection", (socket) => {
       console.log(correct);
 
       // Move the `io.to(room_id).emit()` call outside the `forEach()` loop
-      io.to(room_id).emit("player_code_submit", correct);
+      if (total === correct) {
+        io.to(room_id).emit("player_code_submit", { correct: true, socketId });
+      } else {
+        io.to(room_id).emit("player_code_submit", { correct: false, socketId });
+      }
     }
   );
+
+  socket.on("player_lose", ({ room_id, socketId }) => {
+    io.to(room_id).emit("match_end", { loser: socketId });
+  });
 });
 
 io.of("/").adapter.on("join-room", async (room, id) => {
