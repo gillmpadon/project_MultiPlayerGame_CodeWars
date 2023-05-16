@@ -32,10 +32,14 @@ export default function Home() {
     socket.connect();
   }, []);
 
+  if (socket.id) {
+    console.log(socket.id);
+  }
+
   return (
     <div className="container">
       <img src={bg} alt="" />
-      <LoadingPage/>
+      <LoadingPage />
       <Match
         showFind={find}
         findMatch={findMatch}

@@ -1,0 +1,236 @@
+[
+  {
+    "question": "Write a function that returns the sum of the two numbers",
+    "template": "def addTwo(a, b):",
+    "testCases": [
+      {
+        "exe": "print(addTwo(3, 5), end='')",
+        "answer": "8"
+      },
+      {
+        "exe": "print(addTwo(-3, -7), end='')",
+        "answer": "-10"
+      },
+      {
+        "exe": "print(addTwo(100, 3000), end='')",
+        "answer": "3100"
+      }
+    ]
+  },
+  {
+    "question": "Write a function that returns the absolute value of a number",
+    "template": "def absoluteValue(num):",
+    "testCases": [
+      {
+        "exe": "print(absoluteValue(5), end='')",
+        "answer": "5"
+      },
+      {
+        "exe": "print(absoluteValue(-7), end='')",
+        "answer": "7"
+      },
+      {
+        "exe": "print(absoluteValue(0), end='')",
+        "answer": "0"
+      }
+    ]
+  },
+  {
+    "question": "Write a function that calculates the area of a rectangle",
+    "template": "def rectangleArea(length, width):",
+    "testCases": [
+      {
+        "exe": "print(rectangleArea(4, 6), end='')",
+        "answer": "24"
+      },
+      {
+        "exe": "print(rectangleArea(20, 3), end='')",
+        "answer": "60"
+      },
+      {
+        "exe": "print(rectangleArea(0, 10), end='')",
+        "answer": "0"
+      }
+    ]
+  },
+  {
+    "question": "Write a function that multiplies two numbers",
+    "template": "def multiplyTwo(a, b):",
+    "testCases": [
+      {
+        "exe": "print(multiplyTwo(3, 5), end='')",
+        "answer": "15"
+      },
+      {
+        "exe": "print(multiplyTwo(-2, 6), end='')",
+        "answer": "-12"
+      },
+      {
+        "exe": "print(multiplyTwo(0, 100), end='')",
+        "answer": "0"
+      }
+    ]
+  },
+  {
+    "question": "Write a function that checks if a word is a palindrome",
+    "template": "def isWordPalindrome(word):",
+    "testCases": [
+      {
+        "exe": "print(isWordPalindrome('racecar'), end='')",
+        "answer": "True"
+      },
+      {
+        "exe": "print(isWordPalindrome('hello'), end='')",
+        "answer": "False"
+      },
+      {
+        "exe": "print(isWordPalindrome('deified'), end='')",
+        "answer": "True"
+      }
+    ]
+  },
+  {
+    "question": "Write a function that checks if a sentence is a palindrome",
+    "template": "def isSentencePalindrome(sentence):",
+    "testCases": [
+      {
+        "exe": "print(isSentencePalindrome('Able was I saw Elba'), end='')",
+        "answer": "True"
+      },
+      {
+        "exe": "print(isSentencePalindrome('This is not a palindrome'), end='')",
+        "answer": "False"
+      },
+      {
+        "exe": "print(isSentencePalindrome('A man, a plan, a canal, Panama!'), end='')",
+        "answer": "True"
+      }
+    ]
+  },
+  {
+    "question": "Write a function that checks if a phrase is a palindrome",
+    "template": "def isPhrasePalindrome(phrase):",
+    "testCases": [
+      {
+        "exe": "print(isPhrasePalindrome('Madam in Eden, I’m Adam'), end='')",
+        "answer": "True"
+      },
+      {
+        "exe": "print(isPhrasePalindrome('Not a palindrome'), end='')",
+        "answer": "False"
+      },
+      {
+        "exe": "print(isPhrasePalindrome('Step on no pets'), end='')",
+        "answer": "True"
+      }
+    ]
+  },
+  {
+    "question": "Write a function that checks if a number is a palindrome",
+    "template": "def isNumberPalindrome(number):",
+    "testCases": [
+      {
+        "exe": "print(isNumberPalindrome(121), end='')",
+        "answer": "True"
+      },
+      {
+        "exe": "print(isNumberPalindrome(12345), end='')",
+        "answer": "False"
+      },
+      {
+        "exe": "print(isNumberPalindrome(12321), end='')",
+        "answer": "True"
+      }
+    ]
+  },
+  {
+    "question": "Write a function to calculate the area of a square",
+    "template": "def area_square(side):",
+    "testCases": [
+      {
+        "exe": "print(area_square(5), end='')",
+        "answer": "25"
+      },
+      {
+        "exe": "print(area_square(10), end='')",
+        "answer": "100"
+      },
+      {
+        "exe": "print(area_square(2.5), end='')",
+        "answer": "6.25"
+      }
+    ]
+  },
+  {
+    "question": "Write a function to calculate the area of a rectangle",
+    "template": "def area_rectangle(length, width):",
+    "testCases": [
+      {
+        "exe": "print(area_rectangle(5, 10), end='')",
+        "answer": "50"
+      },
+      {
+        "exe": "print(area_rectangle(7, 3), end='')",
+        "answer": "21"
+      },
+      {
+        "exe": "print(area_rectangle(2.5, 4), end='')",
+        "answer": "10"
+      }
+    ]
+  },
+  {
+    "question": "Write a function to calculate the area of a triangle",
+    "template": "def area_triangle(base, height):",
+    "testCases": [
+      {
+        "exe": "print(area_triangle(5, 10), end='')",
+        "answer": "25"
+      },
+      {
+        "exe": "print(area_triangle(7, 3), end='')",
+        "answer": "10.5"
+      },
+      {
+        "exe": "print(area_triangle(2.5, 4), end='')",
+        "answer": "5"
+      }
+    ]
+  },
+  {
+    "question": "Write a function to calculate the area of a circle",
+    "template": "def area_circle(radius):",
+    "testCases": [
+      {
+        "exe": "print(area_circle(5), end='')",
+        "answer": "78.54"
+      },
+      {
+        "exe": "print(area_circle(10), end='')",
+        "answer": "314.16"
+      },
+      {
+        "exe": "print(area_circle(2.5), end='')",
+        "answer": "19.63"
+      }
+    ]
+  },
+  {
+    "question": "Write a function to calculate the area of a trapezoid",
+    "template": "def area_trapezoid(base1, base2, height):",
+    "testCases": [
+      {
+        "exe": "print(area_trapezoid(5, 10, 8), end='')",
+        "answer": "60"
+      },
+      {
+        "exe": "print(area_trapezoid(7, 3, 4), end='')",
+        "answer": "20"
+      },
+      {
+        "exe": "print(area_trapezoid(2.5, 4, 3), end='')",
+        "answer": "9.25"
+      }
+    ]
+  }
+]
