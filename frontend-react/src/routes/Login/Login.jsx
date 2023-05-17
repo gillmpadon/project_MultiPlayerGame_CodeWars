@@ -32,8 +32,8 @@ export default function Login() {
   useEffect(() => {
     const userLog = window.localStorage.getItem("loggedUser");
     if (userLog) {
-      const { username, email } = JSON.parse(userLog);
-      setAccount(username, email);
+      const { username, email, stars } = JSON.parse(userLog);
+      setAccount(username, email, stars);
       navigate("/home");
     }
   }, []);
@@ -67,10 +67,10 @@ export default function Login() {
         if (res.status === 200) {
           console.log(res);
           const {
-            data: { username, email },
+            data: { username, email, stars },
           } = res;
           window.localStorage.setItem("loggedUser", JSON.stringify(res.data));
-          setAccount(username, email);
+          setAccount(username, email, stars);
           navigate("/home");
         }
       } catch (error) {
