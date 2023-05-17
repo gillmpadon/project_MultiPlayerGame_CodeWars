@@ -19,8 +19,10 @@ import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 import Console from "../../components/Console/Console";
+import { motion, useMotionValue } from "framer-motion";
 import { socket } from "../../socket";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
+import questions from "../../questions.json";
 
 export default function PVP() {
   const [sett, showSettings] = useState(false);
@@ -55,19 +57,17 @@ export default function PVP() {
     },
   ];
 
-  let hpremain = 100;
-  const hpright = useRef();
+  const [hprval, setHprval] = useState(100);
+  const [hplval, setHplval] = useState(100);
   const linkRef = useRef();
   const stars = 500;
- 
 
   // generate a random number for question and answer
   // const rand = Math.floor(Math.random() * questions.length);
-  const rand = 0;
+  const [qnum, setQnum] = useState(0);
   const location = useLocation();
   const userId = location.state;
   const room_id = useParams(":matchid").matchid;
-
   useEffect(() => {
     socket.on("match_result", async (data) => {
       if (data.msg === "You won!") {
@@ -75,15 +75,47 @@ export default function PVP() {
       }
     });
 
-    socket.on("player_code_submit", (code) => {
-      setOutput(code);
-      console.log("hi", code);
+    socket.on("match_end", (data) => {
+      if (data.loser === socket.id) {
+        setTimeout(() => {
+          toggleLose();
+        }, 2500);
+      } else {
+        setTimeout(() => {
+          showVictory(true);
+        }, 2500);
+      }
     });
 
     socket.on("disconnect", () => {
       navigate("/home");
     });
   }, []);
+
+  useEffect(() => {
+    socket.on("player_code_submit", (res) => {
+      // setOutput(code);
+      // console.log({ res, socketId: socket.id });
+      // console.log(res.correct && socket.id === res.socketId);
+      if (res.correct && socket.id === res.socketId) {
+        setHprval(hprval - 25);
+        setQnum(res.question_index);
+        console.log(hprval, qnum);
+        // hpright.current.style.width = `${hprval.current}%`;
+        // hpright.current.style.transition = "2s";
+      } else if (res.correct && socket.id !== res.socketId) {
+        setHplval(hplval - 25);
+        setQnum(res.question_index);
+        console.log(hplval, qnum);
+        // hpleft.current.style.width = `${hplval.current}%`;
+        // hpleft.current.style.transition = "2s";
+      }
+    });
+
+    if (hplval <= 0) {
+      socket.emit("player_lose", { room_id, socketId: socket.id });
+    }
+  }, [hprval, hplval]);
 
   // useEffect(() => {
   //   console.log(victory);
@@ -104,13 +136,12 @@ export default function PVP() {
   //   return () => clearInterval(intervalId);
   // }, []);
 
-  // Delay for returning lobby 
-  useEffect(() => {
-    setTimeout(() => {
-      linkRef.current.click();
-    }, 3000); // delay in milliseconds (3 seconds)
-  }, []);
-
+  // Delay for returning lobby
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     linkRef.current.click();
+  //   }, 3000); // delay in milliseconds (3 seconds)
+  // }, []);
 
   // display the settings UI
   const toggleSettings = () => {
@@ -133,9 +164,17 @@ export default function PVP() {
     }, 3000);
   };
 
-  const toggleStarPage = () =>{
+  const toggleLose = () => {
+    showconfirm(!confirm);
+    setPlayLoserSound(true);
+    setTimeout(() => {
+      setPlaySound(false);
+    }, 3000);
+  };
+
+  const toggleStarPage = () => {
     showStarPage(!starPage);
-  }
+  };
 
   // get the value inputted by user
   const handleInputChange = (value) => {
@@ -156,17 +195,17 @@ export default function PVP() {
     socket.emit("match_submit", {
       room_id,
       code,
-      playerDetails,
-      questionDetails: question[0],
+      socketId: socket.id,
+      questionDetails: questions[qnum],
     });
   };
 
   // confirmation if the output is equal to expected output
-  // if (output == answer[rand]) {
-  //   hpremain -= 100;
-  //   console.log(hpremain);
-  //   hpright.current.style.width = `${hpremain}%`;
-  //   hpright.current.style.transition = "2s";
+  // if (output == answer[qnum]) {
+  // hpremain -= 100;
+  // console.log(hpremain);
+  // hpright.current.style.width = `${hpremain}%`;
+  // hpright.current.style.transition = "2s";
   //   if (hpremain == 0) {
   //     showconfirm(!confirm);
   //   }
@@ -177,23 +216,23 @@ export default function PVP() {
       <div className={`settings-pvp  ${sett ? "on" : "off"}`}>
         <Settings isTransparent={true} />
       </div>
-      <div className="pvpmatchfound">
+      {/* <div className="pvpmatchfound">
         <div className="yourchar">
           <h2>Dazai</h2>
           <div className="charImg1">
-            <img src={charMan}/>
+            <img src={charMan} />
           </div>
         </div>
         <div className="vs">
-            <p>VS</p>
+          <p>VS</p>
         </div>
         <div className="opponentchar">
           <h2>Test123</h2>
           <div className="charImg2">
-            <img src={charWoman}/>
+            <img src={charWoman} />
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="container container-pvp">
         <img src={bg} alt="bg" className="pvp-bg" />
         <div className="pvp-container">
@@ -202,7 +241,7 @@ export default function PVP() {
               <div className="pvp-left-content">
                 <div className="question">
                   <p>
-                    <strong>Q:</strong> {question[rand].question}
+                    <strong>Q:</strong> {questions[qnum].question}
                   </p>
                 </div>
               </div>
@@ -211,13 +250,29 @@ export default function PVP() {
               <div className="pvptop">
                 <div className="pvptop-left">
                   <div className="hpbar">
-                    <div className="hpbar-left" ref={hpright}></div>
+                    <motion.div
+                      initial={{
+                        width: "100%",
+                        height: "2.5em",
+                        background:
+                          "linear-gradient(180deg, rgba(207, 34, 34, 0.95) 62.87%, #831616 71.55%)",
+                        borderRadius: "6px",
+                      }}
+                      animate={{
+                        width: `${hplval}%`,
+                        height: "2.5em",
+                        background:
+                          "linear-gradient(180deg, rgba(207, 34, 34, 0.95) 62.87%, #831616 71.55%)",
+                        borderRadius: "6px",
+                      }}
+                      transition={{ duration: 2 }}
+                    ></motion.div>
                   </div>
                   <div className="firstchar">
-                  <div className="username username1">
+                    <div className="username username1">
                       <h4>Dazai</h4>
                       <div className="username-triangle username-triange2"></div>
-                  </div>
+                    </div>
                     <img src={charMan} alt="" />
                   </div>
                 </div>
@@ -231,13 +286,29 @@ export default function PVP() {
                 </div>
                 <div className="pvptop-right">
                   <div className="hpbar">
-                    <div className="hpbar-right" ref={hpright}></div>
+                    <motion.div
+                      initial={{
+                        width: "100%",
+                        height: "2.5em",
+                        background:
+                          "linear-gradient(180deg, rgba(207, 34, 34, 0.95) 62.87%, #831616 71.55%)",
+                        borderRadius: "6px",
+                      }}
+                      animate={{
+                        width: `${hprval}%`,
+                        height: "2.5em",
+                        background:
+                          "linear-gradient(180deg, rgba(207, 34, 34, 0.95) 62.87%, #831616 71.55%)",
+                        borderRadius: "6px",
+                      }}
+                      transition={{ duration: 2 }}
+                    ></motion.div>
                   </div>
                   <div className="secondchar">
-                  <div className="username username2">
-                        <h4>Test</h4>
-                        <div className="username-triangle"></div>
-                  </div>
+                    <div className="username username2">
+                      <h4>Test</h4>
+                      <div className="username-triangle"></div>
+                    </div>
                     <img src={charWoman} alt="" />
                   </div>
                 </div>
@@ -255,7 +326,7 @@ export default function PVP() {
             <div className="bottom-left">
               <div className="userinput">
                 <CodeMirror
-                  value={question[rand].template}
+                  value={questions[qnum].template}
                   onChange={handleInputChange}
                   height="190px"
                   className="codemirror"
@@ -337,16 +408,22 @@ export default function PVP() {
         )}
         {confirm && (
           <div className="lose" onClick={toggleStarPage}>
-              <div className="lose-container" style={{display: starPage ? "none" : ""}}>
-                <h1>DEFEAT</h1>
-                <p>Click anywhere to continue...</p>
-              </div>
+            <div
+              className="lose-container"
+              style={{ display: starPage ? "none" : "" }}
+            >
+              <h1>DEFEAT</h1>
+              <p>Click anywhere to continue...</p>
+            </div>
           </div>
         )}
 
         {victory && (
           <div className="win" onClick={toggleStarPage}>
-            <div className="lose-container" style={{display: starPage ? "none" : ""}}>
+            <div
+              className="lose-container"
+              style={{ display: starPage ? "none" : "" }}
+            >
               <h1>VICTORY</h1>
               <p>Click anywhere to continue...</p>
             </div>
@@ -358,13 +435,20 @@ export default function PVP() {
             <div className="starpage">
               <div className="starpage-content">
                 <div className="starpage-star">
-                  <div className={`${victory? "stargain" : "starfall"}`}><h2>&#9733;</h2></div>
+                  <div className={`${victory ? "stargain" : "starfall"}`}>
+                    <h2>&#9733;</h2>
+                  </div>
                   <h2>&#9733;</h2>
                 </div>
                 <div className="starcount">
                   <h2 className="currentstar">{stars}</h2>
-                  <h2 className="updatedstar">{victory ? stars+1 : stars-1} </h2>
-                  <div className="addorminus" style={{color: victory ? "yellow" : "red"}}>
+                  <h2 className="updatedstar">
+                    {victory ? stars + 1 : stars - 1}{" "}
+                  </h2>
+                  <div
+                    className="addorminus"
+                    style={{ color: victory ? "yellow" : "red" }}
+                  >
                     <h2>{victory ? "+1" : "-1"}</h2>
                   </div>
                 </div>
@@ -372,8 +456,7 @@ export default function PVP() {
               <p>Click anywhere to continue...</p>
             </div>
           </Link>
-        )
-        }
+        )}
 
         {playlosersound && (
           <div>
@@ -393,4 +476,4 @@ export default function PVP() {
       </div>
     </>
   );
-};
+}

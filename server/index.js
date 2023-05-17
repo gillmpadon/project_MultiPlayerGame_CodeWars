@@ -9,6 +9,7 @@ const runCode = require("./python_interpreter");
 const PORT = config.PORT || 3003;
 const server = http.createServer(app);
 let room_id = uuidv4();
+let seen = [];
 
 const io = new Server(server, {
   path: "/socket",
@@ -52,7 +53,7 @@ io.on("connection", (socket) => {
 
   socket.on(
     "match_submit",
-    async ({ room_id, code, playerDetails, questionDetails }) => {
+    async ({ room_id, code, socketId, questionDetails }) => {
       const total = questionDetails.testCases.length;
       let correct = 0;
       const runCodePromises = questionDetails.testCases.map(
@@ -71,9 +72,29 @@ io.on("connection", (socket) => {
       console.log(correct);
 
       // Move the `io.to(room_id).emit()` call outside the `forEach()` loop
-      io.to(room_id).emit("player_code_submit", correct);
+      if (total === correct) {
+        let index = Math.floor(Math.random() * 13);
+        while (seen.includes(index)) {
+          index = Math.floor(Math.random() * 13);
+        }
+        seen.push(index);
+
+        io.to(room_id).emit("player_code_submit", {
+          correct: true,
+          socketId,
+          question_index: index,
+        });
+
+        console.log(index);
+      } else {
+        io.to(room_id).emit("player_code_submit", { correct: false, socketId });
+      }
     }
   );
+
+  socket.on("player_lose", ({ room_id, socketId }) => {
+    io.to(room_id).emit("match_end", { loser: socketId });
+  });
 });
 
 io.of("/").adapter.on("join-room", async (room, id) => {

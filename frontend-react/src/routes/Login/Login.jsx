@@ -60,7 +60,10 @@ export default function Login() {
       };
 
       try {
-        const res = await axios.post("http://localhost:3003/api/login", data);
+        const res = await axios.post(
+          `${import.meta.env.VITE_URL_PREFIX}:3003/api/login`,
+          data
+        );
         if (res.status === 200) {
           console.log(res);
           const {
@@ -88,7 +91,7 @@ export default function Login() {
 
         try {
           const res = await axios.post(
-            "http://localhost:3003/api/accounts",
+            `${import.meta.env.VITE_URL_PREFIX}:3003/api/accounts`,
             data
           );
           if (res.status === 201) {
