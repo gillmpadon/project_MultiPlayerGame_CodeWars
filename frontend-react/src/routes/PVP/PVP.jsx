@@ -35,10 +35,13 @@ export default function PVP() {
   const [seconds, setSeconds] = useState(60);
   const [victory, showVictory] = useState(false);
   const [starPage, showStarPage] = useState(false);
+  const [correct, showCorrect] = useState(false);
+  const [correctStatus, setCorrectStatus] = useState(false);
   const navigate = useNavigate();
   const account = useConfigStore((state) => state.account);
   const decrementStar = useConfigStore((state) => state.decrementStar);
   const setAccount = useConfigStore((state) => state.setAccount);
+  
 
   const question = [
     {
@@ -168,6 +171,7 @@ export default function PVP() {
         setHprval(hprval - 25);
         setQnum(res.question_index);
         console.log(hprval, qnum);
+        showCorrect(!correct);
         // hpright.current.style.width = `${hprval.current}%`;
         // hpright.current.style.transition = "2s";
       } else if (res.correct && socket.id !== res.socketId) {
@@ -269,11 +273,13 @@ export default function PVP() {
 
   // for reset button to clear the text
   const handleReset = () => {
+    console.log("clear");
     setInput("");
   };
 
   // get the input then evaluate then display in the output container
   const handleClick = () => {
+    setCorrectStatus(!correctStatus);
     const code = input;
     const playerDetails = {
       userId,
@@ -354,11 +360,10 @@ export default function PVP() {
                       transition={{ duration: 2 }}
                     ></motion.div>
                   </div>
+                  <div className="username username1">
+                    <h4>{username}</h4>
+                  </div>
                   <div className="firstchar">
-                    <div className="username username1">
-                      <h4>{username}</h4>
-                      <div className="username-triangle username-triange2"></div>
-                    </div>
                     <img src={charMan} alt="" />
                   </div>
                 </div>
@@ -376,6 +381,7 @@ export default function PVP() {
                       initial={{
                         width: "100%",
                         height: "2.5em",
+                        marginLeft: "auto",
                         background:
                           "linear-gradient(180deg, rgba(207, 34, 34, 0.95) 62.87%, #831616 71.55%)",
                         borderRadius: "6px",
@@ -390,11 +396,10 @@ export default function PVP() {
                       transition={{ duration: 2 }}
                     ></motion.div>
                   </div>
-                  <div className="secondchar">
-                    <div className="username username2">
+                  <div className="username username2">
                       <h4>Test</h4>
-                      <div className="username-triangle"></div>
                     </div>
+                  <div className="secondchar">
                     <img src={charWoman} alt="" />
                   </div>
                 </div>
@@ -409,7 +414,9 @@ export default function PVP() {
             </div>
           </div>
           <div className="pvpbottom">
-            <div className="bottom-left">
+            <div className="bottom-left"
+              style={{borderColor: correct ? "green" : "red"}}
+            >
               <div className="userinput">
                 <CodeMirror
                   value={questions[qnum].template}
