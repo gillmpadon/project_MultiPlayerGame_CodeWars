@@ -23,6 +23,7 @@ import { motion, useMotionValue } from "framer-motion";
 import { socket } from "../../socket";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import questions from "../../questions.json";
+import axios from "axios";
 
 export default function PVP() {
   const [sett, showSettings] = useState(false);
@@ -35,6 +36,9 @@ export default function PVP() {
   const [victory, showVictory] = useState(false);
   const [starPage, showStarPage] = useState(false);
   const navigate = useNavigate();
+  const account = useConfigStore((state) => state.account);
+  const decrementStar = useConfigStore((state) => state.decrementStar);
+  const setAccount = useConfigStore((state) => state.setAccount);
 
   const question = [
     {
@@ -60,7 +64,8 @@ export default function PVP() {
   const [hprval, setHprval] = useState(100);
   const [hplval, setHplval] = useState(100);
   const linkRef = useRef();
-  const stars = 500;
+  const stars = account.stars - 1;
+  const username = account.username;
 
   // generate a random number for question and answer
   // const rand = Math.floor(Math.random() * questions.length);
@@ -71,16 +76,78 @@ export default function PVP() {
   useEffect(() => {
     socket.on("match_result", async (data) => {
       if (data.msg === "You won!") {
+        const data = {
+          username,
+          stars,
+          didWin: true,
+        };
         showVictory(true);
+        const res = await axios.put(
+          `${import.meta.env.VITE_URL_PREFIX}:3003/api/accounts/star`,
+          data
+        );
+        window.localStorage.setItem(
+          "loggedUser",
+          JSON.stringify(res.data.account)
+        );
+
+        setAccount(
+          res.data.account.username,
+          res.data.account.email,
+          res.data.account.stars
+        );
       }
     });
 
-    socket.on("match_end", (data) => {
+    socket.on("match_end", async (data) => {
       if (data.loser === socket.id) {
+        const data = {
+          username,
+          stars,
+          didWin: false,
+        };
+        const res = await axios.put(
+          `${import.meta.env.VITE_URL_PREFIX}:3003/api/accounts/star`,
+          data
+        );
+        window.localStorage.setItem(
+          "loggedUser",
+          JSON.stringify(res.data.account)
+        );
+
+        setAccount(
+          res.data.account.username,
+          res.data.account.email,
+          res.data.account.stars
+        );
+
+        console.log({ stars });
         setTimeout(() => {
           toggleLose();
         }, 2500);
       } else {
+        const data = {
+          username,
+          stars,
+          didWin: true,
+        };
+        const res = await axios.put(
+          `${import.meta.env.VITE_URL_PREFIX}:3003/api/accounts/star`,
+          data
+        );
+        window.localStorage.setItem(
+          "loggedUser",
+          JSON.stringify(res.data.account)
+        );
+
+        setAccount(
+          res.data.account.username,
+          res.data.account.email,
+          res.data.account.stars
+        );
+
+        console.log({ stars });
+
         setTimeout(() => {
           showVictory(true);
         }, 2500);
@@ -154,7 +221,26 @@ export default function PVP() {
   };
 
   //Triggers when user clicks the confirm or check button
-  const toggleConfirm = () => {
+  const toggleConfirm = async () => {
+    const data = {
+      username,
+      stars,
+      didWin: false,
+    };
+
+    console.log({ stars });
+    const res = await axios.put(
+      `${import.meta.env.VITE_URL_PREFIX}:3003/api/accounts/star`,
+      data
+    );
+    window.localStorage.setItem("loggedUser", JSON.stringify(res.data.account));
+
+    setAccount(
+      res.data.account.username,
+      res.data.account.email,
+      res.data.account.stars
+    );
+
     showconfirm(!confirm);
     showSurrender(surrender);
     setPlayLoserSound(true);
@@ -270,7 +356,7 @@ export default function PVP() {
                   </div>
                   <div className="firstchar">
                     <div className="username username1">
-                      <h4>Dazai</h4>
+                      <h4>{username}</h4>
                       <div className="username-triangle username-triange2"></div>
                     </div>
                     <img src={charMan} alt="" />
