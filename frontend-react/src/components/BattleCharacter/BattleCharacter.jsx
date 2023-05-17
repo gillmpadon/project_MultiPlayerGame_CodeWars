@@ -21,7 +21,11 @@ export default function BattleCharacter({ findMatch }) {
 
   const onQueue = () => {
     findMatch(true);
-    socket.emit("queue", true);
+    if (option) {
+      socket.emit("queue", true);
+    } else {
+      navigate("/single-player");
+    }
   };
 
   useEffect(() => {
