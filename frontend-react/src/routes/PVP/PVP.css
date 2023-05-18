@@ -284,7 +284,7 @@ a{
 }
 
 .bottom-left {
-  width: 68%;
+  width: 60%;
   height: 38vh;
   background: linear-gradient(
     179.97deg,
@@ -369,7 +369,7 @@ a{
 }
 
 .bottom-right {
-  width: 30%;
+  width: 38%;
   background: linear-gradient(
     179.97deg,
     rgba(200, 103, 69, 0.3) 0.02%,
@@ -392,6 +392,7 @@ a{
   background: rgba(217, 217, 217, 0.8);
   display: flex;
   flex-direction: column;
+  padding-top: 1em;
 }
 
 .outputs p{
@@ -400,7 +401,9 @@ a{
 }
 
 .outputs h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  margin-top: 0;
+  padding-top: 1em;
 }
 
 .display-output {
@@ -412,7 +415,7 @@ a{
 }
 
 .display-output p{
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .output-test p{

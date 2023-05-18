@@ -32,7 +32,6 @@ export default function PVP() {
   const [confirm, showconfirm] = useState(false);
   const [playlosersound, setPlayLoserSound] = useState(false);
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
   const [rcount, setrCount] = useState(1);
   const [victory, showVictory] = useState(false);
   const [starPage, showStarPage] = useState(false);
@@ -40,29 +39,8 @@ export default function PVP() {
   const [correctStatus, setCorrectStatus] = useState(false);
   const navigate = useNavigate();
   const account = useConfigStore((state) => state.account);
-  const decrementStar = useConfigStore((state) => state.decrementStar);
   const setAccount = useConfigStore((state) => state.setAccount);
-
-  const question = [
-    {
-      question: "Write a function that returns the sum of two numbers",
-      template: "def addTwo(a, b):",
-      testCases: [
-        {
-          exe: "print(addTwo(3,5), end='')",
-          answer: "8",
-        },
-        {
-          exe: "print(addTwo(-3,-7), end='')",
-          answer: "-10",
-        },
-        {
-          exe: "print(addTwo(100,3000), end='')",
-          answer: "3100",
-        },
-      ],
-    },
-  ];
+  const [disableBtn,setDisabledBtn] = useState(false);
 
   const [hprval, setHprval] = useState(100);
   const [hplval, setHplval] = useState(100);
@@ -176,6 +154,9 @@ export default function PVP() {
         setQnum(res.question_index);
         console.log(hplval, qnum);
       }
+      // For submit button
+      setDisabledBtn(true);
+      
     });
 
     if (hplval <= 0) {
@@ -244,10 +225,13 @@ export default function PVP() {
   const handleReset = () => {
     console.log("clear");
     setInput("");
+    console.log(input)
+
   };
 
   // get the input then evaluate then display in the output container
   const handleClick = () => {
+    setDisabledBtn(false);
     setCorrectStatus(!correctStatus);
     const code = input;
     const playerDetails = {
@@ -390,12 +374,12 @@ export default function PVP() {
                   }}
                 />
                 <div className="buttons">
-                  <div className="btn submitbtn" onClick={handleClick}>
+                  <div className="btn submitbtn" onClick={handleClick} disabled={disableBtn ? true : false}>
                     SUBMIT
                   </div>
-                  <div className="btn clearbtn" onClick={handleReset}>
+                  {/* <div className="btn clearbtn" onClick={handleReset}>
                     CLEAR
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -404,15 +388,15 @@ export default function PVP() {
                 <div className="display-output">
                   <div className="test-case">
                     <h3>TEST CASES:</h3>
-                    <p>Case 1: [5+5]</p>
-                    <p>Case 2: [6+999]</p>
-                    <p>Case 3: [0+0]</p>
+                    <p>Case 1: {questions[qnum].testCases[0].exe}</p>
+                    <p>Case 2: {questions[qnum].testCases[1].exe}</p>
+                    <p>Case 3: {questions[qnum].testCases[2].exe}</p>
                   </div>
                   <div className="output-test">
                     <h3>OUTPUT:</h3>
-                    <p>10</p>
-                    <p>1005</p>
-                    <p>0</p>
+                    <p>{questions[qnum].testCases[0].answer}</p>
+                    <p>{questions[qnum].testCases[1].answer}</p>
+                    <p>{questions[qnum].testCases[2].answer}</p>
                   </div>
                 </div>
               </div>
