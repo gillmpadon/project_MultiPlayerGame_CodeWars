@@ -41,7 +41,6 @@ export default function PVP() {
   const account = useConfigStore((state) => state.account);
   const decrementStar = useConfigStore((state) => state.decrementStar);
   const setAccount = useConfigStore((state) => state.setAccount);
-  
 
   const question = [
     {
@@ -164,22 +163,15 @@ export default function PVP() {
 
   useEffect(() => {
     socket.on("player_code_submit", (res) => {
-      // setOutput(code);
-      // console.log({ res, socketId: socket.id });
-      // console.log(res.correct && socket.id === res.socketId);
       if (res.correct && socket.id === res.socketId) {
         setHprval(hprval - 25);
         setQnum(res.question_index);
         console.log(hprval, qnum);
         showCorrect(!correct);
-        // hpright.current.style.width = `${hprval.current}%`;
-        // hpright.current.style.transition = "2s";
       } else if (res.correct && socket.id !== res.socketId) {
         setHplval(hplval - 25);
         setQnum(res.question_index);
         console.log(hplval, qnum);
-        // hpleft.current.style.width = `${hplval.current}%`;
-        // hpleft.current.style.transition = "2s";
       }
     });
 
@@ -187,32 +179,6 @@ export default function PVP() {
       socket.emit("player_lose", { room_id, socketId: socket.id });
     }
   }, [hprval, hplval]);
-
-  // useEffect(() => {
-  //   console.log(victory);
-  // }, [victory]);
-
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setSeconds(seconds => {
-  //         if (seconds === 0) {
-  //           clearInterval(intervalId); // Stop the timer
-  //           return 0;
-  //         } else {
-  //           return seconds - 1;
-  //         }
-  //       });
-  //     }, 1000);
-
-  //   return () => clearInterval(intervalId);
-  // }, []);
-
-  // Delay for returning lobby
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     linkRef.current.click();
-  //   }, 3000); // delay in milliseconds (3 seconds)
-  // }, []);
 
   // display the settings UI
   const toggleSettings = () => {
@@ -291,17 +257,6 @@ export default function PVP() {
       questionDetails: questions[qnum],
     });
   };
-
-  // confirmation if the output is equal to expected output
-  // if (output == answer[qnum]) {
-  // hpremain -= 100;
-  // console.log(hpremain);
-  // hpright.current.style.width = `${hpremain}%`;
-  // hpright.current.style.transition = "2s";
-  //   if (hpremain == 0) {
-  //     showconfirm(!confirm);
-  //   }
-  // }
 
   return (
     <>
@@ -397,8 +352,8 @@ export default function PVP() {
                     ></motion.div>
                   </div>
                   <div className="username username2">
-                      <h4>Test</h4>
-                    </div>
+                    <h4>Test</h4>
+                  </div>
                   <div className="secondchar">
                     <img src={charWoman} alt="" />
                   </div>
@@ -414,8 +369,9 @@ export default function PVP() {
             </div>
           </div>
           <div className="pvpbottom">
-            <div className="bottom-left"
-              style={{borderColor: correct ? "green" : "red"}}
+            <div
+              className="bottom-left"
+              style={{ borderColor: correct ? "green" : "red" }}
             >
               <div className="userinput">
                 <CodeMirror

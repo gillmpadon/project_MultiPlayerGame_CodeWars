@@ -19,12 +19,10 @@ export default function Leaderboards() {
       return b.stars - a.stars;
     });
     setTopPlayers(players);
-    // setTopPlayers(res.data);
   };
+
   useEffect(() => {
     getPlayers();
-    // setTopPlayers(getPlayers());
-    // setTopPlayers(getPlayers());
   }, []);
 
   console.log(topPlayers);
