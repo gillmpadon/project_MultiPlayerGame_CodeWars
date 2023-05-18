@@ -14,6 +14,7 @@ import setting from "../../assets/img/settingbtn.png";
 import xbtn from "../../assets/img/x.png";
 import lose from "../../assets/audio/lose.mp3";
 import win from "../../assets/audio/win.mp3";
+import vs from "../../assets/img/vs.png"
 
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
@@ -32,7 +33,7 @@ export default function PVP() {
   const [playlosersound, setPlayLoserSound] = useState(false);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const [seconds, setSeconds] = useState(60);
+  const [rcount, setrCount] = useState(1);
   const [victory, showVictory] = useState(false);
   const [starPage, showStarPage] = useState(false);
   const [correct, showCorrect] = useState(false);
@@ -165,10 +166,12 @@ export default function PVP() {
     socket.on("player_code_submit", (res) => {
       if (res.correct && socket.id === res.socketId) {
         setHprval(hprval - 25);
+        setrCount(rcount+1);
         setQnum(res.question_index);
         console.log(hprval, qnum);
         showCorrect(!correct);
       } else if (res.correct && socket.id !== res.socketId) {
+        setrCount(rcount+1);
         setHplval(hplval - 25);
         setQnum(res.question_index);
         console.log(hplval, qnum);
@@ -324,10 +327,10 @@ export default function PVP() {
                 </div>
                 <div className="pvptop-center">
                   <div className="clock">
-                    <img src={clock} />
+                    <img src={vs}/>
                   </div>
                   <div className="round">
-                    <h2>{seconds}</h2>
+                    <h2>Round {rcount}</h2>
                   </div>
                 </div>
                 <div className="pvptop-right">
@@ -370,9 +373,7 @@ export default function PVP() {
           </div>
           <div className="pvpbottom">
             <div
-              className="bottom-left"
-              style={{ borderColor: correct ? "green" : "red" }}
-            >
+              className="bottom-left">
               <div className="userinput">
                 <CodeMirror
                   value={questions[qnum].template}
