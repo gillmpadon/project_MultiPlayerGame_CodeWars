@@ -62,8 +62,8 @@
         "answer": "5"
       },
       {
-        "exe": "print(aveTwo(10, 15), end='')",
-        "answer": "12.5"
+        "exe": "print(aveTwo(10, 13), end='')",
+        "answer": "13"
       },
       {
         "exe": "print(aveTwo(100, 100), end='')",
@@ -73,198 +73,180 @@
   },
   {
     "question": "Write a function that returns the absolute value of a number",
-    "template": "def absoluteValue(num):",
+    "template": "def absValue(num):",
     "testCases": [
       {
-        "exe": "print(absoluteValue(5), end='')",
+        "exe": "print(absValue(5), end='')",
         "answer": "5"
       },
       {
-        "exe": "print(absoluteValue(-7), end='')",
+        "exe": "print(absValue(-7), end='')",
         "answer": "7"
       },
       {
-        "exe": "print(absoluteValue(0), end='')",
+        "exe": "print(absValue(0), end='')",
         "answer": "0"
       }
     ]
   },
   {
     "question": "Write a function that calculates the area of a rectangle",
-    "template": "def rectangleArea(length, width):",
+    "template": "def recArea(length, width):",
     "testCases": [
       {
-        "exe": "print(rectangleArea(4, 6), end='')",
+        "exe": "print(recArea(4, 6), end='')",
         "answer": "24"
       },
       {
-        "exe": "print(rectangleArea(20, 3), end='')",
+        "exe": "print(recArea(20, 3), end='')",
         "answer": "60"
       },
       {
-        "exe": "print(rectangleArea(0, 10), end='')",
+        "exe": "print(recArea(0, 10), end='')",
         "answer": "0"
       }
     ]
   },
   {
     "question": "Write a function that multiplies two numbers",
-    "template": "def multiplyTwo(a, b):",
+    "template": "def mulTwo(a, b):",
     "testCases": [
       {
-        "exe": "print(multiplyTwo(3, 5), end='')",
+        "exe": "print(mulTwo(3, 5), end='')",
         "answer": "15"
       },
       {
-        "exe": "print(multiplyTwo(-2, 6), end='')",
+        "exe": "print(mulTwo(-2, 6), end='')",
         "answer": "-12"
       },
       {
-        "exe": "print(multiplyTwo(0, 100), end='')",
+        "exe": "print(mulTwo(0, 100), end='')",
         "answer": "0"
       }
     ]
   },
   {
     "question": "Write a function that checks if a word is a palindrome",
-    "template": "def isWordPalindrome(word):",
+    "template": "def wordPal(word):",
     "testCases": [
       {
-        "exe": "print(isWordPalindrome('racecar'), end='')",
+        "exe": "print(wordPal('racecar'), end='')",
         "answer": "True"
       },
       {
-        "exe": "print(isWordPalindrome('hello'), end='')",
+        "exe": "print(wordPal('hello'), end='')",
         "answer": "False"
       },
       {
-        "exe": "print(isWordPalindrome('deified'), end='')",
+        "exe": "print(wordPal('deified'), end='')",
         "answer": "True"
       }
     ]
   },
   {
     "question": "Write a function that checks if a sentence is a palindrome",
-    "template": "def isSentencePalindrome(sentence):",
+    "template": "def senPal(sentence):",
     "testCases": [
       {
-        "exe": "print(isSentencePalindrome('Able was I saw Elba'), end='')",
+        "exe": "print(senPal('Able was I saw Elba'), end='')",
         "answer": "True"
       },
       {
-        "exe": "print(isSentencePalindrome('This is not a palindrome'), end='')",
+        "exe": "print(senPal('This is not a palindrome'), end='')",
         "answer": "False"
       },
       {
-        "exe": "print(isSentencePalindrome('A man, a plan, a canal, Panama!'), end='')",
+        "exe": "print(senPal('A man, a plan, a canal, Panama!'), end='')",
         "answer": "True"
       }
     ]
   },
   {
     "question": "Write a function that checks if a phrase is a palindrome",
-    "template": "def isPhrasePalindrome(phrase):",
+    "template": "def phrasePal(phrase):",
     "testCases": [
       {
-        "exe": "print(isPhrasePalindrome('Madam in Eden, I’m Adam'), end='')",
+        "exe": "print(phrasePal('Madam in Eden, I’m Adam'), end='')",
         "answer": "True"
       },
       {
-        "exe": "print(isPhrasePalindrome('Not a palindrome'), end='')",
+        "exe": "print(phrasePal('Not a palindrome'), end='')",
         "answer": "False"
       },
       {
-        "exe": "print(isPhrasePalindrome('Step on no pets'), end='')",
+        "exe": "print(phrasePal('Step on no pets'), end='')",
         "answer": "True"
       }
     ]
   },
   {
     "question": "Write a function that checks if a number is a palindrome",
-    "template": "def isNumberPalindrome(number):",
+    "template": "def numPal(number):",
     "testCases": [
       {
-        "exe": "print(isNumberPalindrome(121), end='')",
+        "exe": "print(numPal(121), end='')",
         "answer": "True"
       },
       {
-        "exe": "print(isNumberPalindrome(12345), end='')",
+        "exe": "print(numPal(12345), end='')",
         "answer": "False"
       },
       {
-        "exe": "print(isNumberPalindrome(12321), end='')",
+        "exe": "print(numPal(12321), end='')",
         "answer": "True"
       }
     ]
   },
   {
     "question": "Write a function to calculate the area of a square",
-    "template": "def area_square(side):",
+    "template": "def squArea(side):",
     "testCases": [
       {
-        "exe": "print(area_square(5), end='')",
+        "exe": "print(squArea(5), end='')",
         "answer": "25"
       },
       {
-        "exe": "print(area_square(10), end='')",
+        "exe": "print(squArea(10), end='')",
         "answer": "100"
       },
       {
-        "exe": "print(area_square(2.5), end='')",
+        "exe": "print(squArea(2.5), end='')",
         "answer": "6.25"
       }
     ]
   },
   {
-    "question": "Write a function to calculate the area of a rectangle",
-    "template": "def area_rectangle(length, width):",
-    "testCases": [
-      {
-        "exe": "print(area_rectangle(5, 10), end='')",
-        "answer": "50"
-      },
-      {
-        "exe": "print(area_rectangle(7, 3), end='')",
-        "answer": "21"
-      },
-      {
-        "exe": "print(area_rectangle(2.5, 4), end='')",
-        "answer": "10"
-      }
-    ]
-  },
-  {
       "question": "Create a function that takes a number as an argument, increments the number by +1 and returns the result.",
-      "template": "def increment_number(num):",
+      "template": "def increNum(num):",
       "testCases": [
           {
-              "exe": "increment_number(0)",
+              "exe": "increNum(0)",
               "answer": 1
           },
           {
-              "exe": "increment_number(9)",
+              "exe": "increNum(9)",
               "answer": 10
           },
           {
-              "exe": "increment_number(-3)",
+              "exe": "increNum(-3)",
               "answer": -2
           }
       ]
   },
   {
       "question": "Create a function that takes a string and returns it as an integer.",
-      "template": "def string_to_int(string):",
+      "template": "def strInt(string):",
       "testCases": [
           {
-              "exe": "string_to_int('6')",
+              "exe": "strInt('6')",
               "answer": 6
           },
           {
-              "exe": "string_to_int('1000')",
+              "exe": "strInt('1000')",
               "answer": 1000
           },
           {
-              "exe": "string_to_int('12')",
+              "exe": "strInt('12')",
               "answer": 12
           }
       ]
@@ -272,72 +254,72 @@
   },
   {
       "question": "Create a function that takes the age in years and returns the age in days.",
-      "template": "def calculate_age_in_days(age):",
+      "template": "def calAge(age):",
       "testCases": [
           {
-              "exe": "calculate_age_in_days(65)",
+              "exe": "calAge(65)",
               "answer": 23725
           },
           {
-              "exe": "calculate_age_in_days(0)",
+              "exe": "calAge(0)",
               "answer": 0
           },
           {
-              "exe": "calculate_age_in_days(20)",
+              "exe": "calAge(20)",
               "answer": 7300
           }
       ]
   },
   {
       "question": "Create a function that takes length and width and finds the perimeter of a rectangle.",
-      "template": "def find_rectangle_perimeter(length, width):",
+      "template": "def rectPeri(length, width):",
       "testCases": [
           {
-              "exe": "find_rectangle_perimeter(6, 7)",
+              "exe": "rectPeri(6, 7)",
               "answer": 26
           },
           {
-              "exe": "find_rectangle_perimeter(20, 10)",
+              "exe": "rectPeri(20, 10)",
               "answer": 60
           },
           {
-              "exe": "find_rectangle_perimeter(2, 9)",
+              "exe": "rectPeri(2, 9)",
               "answer": 22
           }
       ]
   },
   {
       "question": "Create a function that takes voltage and current and returns the calculated power.",
-      "template": "def calculate_circuit_power(voltage, current):",
+      "template": "def calPow(voltage, current):",
       "testCases": [
           {
-              "exe": "calculate_circuit_power(230, 10)",
+              "exe": "calPow(230, 10)",
               "answer": 2300
           },
           {
-              "exe": "calculate_circuit_power(110, 3)",
+              "exe": "calPow(110, 3)",
               "answer": 330
           },
           {
-              "exe": "calculate_circuit_power(480, 20)",
+              "exe": "calPow(480, 20)",
               "answer": 9600
           }
           ]
   },
   {
       "question": "Create a function that takes a base number and an exponent number and returns the calculation.",
-      "template": "def calculate_exponent(base, exponent):",
+      "template": "def calExpo(base, exponent):",
       "testCases": [
           {
-              "exe": "calculate_exponent(5, 5)",
+              "exe": "calExpo(5, 5)",
               "answer": 3125
           },
           {
-              "exe": "calculate_exponent(10, 10)",
+              "exe": "calExpo(10, 10)",
               "answer": 10000000000
           },
           {
-              "exe": "calculate_exponent(3, 3)",
+              "exe": "calExpo(3, 3)",
               "answer": 27
           }
           ]
@@ -345,162 +327,162 @@
 
   {
       "question": "Create a function that takes a boolean variable flag and returns it as a string.",
-      "template": "def bool_to_string(flag):",
+      "template": "def boolStr(flag):",
       "testCases": [
           {
-              "exe": "bool_to_string(True)",
+              "exe": "boolStr(True)",
               "answer": "True"
           },
           {
-              "exe": "bool_to_string(False)",
+              "exe": "boolStr(False)",
               "answer": "False"
           },
           {
-              "exe": "bool_to_string(False)",
+              "exe": "boolStr(False)",
               "answer": "False"
           }
       ]
   },
   {
     "question": "Write a function to calculate the area of a right triangle",
-    "template": "def area_triangle(base, height):",
+    "template": "def triArea(base, height):",
     "testCases": [
       {
-        "exe": "print(area_triangle(5, 10), end='')",
+        "exe": "print(triArea(5, 10), end='')",
         "answer": "25.0"
       },
       {
-        "exe": "print(area_triangle(7, 3), end='')",
+        "exe": "print(triArea(7, 3), end='')",
         "answer": "10.5"
       },
       {
-        "exe": "print(area_triangle(2.5, 4), end='')",
+        "exe": "print(triArea(2.5, 4), end='')",
         "answer": "5.0"
       }
     ]
   },
   {
     "question": "Write a function to calculate the area of a right rectangle",
-    "template": "def area_rectangle(base, height):",
+    "template": "def recArea(base, height):",
     "testCases": [
       {
-        "exe": "print(area_rectangle(5, 10), end='')",
+        "exe": "print(recArea(5, 10), end='')",
         "answer": "25.0"
       },
       {
-        "exe": "print(area_rectangle(7, 3), end='')",
+        "exe": "print(recArea(7, 3), end='')",
         "answer": "10.5"
       },
       {
-        "exe": "print(area_rectangle(2.5, 4), end='')",
+        "exe": "print(recArea(2.5, 4), end='')",
         "answer": "5.0"
       }
     ]
   },
   {
     "question": "Write a function to calculate the area of a circle",
-    "template": "def area_circle(radius):",
+    "template": "def circArea(radius):",
     "testCases": [
       {
-        "exe": "print(area_circle(5), end='')",
+        "exe": "print(circArea(5), end='')",
         "answer": "78.54"
       },
       {
-        "exe": "print(area_circle(10), end='')",
+        "exe": "print(circArea(10), end='')",
         "answer": "314.16"
       },
       {
-        "exe": "print(area_circle(2.5), end='')",
+        "exe": "print(circArea(2.5), end='')",
         "answer": "19.63"
       }
     ]
   },
   {
     "question": "Python: How to check if a number is odd or even?",
-    "template": "def is_odd_or_even(number):",
+    "template": "def oddEven(number):",
     "testCases": [
         {
-            "exe": "print(is_odd_or_even(4), end='')",
+            "exe": "print(oddEven(4), end='')",
             "answer": "Even"
         },
         {
-            "exe": "print(is_odd_or_even(7), end='')",
+            "exe": "print(oddEven(7), end='')",
             "answer": "Odd"
         },
         {
-            "exe": "print(is_odd_or_even(0), end='')",
+            "exe": "print(oddEven(0), end='')",
             "answer": "Even"
         }
     ]
    },
    {
     "question": "Count the number of occurrences in a list",
-    "template": "def count_occurrences(lst, element):",
+    "template": "def countElem(lst, element):",
     "testCases": [
         {
-            "exe": "print(count_occurrences([1, 2, 3, 4, 4, 4, 5], 4), end='')",
+            "exe": "print(countElem([1, 2, 3, 4, 4, 4, 5], 4), end='')",
             "answer": "3"
         },
         {
-            "exe": "print(count_occurrences(['a', 'b', 'c', 'a', 'a'], 'a'), end='')",
+            "exe": "print(countElem(['a', 'b', 'c', 'a', 'a'], 'a'), end='')",
             "answer": "3"
         },
         {
-            "exe": "print(count_occurrences([True, False, True, True], False), end='')",
+            "exe": "print(countElem([True, False, True, True], False), end='')",
             "answer": "1"
         }
     ]
 },
 {
     "question": "Create n copies of the first 2 characters of a given string",
-    "template": "def create_copies(string, n):",
+    "template": "def copies(string, n):",
     "testCases": [
         {
-            "exe": "print(create_copies('Hello', 3), end='')",
+            "exe": "print(copies('Hello', 3), end='')",
             "answer": "'HeHeHe'"
         },
         {
-            "exe": "print(create_copies('Python', 5), end='')",
+            "exe": "print(copies('Python', 5), end='')",
             "answer": "'PyPyPyPyPy'"
         },
         {
-            "exe": "print(create_copies('Hi', 2), end='')",
+            "exe": "print(copies('Hi', 2), end='')",
             "answer": "'HiHi'"
         }
     ]
 },
 {
     "question": "Count the number of vowels in a string",
-    "template": "def count_vowels(string):",
+    "template": "def countVol(string):",
     "testCases": [
         {
-            "exe": "print(count_vowels('Hello'), end='')",
+            "exe": "print(countVol('Hello'), end='')",
             "answer": "2"
         },
         {
-            "exe": "print(count_vowels('Python'), end='')",
+            "exe": "print(countVol('Python'), end='')",
             "answer": "1"
         },
         {
-            "exe": "print(count_vowels('Hi there'), end='')",
+            "exe": "print(countVol('Hi there'), end='')",
             "answer": "3"
         }
     ]
 },
 {
     "question": "Check if a specified value is contained in a group of values",
-    "template": "def check_value(value, group):",
+    "template": "def checkVal(value, group):",
     "testCases": [
         {
-            "exe": "print(check_value(3, [1, 2, 3, 4, 5]), end='')",
+            "exe": "print(checkVal(3, [1, 2, 3, 4, 5]), end='')",
             "answer": "True"
         },
         {
-            "exe": "print(check_value('Python', ['Java', 'Python', 'C++']), end='')",
+            "exe": "print(checkVal('Python', ['Java', 'Python', 'C++']), end='')",
             "answer": "True"
         },
         {
-            "exe": "print(check_value(10, [5, 8, 12, 15]), end='')",
+            "exe": "print(checkVal(10, [5, 8, 12, 15]), end='')",
             "answer": "False"
         }
     ]
@@ -525,162 +507,162 @@
 },
 {
     "question": "Concatenate all elements in a list into a string",
-    "template": "def concatenate_elements(lst):",
+    "template": "def concatElem(lst):",
     "testCases": [
         {
-            "exe": "print(concatenate_elements(['Hello', 'World', '!']), end='')",
+            "exe": "print(concatElem(['Hello', 'World', '!']), end='')",
             "answer": "HelloWorld!"
         },
         {
-            "exe": "print(concatenate_elements([1, 2, 3, 4, 5]), end='')",
+            "exe": "print(concatElem([1, 2, 3, 4, 5]), end='')",
             "answer": "12345"
         },
         {
-            "exe": "print(concatenate_elements(['Open', 'AI', 'is', 'awesome']), end='')",
+            "exe": "print(concatElem(['Open', 'AI', 'is', 'awesome']), end='')",
             "answer": "OpenAIisawesome"
         }
     ]
 },
     {
     "question": "Print all even numbers from a list, stopping at 237",
-    "template": "def print_even_numbers(numbers):",
+    "template": "def evenNum(numbers):",
     "testCases": [
         {
-            "exe": "print_even_numbers([1, 2, 3, 4, 5, 6, 237, 238, 239])",
+            "exe": "evenNum([1, 2, 3, 4, 5, 6, 237, 238, 239])",
             "output": "2 4 6"
         },
         {
-            "exe": "print_even_numbers([10, 20, 30, 40, 237, 50, 60, 70])",
+            "exe": "evenNum([10, 20, 30, 40, 237, 50, 60, 70])",
             "output": "10 20 30 40"
         },
         {
-            "exe": "print_even_numbers([237, 1, 2, 3, 4, 5, 6])",
+            "exe": "evenNum([237, 1, 2, 3, 4, 5, 6])",
             "output": ""
         }
     ]
 },
 {
     "question": "Print set of colors not present in other list",
-    "template": "def print_unique_colors(colors1, colors2):",
+    "template": "def printColors(colors1, colors2):",
     "testCases": [
         {
-            "exe": "print_unique_colors(['red', 'green', 'blue'], ['blue', 'yellow', 'black'])",
+            "exe": "printColors(['red', 'green', 'blue'], ['blue', 'yellow', 'black'])",
             "output": "{'red', 'green'}"
         },
         {
-            "exe": "print_unique_colors(['orange', 'purple', 'pink'], ['red', 'orange', 'blue'])",
+            "exe": "printColors(['orange', 'purple', 'pink'], ['red', 'orange', 'blue'])",
             "output": "{'purple', 'pink'}"
         },
         {
-            "exe": "print_unique_colors(['red', 'green', 'blue'], ['red', 'green', 'blue'])",
+            "exe": "printColors(['red', 'green', 'blue'], ['red', 'green', 'blue'])",
             "output": "set()"
         }
     ]
 },
 {
     "question": "Find the greatest common divisor (GCD) of two positive integers",
-    "template": "def find_gcd(num1, num2):",
+    "template": "def gcd(num1, num2):",
     "testCases": [
         {
-            "exe": "print(find_gcd(12, 18))",
+            "exe": "print(gcd(12, 18))",
             "output": "6"
         },
         {
-            "exe": "print(find_gcd(24, 36))",
+            "exe": "print(gcd(24, 36))",
             "output": "12"
         },
         {
-            "exe": "print(find_gcd(7, 23))",
+            "exe": "print(gcd(7, 23))",
             "output": "1"
         }
     ]
 },
 {
     "question": "Find the least common multiple (LCM) of two positive integers",
-    "template": "def find_lcm(num1, num2):",
+    "template": "def lcm(num1, num2):",
     "testCases": [
         {
-            "exe": "print(find_lcm(3, 4))",
+            "exe": "print(lcm(3, 4))",
             "output": "12"
         },
         {
-            "exe": "print(find_lcm(7, 10))",
+            "exe": "print(lcm(7, 10))",
             "output": "70"
         },
         {
-            "exe": "print(find_lcm(12, 18))",
+            "exe": "print(lcm(12, 18))",
             "output": "36"
         }
     ]
 },
 {
     "question": "Find the sum of three given integers. If two values are equal, the sum will be zero.",
-    "template": "def sum_three_integers(a, b, c):",
+    "template": "def sumThree(a, b, c):",
     "testCases": [
         {
-            "exe": "print(sum_three_integers(1, 2, 3))",
+            "exe": "print(sumThree(1, 2, 3))",
             "output": "6"
         },
         {
-            "exe": "print(sum_three_integers(2, 2, 3))",
+            "exe": "print(sumThree(2, 2, 3))",
             "output": "0"
         },
         {
-            "exe": "print(sum_three_integers(4, 5, 6))",
+            "exe": "print(sumThree(4, 5, 6))",
             "output": "15"
         }
     ]
 },    
 {
     "question": "Find the sum of two given integers. If the sum is between 15 and 20 (inclusive), return 20.",
-    "template": "def sum_two_integers(a, b):",
+    "template": "def sumTwo(a, b):",
     "testCases": [
         {
-            "exe": "print(sum_two_integers(10, 5))",
+            "exe": "print(sumTwo(10, 5))",
             "output": "15"
         },
         {
-            "exe": "print(sum_two_integers(8, 7))",
+            "exe": "print(sumTwo(8, 7))",
             "output": "20"
         },
         {
-            "exe": "print(sum_two_integers(3, 2))",
+            "exe": "print(sumTwo(3, 2))",
             "output": "5"
         }
     ]
 },
 {
     "question": "Check if two given integer values are equal or if their sum or difference is 5.",
-    "template": "def check_integer_values(a, b):",
+    "template": "def intVal(a, b):",
     "testCases": [
         {
-            "exe": "print(check_integer_values(2, 2))",
+            "exe": "print(intVal(2, 2))",
             "output": "True"
         },
         {
-            "exe": "print(check_integer_values(2, 7))",
+            "exe": "print(intVal(2, 7))",
             "output": "True"
         },
         {
-            "exe": "print(check_integer_values(10, 5))",
+            "exe": "print(intVal(10, 5))",
             "output": "True"
         }
     ]
 },
 {
     "question": "Add two objects if both objects are of integer type.",
-    "template": "def add_integers(a, b):",
+    "template": "def addInt(a, b):",
     "testCases": [
         {
-            "exe": "print(add_integers(2, 3))",
+            "exe": "print(addInt(2, 3))",
             "output": "5"
         },
         {
-            "exe": "print(add_integers(10, 5))",
+            "exe": "print(addInt(10, 5))",
             "output": "15"
         },
         {
-            "exe": "print(add_integers('2', 3))",
+            "exe": "print(addInt('2', 3))",
             "output": "None"
         }
     
@@ -688,386 +670,343 @@
 },
 {
     "question": "Display your details like name, age, and address in three different lines.",
-    "template": "def display_details():",
+    "template": "def details():",
     "testCases": [
         {
-            "exe": "display_details()",
+            "exe": "details()",
             "output": "Name: John\nAge: 25\nAddress: 123 Main Street"
         },
         {
-            "exe": "display_details()",
+            "exe": "details()",
             "output": "Name: Jane\nAge: 30\nAddress: 456 Elm Avenue"
         },
         {
-            "exe": "display_details()",
+            "exe": "details()",
             "output": "Name: Alex\nAge: 40\nAddress: 789 Oak Road"
         }
     ]
 },
 {
     "question": "Python program to solve (x + y) * (x + y).",
-    "template": "def solve_expression(x, y):",
+    "template": "def solveExp(x, y):",
     "testCases": [
         {
-            "exe": "print(solve_expression(2, 3), end='')",
+            "exe": "print(solveExp(2, 3), end='')",
             "answer": "25"
         },
         {
-            "exe": "print(solve_expression(0, 0), end='')",
+            "exe": "print(solveExp(0, 0), end='')",
             "answer": "0"
         },
         {
-            "exe": "print(solve_expression(-2, 5), end='')",
+            "exe": "print(solveExp(-2, 5), end='')",
             "answer": "9"
         }
     ]
 },
 {
     "question": "Compute the future value of a specified principal amount, rate of interest, and a number of years.",
-    "template": "def calculate_future_value(principal, rate, years):",
+    "template": "def futureVal(principal, rate, years):",
     "testCases": [
         {
-            "exe": "print(calculate_future_value(1000, 0.05, 5), end='')",
+            "exe": "print(futureVal(1000, 0.05, 5), end='')",
             "answer": "1276.2815625000003"
         },
         {
-            "exe": "print(calculate_future_value(5000, 0.03, 10), end='')",
+            "exe": "print(futureVal(5000, 0.03, 10), end='')",
             "answer": "6715.56764182446"
         },
         {
-            "exe": "print(calculate_future_value(2000, 0.08, 3), end='')",
+            "exe": "print(futureVal(2000, 0.08, 3), end='')",
             "answer": "2517.1200000000003"
         }
     ]
 },    
 {
     "question": "How to find the distance between two points in Python?",
-    "template": "import math\ndef calculate_distance(x1, y1, x2, y2):",
+    "template": "import math\ndef distCal(x1, y1, x2, y2):",
     "testCases": [
         {
-            "exe": "print(calculate_distance(0, 0, 3, 4), end='')",
+            "exe": "print(distCal(0, 0, 3, 4), end='')",
             "answer": "5.0"
         },
         {
-            "exe": "print(calculate_distance(-2, 5, 1, -3), end='')",
+            "exe": "print(distCal(-2, 5, 1, -3), end='')",
             "answer": "9.486832980505138"
         },
         {
-            "exe": "print(calculate_distance(10, 10, 10, 10), end='')",
+            "exe": "print(distCal(10, 10, 10, 10), end='')",
             "answer": "0.0"
         }
     ]
 },
 {
     "question": "Parse a string to Float or Integer",
-    "template": "def parse_string(input_str):\n",
+    "template": "def parseStr(input_str):\n",
     "testCases": [
         {
-            "exe": "print(parse_string('3.14'), end='')",
+            "exe": "print(parseStr('3.14'), end='')",
             "answer": "3.14"
         },
         {
-            "exe": "print(parse_string('10'), end='')",
+            "exe": "print(parseStr('10'), end='')",
             "answer": "10"
         },
         {
-            "exe": "print(parse_string('5.0'), end='')",
+            "exe": "print(parseStr('5.0'), end='')",
             "answer": "5.0"
         }
     ]
 },
 {
     "question": "Print without newline or space",
-    "template": "def print_without_newline_or_space(message):\n",
+    "template": "def woNewline(message):\n",
     "testCases": [
         {
-            "exe": "print_without_newline_or_space('Hello')",
+            "exe": "woNewline('Hello')",
             "answer": "Hello"
         },
         {
-            "exe": "print_without_newline_or_space('World')",
+            "exe": "woNewline('World')",
             "answer": "World"
         },
         {
-            "exe": "print_without_newline_or_space('Python')",
-            "answer": "Python"
-        }
-    ]
-},
-{
-    "question": "Print without newline or space",
-    "template": "def print_without_newline_or_space(message):",
-    "testCases": [
-        {
-            "exe": "print_without_newline_or_space('Hello')",
-            "answer": "Hello"
-        },
-        {
-            "exe": "print_without_newline_or_space('World')",
-            "answer": "World"
-        },
-        {
-            "exe": "print_without_newline_or_space('Python')",
+            "exe": "woNewline('Python')",
             "answer": "Python"
         }
     ]
 },
 {
     "question": "Convert feet and inches to centimeters",
-    "template": "def convert_to_centimeters(feet, inches):",
+    "template": "def feetCent(feet, inches):",
     "testCases": [
         {
-            "exe": "convert_to_centimeters(5, 8)",
+            "exe": "feetCent(5, 8)",
             "answer": 172.72
         },
         {
-            "exe": "convert_to_centimeters(6, 0)",
+            "exe": "feetCent(6, 0)",
             "answer": 182.88
         },
         {
-            "exe": "convert_to_centimeters(4, 11)",
+            "exe": "feetCent(4, 11)",
             "answer": 149.86
         }
     ]
 },
 {
     "question": "Calculate the hypotenuse of a right-angled triangle",
-    "template": "import math\n\ndef calculate_hypotenuse(side1, side2):",
+    "template": "import math\n\ndef calHypo(side1, side2):",
     "testCases": [
         {
-            "exe": "calculate_hypotenuse(3, 4)",
+            "exe": "calHypo(3, 4)",
             "answer": 5.0
         },
         {
-            "exe": "calculate_hypotenuse(5, 12)",
+            "exe": "calHypo(5, 12)",
             "answer": 13.0
         },
         {
-            "exe": "calculate_hypotenuse(8, 15)",
+            "exe": "calHypo(8, 15)",
             "answer": 17.0
         }
     ]
 },
 {
     "question": "Convert feet to inches",
-    "template": "def convert_feet_to_inches(feet):",
+    "template": "def feetInch(feet):",
     "testCases": [
         {
-            "exe": "convert_feet_to_inches(5)",
+            "exe": "feetInch(5)",
             "answer": 60
         },
         {
-            "exe": "convert_feet_to_inches(6)",
+            "exe": "feetInch(6)",
             "answer": 72
         },
         {
-            "exe": "convert_feet_to_inches(10)",
+            "exe": "feetInch(10)",
             "answer": 120
         }
     ]
 },       
 {
     "question": "Convert feet to yards",
-    "template": "def convert_feet_to_yards(feet):",
+    "template": "def feetYards(feet):",
     "testCases": [
         {
-            "exe": "convert_feet_to_yards(5)",
+            "exe": "feetYards(5)",
             "answer": 1.6666666666666667
         },
         {
-            "exe": "convert_feet_to_yards(10)",
+            "exe": "feetYards(10)",
             "answer": 3.3333333333333335
         },
         {
-            "exe": "convert_feet_to_yards(20)",
+            "exe": "feetYards(20)",
             "answer": 6.666666666666667
         }
     ]
 },
 {
     "question": "Convert feet to miles",
-    "template": "def convert_feet_to_miles(feet):",
+    "template": "def feetMiles(feet):",
     "testCases": [
         {
-            "exe": "convert_feet_to_miles(5280)",
+            "exe": "feetMiles(5280)",
             "answer": 1.0
         },
         {
-            "exe": "convert_feet_to_miles(10560)",
+            "exe": "feetMiles(10560)",
             "answer": 2.0
         },
         {
-            "exe": "convert_feet_to_miles(21120)",
+            "exe": "feetMiles(21120)",
             "answer": 4.0
         }
     ]
 },
 {
     "question": "Convert units of time to seconds",
-    "template": "def convert_to_seconds(time, unit):",
+    "template": "def convertTime(time, unit):",
     "testCases": [
         {
-            "exe": "convert_to_seconds(5, 'seconds')",
+            "exe": "convertTime(5, 'seconds')",
             "answer": 5
         },
         {
-            "exe": "convert_to_seconds(2, 'minutes')",
+            "exe": "convertTime(2, 'minutes')",
             "answer": 120
         },
         {
-            "exe": "convert_to_seconds(1, 'hours')",
+            "exe": "convertTime(1, 'hours')",
             "answer": 3600
-        },
-        {
-            "exe": "convert_to_seconds(3, 'days')",
-            "answer": 259200
-        },
-        {
-            "exe": "convert_to_seconds(2, 'weeks')",
-            "answer": 1209600
         }
+   
     ]
 },
 {
     "question": "Convert seconds to days",
-    "template": "def convert_seconds_to_days(seconds):",
+    "template": "def secDays(seconds):",
     "testCases": [
         {
-            "exe": "convert_seconds_to_days(86400)",
+            "exe": "secDays(86400)",
             "answer": 1.0
         },
         {
-            "exe": "convert_seconds_to_days(172800)",
+            "exe": "secDays(172800)",
             "answer": 2.0
         },
         {
-            "exe": "convert_seconds_to_days(259200)",
+            "exe": "secDays(259200)",
             "answer": 3.0
         }
     ]
 },
 {
     "question": "Convert seconds to hours",
-    "template": "def convert_seconds_to_hours(seconds):",
+    "template": "def secHours(seconds):",
     "testCases": [
         {
-            "exe": "convert_seconds_to_hours(3600)",
+            "exe": "secHours(3600)",
             "answer": 1.0
         },
         {
-            "exe": "convert_seconds_to_hours(7200)",
+            "exe": "secHours(7200)",
             "answer": 2.0
         },
         {
-            "exe": "convert_seconds_to_hours(10800)",
+            "exe": "secHours(10800)",
             "answer": 3.0
         }
     ]
 },
 {
     "question": "Calculate body mass index",
-    "template": "def calculate_bmi(height, weight):\n    bmi = weight / (height ** 2)\n    return bmi",
+    "template": "def calBmi(height, weight):\n    bmi = weight / (height ** 2)\n    return bmi",
     "testCases": [
       {
-        "exe": "calculate_bmi(1.7, 65)",
+        "exe": "calBmi(1.7, 65)",
         "answer": 22.49
       },
       {
-        "exe": "calculate_bmi(1.65, 75)",
+        "exe": "calBmi(1.65, 75)",
         "answer": 27.55
       },
       {
-        "exe": "calculate_bmi(1.8, 80)",
+        "exe": "calBmi(1.8, 80)",
         "answer": 24.69
       }
     ]
   },
   {
     "question": "Convert pressure in kilopascals to pounds",
-    "template": "def convert_kilopascals_to_pounds(kilopascals):",
+    "template": "def kiloPounds(kilopascals):",
     "testCases": [
       {
-        "exe": "convert_kilopascals_to_pounds(100)",
+        "exe": "kiloPounds(100)",
         "answer": 22.480894387096
       },
       {
-        "exe": "convert_kilopascals_to_pounds(200)",
+        "exe": "kiloPounds(200)",
         "answer": 44.961788774192
       },
       {
-        "exe": "convert_kilopascals_to_pounds(300)",
+        "exe": "kiloPounds(300)",
         "answer": 67.442683161288
       }
     ]
   },      
   {
     "question": "Calculate sum of digits of a number",
-    "template": "def calculate_sum_of_digits(number):",
+    "template": "def sumDigits(number):",
     "testCases": [
       {
-        "exe": "calculate_sum_of_digits(12345)",
+        "exe": "sumDigits(12345)",
         "answer": 15
       },
       {
-        "exe": "calculate_sum_of_digits(987654321)",
+        "exe": "sumDigits(987654321)",
         "answer": 45
       },
       {
-        "exe": "calculate_sum_of_digits(111)",
+        "exe": "sumDigits(111)",
         "answer": 3
       }
     ]
   },
   {
     "question": "Sort three integers without using conditional statements and loops",
-    "template": "def sort_integers(a, b, c):",
+    "template": "def sortInt(a, b, c):",
     "testCases": [
       {
-        "exe": "sort_integers(3, 1, 2)",
+        "exe": "sortInt(3, 1, 2)",
         "answer": [1, 2, 3]
       },
       {
-        "exe": "sort_integers(9, 5, 7)",
+        "exe": "sortInt(9, 5, 7)",
         "answer": [5, 7, 9]
       },
       {
-        "exe": "sort_integers(4, 4, 4)",
+        "exe": "sortInt(4, 4, 4)",
         "answer": [4, 4, 4]
       }
     ]
   },
   {
-    "question": "Hash a word",
-    "template": "import hashlib\n\ndef hash_word(word):",
-    "testCases": [
-      {
-        "exe": "hash_word('Hello')",
-        "answer": "8b1a9953c4611296a827abf8c47804d7"
-      },
-      {
-        "exe": "hash_word('World')",
-        "answer": "7d793037a0760186574b0282f2f435e7"
-      },
-      {
-        "exe": "hash_word('Python')",
-        "answer": "25d55ad283aa400af464c76d713c07ad"
-      }
-    ]
-  },
-  {
     "question": "Count the number of occurrence of a specific character in a string",
-    "template": "def count_character_occurrences(string, char):",
+    "template": "def charCount(string, char):",
     "testCases": [
       {
-        "exe": "count_character_occurrences('Hello world', 'o')",
+        "exe": "charCount('Hello world', 'o')",
         "answer": 2
       },
       {
-        "exe": "count_character_occurrences('OpenAI is awesome!', 'e')",
+        "exe": "charCount('OpenAI is awesome!', 'e')",
         "answer": 3
       },
       {
-        "exe": "count_character_occurrences('Programming is fun', 'm')",
+        "exe": "charCount('Programming is fun', 'm')",
         "answer": 2
       }
     ]
@@ -1092,18 +1031,18 @@
 },
 {
     "question": "Swap two variables",
-    "template": "def swap_variables(a, b):",
+    "template": "def swapVar(a, b):",
     "testCases": [
       {
-        "exe": "swap_variables(5, 10)",
+        "exe": "swapVar(5, 10)",
         "answer": "[10, 5]"
       },
       {
-        "exe": "swap_variables('Hello', 'World')",
+        "exe": "swapVar('Hello', 'World')",
         "answer": "['World', 'Hello']"
       },
       {
-        "exe": "swap_variables(3.14, 2.718)",
+        "exe": "swapVar(3.14, 2.718)",
         "answer": "[2.718, 3.14]"
       }
     ]
