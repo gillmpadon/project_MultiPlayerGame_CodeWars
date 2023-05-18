@@ -2,8 +2,9 @@ const accountRouter = require("express").Router();
 const bcrypt = require("bcrypt");
 const Account = require("../models/account");
 
-accountRouter.get("/", (req, res) => {
-  res.status(200).json(test_data);
+accountRouter.get("/", async (req, res) => {
+  const accounts = await Account.find({});
+  res.status(200).json(accounts);
 });
 
 accountRouter.post("/", async (req, res) => {
@@ -26,6 +27,34 @@ accountRouter.post("/", async (req, res) => {
     res
       .status(409)
       .json({ message: `Account with the credentials has been found.` });
+  }
+});
+
+accountRouter.put("/star", async (req, res) => {
+  const { username, didWin, stars } = req.body;
+  try {
+    const starUpdate = didWin ? Number(stars) + 1 : Number(stars) - 1;
+    const user = await Account.findOneAndUpdate(
+      { username: username },
+      { stars: starUpdate },
+      {
+        new: true,
+      }
+    );
+    console.log(user);
+    res
+      .status(200)
+      .json({
+        message: `${user.username} has ${user.stars}`,
+        account: {
+          username: user.username,
+          email: user.email,
+          stars: user.stars,
+        },
+      });
+  } catch (e) {
+    console.log(e);
+    res.status(400).json({ message: "An error has occured.", error: e });
   }
 });
 

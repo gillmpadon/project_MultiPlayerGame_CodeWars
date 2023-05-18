@@ -14,6 +14,7 @@ import setting from "../../assets/img/settingbtn.png";
 import xbtn from "../../assets/img/x.png";
 import lose from "../../assets/audio/lose.mp3";
 import win from "../../assets/audio/win.mp3";
+import vs from "../../assets/img/vs.png"
 
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
@@ -23,6 +24,7 @@ import { motion, useMotionValue } from "framer-motion";
 import { socket } from "../../socket";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import questions from "../../questions.json";
+import axios from "axios";
 
 export default function PVP() {
   const [sett, showSettings] = useState(false);
@@ -30,37 +32,21 @@ export default function PVP() {
   const [confirm, showconfirm] = useState(false);
   const [playlosersound, setPlayLoserSound] = useState(false);
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [seconds, setSeconds] = useState(60);
+  const [rcount, setrCount] = useState(1);
   const [victory, showVictory] = useState(false);
   const [starPage, showStarPage] = useState(false);
+  const [correct, showCorrect] = useState(false);
+  const [correctStatus, setCorrectStatus] = useState(false);
   const navigate = useNavigate();
-
-  const question = [
-    {
-      question: "Write a function that returns the sum of two numbers",
-      template: "def addTwo(a, b):",
-      testCases: [
-        {
-          exe: "print(addTwo(3,5), end='')",
-          answer: "8",
-        },
-        {
-          exe: "print(addTwo(-3,-7), end='')",
-          answer: "-10",
-        },
-        {
-          exe: "print(addTwo(100,3000), end='')",
-          answer: "3100",
-        },
-      ],
-    },
-  ];
+  const account = useConfigStore((state) => state.account);
+  const setAccount = useConfigStore((state) => state.setAccount);
+  const [disableBtn,setDisabledBtn] = useState(false);
 
   const [hprval, setHprval] = useState(100);
   const [hplval, setHplval] = useState(100);
   const linkRef = useRef();
-  const stars = 500;
+  const stars = account.stars - 1;
+  const username = account.username;
 
   // generate a random number for question and answer
   // const rand = Math.floor(Math.random() * questions.length);
@@ -71,16 +57,78 @@ export default function PVP() {
   useEffect(() => {
     socket.on("match_result", async (data) => {
       if (data.msg === "You won!") {
+        const data = {
+          username,
+          stars,
+          didWin: true,
+        };
         showVictory(true);
+        const res = await axios.put(
+          `${import.meta.env.VITE_URL_PREFIX}:3003/api/accounts/star`,
+          data
+        );
+        window.localStorage.setItem(
+          "loggedUser",
+          JSON.stringify(res.data.account)
+        );
+
+        setAccount(
+          res.data.account.username,
+          res.data.account.email,
+          res.data.account.stars
+        );
       }
     });
 
-    socket.on("match_end", (data) => {
+    socket.on("match_end", async (data) => {
       if (data.loser === socket.id) {
+        const data = {
+          username,
+          stars,
+          didWin: false,
+        };
+        const res = await axios.put(
+          `${import.meta.env.VITE_URL_PREFIX}:3003/api/accounts/star`,
+          data
+        );
+        window.localStorage.setItem(
+          "loggedUser",
+          JSON.stringify(res.data.account)
+        );
+
+        setAccount(
+          res.data.account.username,
+          res.data.account.email,
+          res.data.account.stars
+        );
+
+        console.log({ stars });
         setTimeout(() => {
           toggleLose();
         }, 2500);
       } else {
+        const data = {
+          username,
+          stars,
+          didWin: true,
+        };
+        const res = await axios.put(
+          `${import.meta.env.VITE_URL_PREFIX}:3003/api/accounts/star`,
+          data
+        );
+        window.localStorage.setItem(
+          "loggedUser",
+          JSON.stringify(res.data.account)
+        );
+
+        setAccount(
+          res.data.account.username,
+          res.data.account.email,
+          res.data.account.stars
+        );
+
+        console.log({ stars });
+
         setTimeout(() => {
           showVictory(true);
         }, 2500);
@@ -94,54 +142,27 @@ export default function PVP() {
 
   useEffect(() => {
     socket.on("player_code_submit", (res) => {
-      // setOutput(code);
-      // console.log({ res, socketId: socket.id });
-      // console.log(res.correct && socket.id === res.socketId);
       if (res.correct && socket.id === res.socketId) {
         setHprval(hprval - 25);
+        setrCount(rcount+1);
         setQnum(res.question_index);
         console.log(hprval, qnum);
-        // hpright.current.style.width = `${hprval.current}%`;
-        // hpright.current.style.transition = "2s";
+        showCorrect(!correct);
       } else if (res.correct && socket.id !== res.socketId) {
+        setrCount(rcount+1);
         setHplval(hplval - 25);
         setQnum(res.question_index);
         console.log(hplval, qnum);
-        // hpleft.current.style.width = `${hplval.current}%`;
-        // hpleft.current.style.transition = "2s";
       }
+      // For submit button
+      setDisabledBtn(true);
+      
     });
 
     if (hplval <= 0) {
       socket.emit("player_lose", { room_id, socketId: socket.id });
     }
   }, [hprval, hplval]);
-
-  // useEffect(() => {
-  //   console.log(victory);
-  // }, [victory]);
-
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setSeconds(seconds => {
-  //         if (seconds === 0) {
-  //           clearInterval(intervalId); // Stop the timer
-  //           return 0;
-  //         } else {
-  //           return seconds - 1;
-  //         }
-  //       });
-  //     }, 1000);
-
-  //   return () => clearInterval(intervalId);
-  // }, []);
-
-  // Delay for returning lobby
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     linkRef.current.click();
-  //   }, 3000); // delay in milliseconds (3 seconds)
-  // }, []);
 
   // display the settings UI
   const toggleSettings = () => {
@@ -154,7 +175,26 @@ export default function PVP() {
   };
 
   //Triggers when user clicks the confirm or check button
-  const toggleConfirm = () => {
+  const toggleConfirm = async () => {
+    const data = {
+      username,
+      stars,
+      didWin: false,
+    };
+
+    console.log({ stars });
+    const res = await axios.put(
+      `${import.meta.env.VITE_URL_PREFIX}:3003/api/accounts/star`,
+      data
+    );
+    window.localStorage.setItem("loggedUser", JSON.stringify(res.data.account));
+
+    setAccount(
+      res.data.account.username,
+      res.data.account.email,
+      res.data.account.stars
+    );
+
     showconfirm(!confirm);
     showSurrender(surrender);
     setPlayLoserSound(true);
@@ -183,11 +223,16 @@ export default function PVP() {
 
   // for reset button to clear the text
   const handleReset = () => {
+    console.log("clear");
     setInput("");
+    console.log(input)
+
   };
 
   // get the input then evaluate then display in the output container
   const handleClick = () => {
+    setDisabledBtn(false);
+    setCorrectStatus(!correctStatus);
     const code = input;
     const playerDetails = {
       userId,
@@ -199,17 +244,6 @@ export default function PVP() {
       questionDetails: questions[qnum],
     });
   };
-
-  // confirmation if the output is equal to expected output
-  // if (output == answer[qnum]) {
-  // hpremain -= 100;
-  // console.log(hpremain);
-  // hpright.current.style.width = `${hpremain}%`;
-  // hpright.current.style.transition = "2s";
-  //   if (hpremain == 0) {
-  //     showconfirm(!confirm);
-  //   }
-  // }
 
   return (
     <>
@@ -268,20 +302,19 @@ export default function PVP() {
                       transition={{ duration: 2 }}
                     ></motion.div>
                   </div>
+                  <div className="username username1">
+                    <h4>{username}</h4>
+                  </div>
                   <div className="firstchar">
-                    <div className="username username1">
-                      <h4>Dazai</h4>
-                      <div className="username-triangle username-triange2"></div>
-                    </div>
                     <img src={charMan} alt="" />
                   </div>
                 </div>
                 <div className="pvptop-center">
                   <div className="clock">
-                    <img src={clock} />
+                    <img src={vs}/>
                   </div>
                   <div className="round">
-                    <h2>{seconds}</h2>
+                    <h2>Round {rcount}</h2>
                   </div>
                 </div>
                 <div className="pvptop-right">
@@ -290,6 +323,7 @@ export default function PVP() {
                       initial={{
                         width: "100%",
                         height: "2.5em",
+                        marginLeft: "auto",
                         background:
                           "linear-gradient(180deg, rgba(207, 34, 34, 0.95) 62.87%, #831616 71.55%)",
                         borderRadius: "6px",
@@ -304,11 +338,10 @@ export default function PVP() {
                       transition={{ duration: 2 }}
                     ></motion.div>
                   </div>
+                  <div className="username username2">
+                    <h4>Test</h4>
+                  </div>
                   <div className="secondchar">
-                    <div className="username username2">
-                      <h4>Test</h4>
-                      <div className="username-triangle"></div>
-                    </div>
                     <img src={charWoman} alt="" />
                   </div>
                 </div>
@@ -323,7 +356,8 @@ export default function PVP() {
             </div>
           </div>
           <div className="pvpbottom">
-            <div className="bottom-left">
+            <div
+              className="bottom-left">
               <div className="userinput">
                 <CodeMirror
                   value={questions[qnum].template}
@@ -340,12 +374,12 @@ export default function PVP() {
                   }}
                 />
                 <div className="buttons">
-                  <div className="btn submitbtn" onClick={handleClick}>
+                  <div className="btn submitbtn" onClick={handleClick} disabled={disableBtn ? true : false}>
                     SUBMIT
                   </div>
-                  <div className="btn clearbtn" onClick={handleReset}>
+                  {/* <div className="btn clearbtn" onClick={handleReset}>
                     CLEAR
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -354,15 +388,15 @@ export default function PVP() {
                 <div className="display-output">
                   <div className="test-case">
                     <h3>TEST CASES:</h3>
-                    <p>Case 1: [5+5]</p>
-                    <p>Case 2: [6+999]</p>
-                    <p>Case 3: [0+0]</p>
+                    <p>Case 1: {questions[qnum].testCases[0].exe}</p>
+                    <p>Case 2: {questions[qnum].testCases[1].exe}</p>
+                    <p>Case 3: {questions[qnum].testCases[2].exe}</p>
                   </div>
                   <div className="output-test">
                     <h3>OUTPUT:</h3>
-                    <p>10</p>
-                    <p>1005</p>
-                    <p>0</p>
+                    <p>{questions[qnum].testCases[0].answer}</p>
+                    <p>{questions[qnum].testCases[1].answer}</p>
+                    <p>{questions[qnum].testCases[2].answer}</p>
                   </div>
                 </div>
               </div>

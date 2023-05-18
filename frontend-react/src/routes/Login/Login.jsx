@@ -15,8 +15,11 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [showPolicy, setshowPolicy] = useState(false);
   const navigate = useNavigate();
   const [passwordType, setPasswordType] = useState("password");
+
+  const showModalPolicy = () => setshowPolicy(!showPolicy);
 
   const togglePassword = () => {
     if (passwordType === "password") {
@@ -32,8 +35,8 @@ export default function Login() {
   useEffect(() => {
     const userLog = window.localStorage.getItem("loggedUser");
     if (userLog) {
-      const { username, email } = JSON.parse(userLog);
-      setAccount(username, email);
+      const { username, email, stars } = JSON.parse(userLog);
+      setAccount(username, email, stars);
       navigate("/home");
     }
   }, []);
@@ -52,6 +55,7 @@ export default function Login() {
     setUsername("");
   };
 
+
   const onLogin = async () => {
     if (isLogin) {
       const data = {
@@ -67,10 +71,10 @@ export default function Login() {
         if (res.status === 200) {
           console.log(res);
           const {
-            data: { username, email },
+            data: { username, email, stars },
           } = res;
           window.localStorage.setItem("loggedUser", JSON.stringify(res.data));
-          setAccount(username, email);
+          setAccount(username, email, stars);
           navigate("/home");
         }
       } catch (error) {
@@ -148,6 +152,12 @@ export default function Login() {
           {isLogin ? "LOGIN" : "SIGN UP"}
         </button>
         <div className="signlog">
+          {!isLogin && 
+            <div className="terms">
+              <input type="checkbox"/>
+              <p> I agree to <a className="policy" onClick={showModalPolicy}>privacy policy & terms</a> </p>
+            </div>
+          }
           <div id="signlog-text">
             {isLogin ? "Don't have account?" : "Already have account?"}
           </div>
@@ -156,6 +166,24 @@ export default function Login() {
           </button>
         </div>
       </div>
+      {showPolicy && 
+        <div className="modalPolicy">
+          <img src={bg} alt="bg" />
+          <div className="modalPolicyContent">
+            <h2>Terms and Condition</h2>
+            <p>At our game website, we prioritize your privacy and are committed to safeguarding your personal information. 
+                When you visit or use our website, we may collect certain data to enhance your experience and provide better services. 
+                This may include information like your name, and email address which you may voluntarily provide to us. 
+                Additionally, we may automatically collect details about your device, such as your IP address, 
+                browser type, and operating system, to improve our services. Rest assured, we do not sell, rent, 
+                or disclose your personal information to any third parties unless required by law or with your explicit consent. 
+                We may use the collected information to improve our website, respond to your inquiries.
+                By accessing and using our website, you agree to the terms outlined in this Privacy Policy.
+            </p>
+            <button className="btn" onClick={showModalPolicy}>Return</button>
+          </div>
+        </div>
+        }
       <ToastContainer />
     </div>
   );
