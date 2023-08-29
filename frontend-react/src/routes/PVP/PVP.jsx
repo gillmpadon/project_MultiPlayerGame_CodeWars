@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaRegStar, FaCheck } from "react-icons/fa";
-
+//thsi is
 import useConfigStore from "../../store/configStore";
 import AudioButton from "../../components/AudioButton/AudioButton";
 import Settings from "../Settings/Settings";
