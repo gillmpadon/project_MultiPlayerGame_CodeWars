@@ -42,16 +42,14 @@ accountRouter.put("/star", async (req, res) => {
       }
     );
     console.log(user);
-    res
-      .status(200)
-      .json({
-        message: `${user.username} has ${user.stars}`,
-        account: {
-          username: user.username,
-          email: user.email,
-          stars: user.stars,
-        },
-      });
+    res.status(200).json({
+      message: `${user.username} has ${user.stars}`,
+      account: {
+        username: user.username,
+        email: user.email,
+        stars: user.stars,
+      },
+    });
   } catch (e) {
     console.log(e);
     res.status(400).json({ message: "An error has occured.", error: e });
@@ -77,4 +75,17 @@ accountRouter.put("/:un", async (req, res) => {
   }
 });
 
+accountRouter.put("/:email", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const emailReq = await Account.findOne({ email: email });
+    res.status(200).json({
+      message: `A link for password update has been sent to ${emailReq.username}'s email.`,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: "An error has occurred." });
+  }
+});
 module.exports = accountRouter;
