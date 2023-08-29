@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import useConfigStore from "../../store/configStore";
 
@@ -54,7 +55,6 @@ export default function Login() {
     setEmail("");
     setUsername("");
   };
-
 
   const onLogin = async () => {
     if (isLogin) {
@@ -151,13 +151,24 @@ export default function Login() {
         <button className="btn" id="signlog" onClick={onLogin}>
           {isLogin ? "LOGIN" : "SIGN UP"}
         </button>
+        {isLogin && (
+          <p>
+            <Link to="/requestPassword">Forgot Password?</Link>
+          </p>
+        )}
         <div className="signlog">
-          {!isLogin && 
+          {!isLogin && (
             <div className="terms">
-              <input type="checkbox"/>
-              <p> I agree to <a className="policy" onClick={showModalPolicy}>privacy policy & terms</a> </p>
+              <input type="checkbox" />
+              <p>
+                {" "}
+                I agree to{" "}
+                <a className="policy" onClick={showModalPolicy}>
+                  Privacy Policy & Terms
+                </a>{" "}
+              </p>
             </div>
-          }
+          )}
           <div id="signlog-text">
             {isLogin ? "Don't have account?" : "Already have account?"}
           </div>
@@ -166,24 +177,33 @@ export default function Login() {
           </button>
         </div>
       </div>
-      {showPolicy && 
+      {showPolicy && (
         <div className="modalPolicy">
           <img src={bg} alt="bg" />
           <div className="modalPolicyContent">
             <h2>Terms and Condition</h2>
-            <p>At our game website, we prioritize your privacy and are committed to safeguarding your personal information. 
-                When you visit or use our website, we may collect certain data to enhance your experience and provide better services. 
-                This may include information like your name, and email address which you may voluntarily provide to us. 
-                Additionally, we may automatically collect details about your device, such as your IP address, 
-                browser type, and operating system, to improve our services. Rest assured, we do not sell, rent, 
-                or disclose your personal information to any third parties unless required by law or with your explicit consent. 
-                We may use the collected information to improve our website, respond to your inquiries.
-                By accessing and using our website, you agree to the terms outlined in this Privacy Policy.
+            <p>
+              At our game website, we prioritize your privacy and are committed
+              to safeguarding your personal information. When you visit or use
+              our website, we may collect certain data to enhance your
+              experience and provide better services. This may include
+              information like your name, and email address which you may
+              voluntarily provide to us. Additionally, we may automatically
+              collect details about your device, such as your IP address,
+              browser type, and operating system, to improve our services. Rest
+              assured, we do not sell, rent, or disclose your personal
+              information to any third parties unless required by law or with
+              your explicit consent. We may use the collected information to
+              improve our website, respond to your inquiries. By accessing and
+              using our website, you agree to the terms outlined in this Privacy
+              Policy.
             </p>
-            <button className="btn" onClick={showModalPolicy}>Return</button>
+            <button className="btn" onClick={showModalPolicy}>
+              Return
+            </button>
           </div>
         </div>
-        }
+      )}
       <ToastContainer />
     </div>
   );
