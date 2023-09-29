@@ -47,7 +47,7 @@ const router = createBrowserRouter([
     element: <RequestPass />,
   },
   {
-    path: "/updatePassword",
+    path: "/updatePassword/:username",
     element: <UpdatePass />,
   },
   {

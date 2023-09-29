@@ -56,15 +56,15 @@ accountRouter.put("/star", async (req, res) => {
   }
 });
 
-accountRouter.put("/:un", async (req, res) => {
-  const { username, newPassword } = req.body;
+accountRouter.put("/pass/:un", async (req, res) => {
+  const { password, username } = req.body;
   const saltRounds = 10;
-  const passwordHash = await bcrypt.hash(newPassword, saltRounds);
-
+  const passwordHash = await bcrypt.hash("password", saltRounds);
   try {
     const userUpdate = await Account.findOneAndUpdate(
       { username: username },
-      { passwordHash: passwordHash }
+      { passwordHash: passwordHash },
+      { new: true } 
     );
     res
       .status(200)
@@ -76,15 +76,13 @@ accountRouter.put("/:un", async (req, res) => {
 });
 
 accountRouter.put("/:email", async (req, res) => {
-  const { email } = req.body;
-
   try {
-    const emailReq = await Account.findOne({ email: email });
+    const { email } = req.params;
+    const emailReq = await Account.findOne({ email });
     res.status(200).json({
-      message: `A link for password update has been sent to ${emailReq.username}'s email.`,
+      username: `${emailReq.username}`,
     });
   } catch (error) {
-    console.log(error);
     res.status(400).json({ message: "An error has occurred." });
   }
 });
