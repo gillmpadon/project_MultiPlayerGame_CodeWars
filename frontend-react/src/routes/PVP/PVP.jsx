@@ -14,7 +14,9 @@ import setting from "../../assets/img/settingbtn.png";
 import xbtn from "../../assets/img/x.png";
 import lose from "../../assets/audio/lose.mp3";
 import win from "../../assets/audio/win.mp3";
-import vs from "../../assets/img/vs.png"
+import vs from "../../assets/img/vs.png";
+import rewardChest from "../../assets/img/reward_box.png";
+import shield from "../../assets/img/star_protection.png";
 
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
@@ -34,6 +36,8 @@ export default function PVP() {
   const [input, setInput] = useState("");
   const [rcount, setrCount] = useState(1);
   const [victory, showVictory] = useState(false);
+  const [reward, showReward] = useState(false);
+  const [starProtection, showStarProtection] = useState(false);
   const [starPage, showStarPage] = useState(false);
   const [correct, showCorrect] = useState(false);
   const [correctStatus, setCorrectStatus] = useState(false);
@@ -214,6 +218,23 @@ export default function PVP() {
 
   const toggleStarPage = () => {
     showStarPage(!starPage);
+  };
+
+  const toggleReward = () => {
+    showReward(!reward);
+    showStarPage(false);
+    showVictory(false);
+    showconfirm(false);
+    showStarProtection(false);
+  };
+
+  const toggleStarProtection = () => {
+    showStarProtection(!starProtection);
+    showStarPage(false);
+    showVictory(false);
+    showconfirm(false);
+    showReward(false);
+    showSurrender(false);
   };
 
   // get the value inputted by user
@@ -465,8 +486,7 @@ export default function PVP() {
         )}
 
         {starPage && (
-          <Link to="/" ref={linkRef}>
-            <div className="starpage">
+            <div className="starpage" onClick={victory ? toggleReward : toggleStarProtection}>
               <div className="starpage-content">
                 <div className="starpage-star">
                   <div className={`${victory ? "stargain" : "starfall"}`}>
@@ -489,8 +509,39 @@ export default function PVP() {
               </div>
               <p>Click anywhere to continue...</p>
             </div>
+        )}
+
+        {reward && (
+          <Link to="/" ref={linkRef}>
+            <div className="reward">
+              <div className="reward-content">
+                  <h2>PVP REWARD</h2>
+                  <div className="rewardChest">
+                    <img src={rewardChest}/>
+                  </div>
+                  <h3>300 Gold</h3>
+                  <p>Click anywhere to continue...</p>
+              </div>
+            </div>
           </Link>
         )}
+
+        {starProtection && (
+          <Link to="/" ref={linkRef}>
+            <div className="star-protection">
+              <div className="star-protection-content">
+                  <h2>STAR PROTECTION</h2>
+                  <div className="shield">
+                    <img src={shield}/>
+                  </div>
+                  <h4>You will not lose a star this time.</h4>
+                  <p>Click anywhere to continue...</p>
+              </div>
+            </div>
+          </Link>
+        )}
+
+
 
         {playlosersound && (
           <div>

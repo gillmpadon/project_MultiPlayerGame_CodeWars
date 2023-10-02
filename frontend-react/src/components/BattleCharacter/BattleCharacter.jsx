@@ -9,10 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function BattleCharacter({ findMatch }) {
   const [option, setOption] = useState(true);
+  const [optionCharacter, setOptionCharacter] = useState(true);
   const [playSound, setPlaySound] = useState(false);
   const navigate = useNavigate();
 
   const optionClicked = () => setOption(option == false);
+  const optionCharacterClicked = () => setOptionCharacter(!optionCharacter);
 
   const mouseClick = () => {
     setPlaySound(true);
@@ -37,9 +39,33 @@ export default function BattleCharacter({ findMatch }) {
   }, []);
 
   return (
-    <div className="battle-mode">
-      <div className="battle-mode-img">
-        <img src={option ? charMan : charWoman} alt="" />
+    <div className="battle-modes">
+      <div className="char-option">
+        <div onClick={optionCharacterClicked} className="arrow arrow-character">
+          <div className="triangle t-left" onClick={mouseClick}>
+            {playSound && (
+              <div>
+                <audio autoPlay loop src={mouseclick} type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="battle-mode-img">
+          <img src={optionCharacter ? charMan : charWoman} alt="" />
+        </div>
+        <div onClick={optionCharacterClicked} className="arrow arrow-character">
+          <div className="triangle t-right" onClick={mouseClick}>
+            {playSound && (
+              <div>
+                <audio autoPlay loop src={mouseclick} type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
       <div className="option">
         <div className="arrow" onClick={optionClicked}>

@@ -422,12 +422,15 @@ a{
   text-align: center;
 }
 
+
 .test-case h3{
   color: black;
+  padding-top: 0;
 }
 
 .output-test h3{
   color: black;
+  padding-top: 0;
 }
 
 .btn-exit {
@@ -593,6 +596,67 @@ a{
 .lose-container p {
   color: white;
   animation: clicklobby 6s;
+}
+
+.reward,
+.star-protection{
+  width: 100vw;
+  height: 100vh;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 400;
+  background-color: rgba(4, 9, 30, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.reward-content,
+.star-protection-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.reward-content h2,
+.star-protection-content h2{
+  font-size: 5rem;
+  margin: 0;
+}
+
+.reward-content h3{
+  font-size: 2.5rem;
+  margin: 0;
+  color: rgb(255, 199, 0);
+}
+
+.rewardChest{
+  height: 20em;
+  width: 25em;
+}
+
+.shield{
+  height: 22em;
+  width: 17em;
+}
+
+.rewardChest img,
+.shield img{
+  height: 100%;
+  width: 100%;
+  position: unset;
+}
+
+.reward p,
+.star-protection p{
+  margin: 0;
+  animation: starp 1s 3s forwards;
+  opacity: 0;
 }
 
 .starpage{

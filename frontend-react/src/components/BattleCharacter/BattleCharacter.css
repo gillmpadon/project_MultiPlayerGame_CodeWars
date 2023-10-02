@@ -5,38 +5,47 @@
     text-align: center;
 }
 
-.container .battle-mode{
+.battle-modes{
     width: 30%;
-    height: 60vh;
+    height: 70vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    gap: 5em;
     margin-right: 10em;
 }
 
+.char-option{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
 .battle-mode-img{
-    width: 30em;
-    height: 45em;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .battle-mode-img img{
-    width: 30em;
-    height: auto;
+    height: 30em;
+    width: 25em;
+    position: absolute;
     transform: rotateY(180deg);
 }
 
 .option{
     width: 100%;
+    height: 20%;
     display: flex;
     gap: 1em;
     justify-content: center;
     align-items: center;
-    margin-top: 3em;
 }
 
 .arrow{
