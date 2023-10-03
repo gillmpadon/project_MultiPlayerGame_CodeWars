@@ -13,6 +13,7 @@ const accountSchema = new mongoose.Schema({
   },
   passwordHash: String,
   stars: Number,
+  gold: Number,
 });
 
 accountSchema.set("toJSON", {

@@ -14,7 +14,7 @@ export default function Profile({ username }) {
           </div>
           <div className="nameid">
             <p>{username}</p>
-            <small>ID: 123123</small>
+            <small>Gold: 500</small>
           </div>
         </div>
       </div>
