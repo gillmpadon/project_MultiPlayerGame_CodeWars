@@ -88,4 +88,30 @@ accountRouter.put("/:email", async (req, res) => {
     res.status(400).json({ message: "An error has occurred." });
   }
 });
+
+accountRouter.put("/gold", async (req, res) => {
+  const { username, didWin, stars } = req.body;
+  try {
+    const starUpdate = didWin ? Number(stars) + 300 : Number(stars);
+    const user = await Account.findOneAndUpdate(
+      { username: username },
+      { stars: starUpdate },
+      {
+        new: true,
+      }
+    );
+    console.log(user);
+    res.status(200).json({
+      message: `${user.username} has ${user.stars}`,
+      account: {
+        username: user.username,
+        email: user.email,
+        stars: user.stars,
+      },
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(400).json({ message: "An error has occured.", error: e });
+  }
+});
 module.exports = accountRouter;
