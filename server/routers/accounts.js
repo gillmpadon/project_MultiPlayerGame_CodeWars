@@ -90,9 +90,9 @@ accountRouter.put("/:email", async (req, res) => {
 });
 
 accountRouter.put("/gold", async (req, res) => {
-  const { username, didWin, stars } = req.body;
+  const { username, didWin, gold } = req.body;
   try {
-    const starUpdate = didWin ? Number(stars) + 300 : Number(stars);
+    const starUpdate = didWin ? Number(gold) + 300 : Number(gold);
     const user = await Account.findOneAndUpdate(
       { username: username },
       { stars: starUpdate },
