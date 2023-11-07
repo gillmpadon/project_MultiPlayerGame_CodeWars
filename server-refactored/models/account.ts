@@ -12,4 +12,4 @@ export interface IAccount {
 
 export interface AccountDoc extends Document, IAccount {}
 
-export const AccountModel = model(MODEL_ACCOUNT, accountSchema);
+export const AccountModel = model<AccountDoc>(MODEL_ACCOUNT, accountSchema);

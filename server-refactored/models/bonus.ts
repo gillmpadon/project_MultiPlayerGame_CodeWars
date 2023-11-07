@@ -9,5 +9,4 @@ export interface IBonus {
 }
 
 export interface BonusDoc extends Document, IBonus {}
-
-export const BonusModel = model(MODEL_BONUS, bonusSchema);
+export const BonusModel = model<BonusDoc>(MODEL_BONUS, bonusSchema);

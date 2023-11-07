@@ -1,0 +1,29 @@
+import { AccountDoc, IAccount, AccountModel } from "../models/account";
+import { CreateAccountParameter } from "../interface/service";
+import bcrypt from "bcrypt";
+
+export const getAllAccounts = async (): Promise<AccountDoc[]> => {
+  return AccountModel.find({});
+};
+
+export const createAccount = async ({
+  username,
+  email,
+  password,
+}: CreateAccountParameter) => {
+  const saltRounds = 10;
+  const passwordHash = await bcrypt.hash(password, saltRounds);
+
+  const data: IAccount = {
+    username,
+    email,
+    passwordHash,
+    gold: 100,
+    stars: 50,
+  };
+
+  const account = new AccountModel(data);
+  const savedAccount = await account.save();
+
+  return savedAccount;
+};

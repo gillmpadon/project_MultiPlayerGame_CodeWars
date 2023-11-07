@@ -9,4 +9,4 @@ export interface IMatch {
 }
 
 export interface MatchDoc extends Document, IMatch {}
-export const MatchModel = model(MODEL_BONUS, matchSchema);
+export const MatchModel = model<MatchDoc>(MODEL_BONUS, matchSchema);
