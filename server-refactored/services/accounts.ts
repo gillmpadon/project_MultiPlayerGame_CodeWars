@@ -10,7 +10,7 @@ export const createAccount = async ({
   username,
   email,
   password,
-}: CreateAccountParameter) => {
+}: CreateAccountParameter): Promise<AccountDoc> => {
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
 
