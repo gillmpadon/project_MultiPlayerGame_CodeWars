@@ -14,4 +14,5 @@ export const accountSchema: Schema = new Schema({
   passwordHash: String,
   stars: Number,
   gold: Number,
+  hasStarProtection: String,
 });

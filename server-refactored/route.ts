@@ -4,6 +4,7 @@ import {
   getAllAccountsController,
   createAccountController,
   loginController,
+  updateStarsController,
 } from "./controllers/accounts";
 
 const route = () => {
@@ -12,6 +13,7 @@ const route = () => {
   router.get("/account", getAllAccountsController);
   router.post("/create/account", createAccountController);
   router.post("/login", loginController);
+  router.put("/update/star", updateStarsController);
 
   return router;
 };

@@ -57,7 +57,4 @@ The server will be listening for calls in [http://localhost:3003](http://localho
 
 ### Test Accounts
 
-- Username: Dazai, Password: test
-- Username: test, Password: test1234
-- Username: test2 Password: test12345
-- Username: server-2-test Password: server-2-test
+- Username: server-1-test Password: server-1-test

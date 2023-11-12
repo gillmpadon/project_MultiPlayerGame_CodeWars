@@ -8,6 +8,7 @@ export interface IAccount {
   passwordHash: string;
   stars: number;
   gold: number;
+  hasStarProtection: boolean;
 }
 
 export interface AccountDoc extends Document, IAccount {}

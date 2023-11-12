@@ -3,6 +3,7 @@ import {
   getAllAccounts,
   createAccount,
   getUniqueAccount,
+  updateAccountStars,
 } from "../services/accounts";
 import {
   responseInternalServerError,
@@ -12,7 +13,12 @@ import {
   responseUnauthorized,
 } from "../utils/response";
 import { isString } from "../utils/validate";
-import { CreateAccountParameter, LoginParameter } from "../interface/service";
+import { CustomBodyRequest } from "../interface/controller";
+import {
+  CreateAccountParameter,
+  LoginParameter,
+  UpdateAccountStarsParameter,
+} from "../interface/service";
 import { INVALID_CREDENTIALS } from "../constant/general";
 
 import { Request, Response } from "express";
@@ -35,9 +41,12 @@ export const getAllAccountsController = async (
   }
 };
 
-export const createAccountController = async (req: Request, res: Response) => {
+export const createAccountController = async (
+  req: CustomBodyRequest<CreateAccountParameter>,
+  res: Response
+) => {
   try {
-    const { username, email, password } = req.body as CreateAccountParameter;
+    const { username, email, password } = req.body;
 
     if (!(username && email && password)) {
       throw new TypeError("Username, email, and password is required");
@@ -51,6 +60,7 @@ export const createAccountController = async (req: Request, res: Response) => {
       throw new TypeError("Password must be at least of length 8");
 
     const savedAccount = await createAccount({ username, email, password });
+    console.log(savedAccount);
     return responseCreated(res, savedAccount);
   } catch (error: unknown) {
     let errorMessage = "";
@@ -63,9 +73,12 @@ export const createAccountController = async (req: Request, res: Response) => {
   }
 };
 
-export const loginController = async (req: Request, res: Response) => {
+export const loginController = async (
+  req: CustomBodyRequest<LoginParameter>,
+  res: Response
+) => {
   try {
-    const { username, password } = req.body as LoginParameter;
+    const { username, password } = req.body;
     if (!isString(username)) throw new TypeError("Username must be a string.");
     if (!isString(password)) throw new TypeError("Password must be a string.");
 
@@ -74,8 +87,11 @@ export const loginController = async (req: Request, res: Response) => {
       account === null
         ? false
         : await bcrypt.compare(password, account.passwordHash);
-    if (!areCredentialsCorrect || account === null) {
-      throw new Error("Invalid credentials");
+    if (account === null) {
+      throw new Error("Account does not exist");
+    }
+    if (!areCredentialsCorrect) {
+      throw new Error("Incorrect Username or Password");
     }
 
     const userForToken = {
@@ -93,8 +109,11 @@ export const loginController = async (req: Request, res: Response) => {
       email: account.email,
       stars: account.stars,
       gold: account.gold,
+      hasStarProtection: account.hasStarProtection,
       token,
     };
+
+    console.log(accountData);
 
     return responseSuccess(res, accountData);
   } catch (error: unknown) {
@@ -105,7 +124,38 @@ export const loginController = async (req: Request, res: Response) => {
     }
 
     if (error instanceof Error) {
+      return responseUnauthorized(res, INVALID_CREDENTIALS, error);
+    }
+
+    return responseInternalServerError(res, errorMessage, error);
+  }
+};
+
+export const updateStarsController = async (
+  req: CustomBodyRequest<UpdateAccountStarsParameter>,
+  res: Response
+) => {
+  try {
+    const { username, didWin, hasStarProtection, stars } = req.body;
+    const account = await updateAccountStars({
+      username,
+      didWin,
+      hasStarProtection,
+      stars,
+    });
+    if (account === null) {
+      throw new Error("Account does not exist");
+    }
+
+    return responseSuccess(res, account);
+  } catch (error: unknown) {
+    let errorMessage = "";
+    if (error instanceof TypeError) {
       errorMessage += error.message;
+      return responseBadRequest(res, errorMessage);
+    }
+
+    if (error instanceof Error) {
       return responseUnauthorized(res, INVALID_CREDENTIALS, error);
     }
 

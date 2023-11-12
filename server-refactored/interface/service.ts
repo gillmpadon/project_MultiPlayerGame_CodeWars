@@ -10,7 +10,7 @@ export interface CreateAccountParameter extends BaseAccountRequest {
 }
 
 export interface UpdateAccountStarsParameter extends BaseAccountRequest {
-  hasStarProtection: boolean;
+  hasStarProtection: IAccount["hasStarProtection"];
   didWin: boolean;
   stars: IAccount["stars"];
 }
