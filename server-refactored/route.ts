@@ -3,6 +3,7 @@ import { Router } from "express";
 import {
   getAllAccountsController,
   createAccountController,
+  loginController,
 } from "./controllers/accounts";
 
 const route = () => {
@@ -10,6 +11,7 @@ const route = () => {
 
   router.get("/account", getAllAccountsController);
   router.post("/create/account", createAccountController);
+  router.post("/login", loginController);
 
   return router;
 };

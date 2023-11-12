@@ -1,5 +1,8 @@
 import { AccountDoc, IAccount, AccountModel } from "../models/account";
-import { CreateAccountParameter } from "../interface/service";
+import {
+  CreateAccountParameter,
+  BaseAccountRequest,
+} from "../interface/service";
 import bcrypt from "bcrypt";
 
 export const getAllAccounts = async (): Promise<AccountDoc[]> => {
@@ -26,4 +29,11 @@ export const createAccount = async ({
   const savedAccount = await account.save();
 
   return savedAccount;
+};
+
+export const getUniqueAccount = async ({
+  username,
+}: BaseAccountRequest): Promise<AccountDoc | null> => {
+  const account = await AccountModel.findOne({ username });
+  return account;
 };

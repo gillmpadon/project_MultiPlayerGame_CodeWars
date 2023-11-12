@@ -60,3 +60,4 @@ The server will be listening for calls in [http://localhost:3003](http://localho
 - Username: Dazai, Password: test
 - Username: test, Password: test1234
 - Username: test2 Password: test12345
+- Username: server-2-test Password: server-2-test

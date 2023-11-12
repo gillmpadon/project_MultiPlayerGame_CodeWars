@@ -1,6 +1,6 @@
 import { IAccount } from "../models/account";
 
-interface BaseAccountRequest {
+export interface BaseAccountRequest {
   username: IAccount["username"];
 }
 
@@ -22,6 +22,10 @@ export interface UpdateAccountPasswordParameter extends BaseAccountRequest {
 export interface UpdateAccountGoldParameter extends BaseAccountRequest {
   didWin: boolean;
   gold: IAccount["gold"];
+}
+
+export interface LoginParameter extends BaseAccountRequest {
+  password: string;
 }
 
 export interface SendEmailNotifParameter {
