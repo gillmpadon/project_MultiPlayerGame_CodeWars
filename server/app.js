@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const accountRouter = require("./routers/accounts");
 const loginRouter = require("./routers/login");
+const singleRouter = require("./routers/single_player")
 // ^^^^^ routers ^^^^^^^
 
 const config = require("./utils/config");
@@ -27,6 +28,7 @@ app.use(middleware.tokenExtractor);
 
 app.use("/api/accounts", accountRouter);
 app.use("/api/login", loginRouter);
+app.use("/single", singleRouter);
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
 

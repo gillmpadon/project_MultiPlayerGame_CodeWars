@@ -7,6 +7,7 @@ import Settings from "./routes/Settings/Settings";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContactUs from "./routes/ContactUs/Contact";
 import SinglePlayer from "./routes/SinglePlayer/SinglePlayer";
+import Choose from "./routes/Choose/Choose";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import RequestPass from "./routes/RequestPass/RequestPass";
 import UpdatePass from "./routes/UpdatePass/UpdatePass";
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <ContactUs />,
+  },
+  {
+    path: "/choose",
+    element: <Choose />,
   },
   {
     path: "/single-player",

@@ -1,0 +1,219 @@
+[
+{
+    "question": "Check if a specified value is contained in a group of values",
+    "template": "def checkVal(value, group):",
+    "testCases": [
+        {
+            "exe": "print(checkVal(3, [1, 2, 3, 4, 5]), end='')",
+            "answer": "True"
+        },
+        {
+            "exe": "print(checkVal('Python', ['Java', 'Python', 'C++']), end='')",
+            "answer": "True"
+        },
+        {
+            "exe": "print(checkVal(10, [5, 8, 12, 15]), end='')",
+            "answer": "False"
+        }
+    ]
+},
+{
+    "question": "Concatenate all elements in a list into a string",
+    "template": "def concatElem(lst):",
+    "testCases": [
+        {
+            "exe": "print(concatElem(['Hello', 'World', '!']), end='')",
+            "answer": "HelloWorld!"
+        },
+        {
+            "exe": "print(concatElem([1, 2, 3, 4, 5]), end='')",
+            "answer": "12345"
+        },
+        {
+            "exe": "print(concatElem(['Open', 'AI', 'is', 'awesome']), end='')",
+            "answer": "OpenAIisawesome"
+        }
+    ]
+},
+    {
+    "question": "Print all even numbers from a list, stopping at 237",
+    "template": "def evenNum(numbers):",
+    "testCases": [
+        {
+            "exe": "evenNum([1, 2, 3, 4, 5, 6, 237, 238, 239])",
+            "answer" : "2 4 6"
+        },
+        {
+            "exe": "evenNum([10, 20, 30, 40, 237, 50, 60, 70])",
+            "answer" : "10 20 30 40"
+        },
+        {
+            "exe": "evenNum([ 1,237, 2, 3, 4, 5, 6])",
+            "answer" : "1"
+        }
+    ]
+},
+{
+    "question": "Print set of colors not present in other list",
+    "template": "def printColors(colors1, colors2):",
+    "testCases": [
+        {
+            "exe": "printColors(['red', 'green', 'blue'], ['blue', 'yellow', 'black'])",
+            "answer" : "{'red', 'green'}"
+        },
+        {
+            "exe": "printColors(['orange', 'purple', 'pink'], ['red', 'orange', 'blue'])",
+            "answer" : "{'purple', 'pink'}"
+        },
+        {
+            "exe": "printColors(['red', 'green', 'blue'], ['red', 'green', 'blue'])",
+            "answer" : "set()"
+        }
+    ]
+},
+{
+    "question": "Find the greatest common divisor (GCD) of two positive integers",
+    "template": "def gcd(num1, num2):",
+    "testCases": [
+        {
+            "exe": "print(gcd(12, 18))",
+            "answer" : "6"
+        },
+        {
+            "exe": "print(gcd(24, 36))",
+            "answer" : "12"
+        },
+        {
+            "exe": "print(gcd(7, 23))",
+            "answer" : "1"
+        }
+    ]
+},
+{
+    "question": "Find the least common multiple (LCM) of two positive integers",
+    "template": "def lcm(num1, num2):",
+    "testCases": [
+        {
+            "exe": "print(lcm(3, 4))",
+            "answer" : "12"
+        },
+        {
+            "exe": "print(lcm(7, 10))",
+            "answer" : "70"
+        },
+        {
+            "exe": "print(lcm(12, 18))",
+            "answer" : "36"
+        }
+    ]
+},
+{
+    "question": "Find the sum of three given integers. If two values are equal, the sum will be zero.",
+    "template": "def sumThree(a, b, c):",
+    "testCases": [
+        {
+            "exe": "print(sumThree(1, 2, 3))",
+            "answer" : "6"
+        },
+        {
+            "exe": "print(sumThree(2, 2, 3))",
+            "answer" : "0"
+        },
+        {
+            "exe": "print(sumThree(4, 5, 6))",
+            "answer" : "15"
+        }
+    ]
+},    
+{
+    "question": "Find the sum of two given integers. If the sum is between 15 and 20 (inclusive), return 20.",
+    "template": "def sumTwo(a, b):",
+    "testCases": [
+        {
+            "exe": "print(sumTwo(10, 5))",
+            "answer" : "15"
+        },
+        {
+            "exe": "print(sumTwo(8, 7))",
+            "answer" : "20"
+        },
+        {
+            "exe": "print(sumTwo(3, 2))",
+            "answer" : "5"
+        }
+    ]
+},
+{
+    "question": "Check if two given integer values are equal or if their sum or difference is 5.",
+    "template": "def intVal(a, b):",
+    "testCases": [
+        {
+            "exe": "print(intVal(2, 2))",
+            "answer" : "True"
+        },
+        {
+            "exe": "print(intVal(2, 7))",
+            "answer" : "True"
+        },
+        {
+            "exe": "print(intVal(10, 5))",
+            "answer" : "True"
+        }
+    ]
+},
+{
+    "question": "Add two objects if both objects are of integer type.",
+    "template": "def addInt(a, b):",
+    "testCases": [
+        {
+            "exe": "print(addInt(2, 3))",
+            "answer" : "5"
+        },
+        {
+            "exe": "print(addInt(10, 5))",
+            "answer" : "15"
+        },
+        {
+            "exe": "print(addInt('2', 3))",
+            "answer" : "None"
+        }
+    
+    ]
+},
+{
+    "question": "Display your details like name, age, and address in three different lines.",
+    "template": "def details():",
+    "testCases": [
+        {
+            "exe": "details()",
+            "answer" : "Name: John\nAge: 25\nAddress: 123 Main Street"
+        },
+        {
+            "exe": "details()",
+            "answer" : "Name: Jane\nAge: 30\nAddress: 456 Elm Avenue"
+        },
+        {
+            "exe": "details()",
+            "answer" : "Name: Alex\nAge: 40\nAddress: 789 Oak Road"
+        }
+    ]
+},
+{
+    "question": "Python program to solve (x + y) * (x + y).",
+    "template": "def solveExp(x, y):",
+    "testCases": [
+        {
+            "exe": "print(solveExp(2, 3), end='')",
+            "answer": "25"
+        },
+        {
+            "exe": "print(solveExp(0, 0), end='')",
+            "answer": "0"
+        },
+        {
+            "exe": "print(solveExp(-2, 5), end='')",
+            "answer": "9"
+        }
+    ]
+}
+]

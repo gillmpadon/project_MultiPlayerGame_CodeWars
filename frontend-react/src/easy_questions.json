@@ -1,0 +1,202 @@
+[
+  {
+  "question": "Convert feet to miles",
+  "template": "def feetMiles(feet):",
+  "testCases": [
+      {
+          "exe": "print(feetMiles(5280), end='')",
+          "answer": 1.0
+      },
+      {
+          "exe": "print(feetMiles(10560), end='')",
+          "answer": 2.0
+      },
+      {
+          "exe": "print(feetMiles(21120), end='')",
+          "answer": 4.0
+      }
+  ]
+},
+{
+  "question": "Convert units of time to seconds",
+  "template": "def convertTime(time, unit):",
+  "testCases": [
+      {
+          "exe": "print(convertTime(5, 'seconds'), end='')",
+          "answer": 5
+      },
+      {
+          "exe": "print(convertTime(2, 'minutes'), end='')",
+          "answer": 120
+      },
+      {
+          "exe": "print(convertTime(1, 'hours'), end='')",
+          "answer": 3600
+      }
+ 
+  ]
+},
+{
+  "question": "Convert seconds to days",
+  "template": "def secDays(seconds):",
+  "testCases": [
+      {
+          "exe": "print(secDays(86400), end='')",
+          "answer": 1.0
+      },
+      {
+          "exe": "print(secDays(172800, end=''))",
+          "answer": 2.0
+      },
+      {
+          "exe": "print(secDays(259200), end='')",
+          "answer": 3.0
+      }
+  ]
+},
+{
+  "question": "Convert seconds to hours",
+  "template": "def secHours(seconds):",
+  "testCases": [
+      {
+          "exe": "print(secHours(3600), end='')",
+          "answer": 1.0
+      },
+      {
+          "exe": "print(secHours(7200), end='')",
+          "answer": 2.0
+      },
+      {
+          "exe": "print(secHours(10800), end='')",
+          "answer": 3.0
+      }
+  ]
+},
+{
+  "question": "Calculate body mass index",
+  "template": "def calBmi(height, weight):",
+  "testCases": [
+    {
+      "exe": "print(calBmi(1.7, 65), end='')",
+      "answer": 22.49
+    },
+    {
+      "exe": "print(calBmi(1.65, 75), end='')",
+      "answer": 27.55
+    },
+    {
+      "exe": "print(calBmi(1.8, 80), end='')",
+      "answer": 24.69
+    }
+  ]
+},
+{
+  "question": "Convert pressure in kilopascals to pounds",
+  "template": "def kiloPounds(kilopascals):",
+  "testCases": [
+    {
+      "exe": "print(kiloPounds(100), end='')",
+      "answer": 22.480894387096
+    },
+    {
+      "exe": "print(kiloPounds(200), end='')",
+      "answer": 44.961788774192
+    },
+    {
+      "exe": "print(kiloPounds(300), end='')",
+      "answer": 67.442683161288
+    }
+  ]
+},      
+{
+  "question": "Calculate sum of digits of a number",
+  "template": "def sumDigits(number):",
+  "testCases": [
+    {
+      "exe": "print(sumDigits(12345), end='')",
+      "answer": 15
+    },
+    {
+      "exe": "print(sumDigits(987654321), end='')",
+      "answer": 45
+    },
+    {
+      "exe": "print(sumDigits(111), end='')",
+      "answer": 3
+    }
+  ]
+},
+{
+  "question": "Sort three integers without using conditional statements and loops",
+  "template": "def sortInt(a, b, c):",
+  "testCases": [
+    {
+      "exe": "print(sortInt(3, 1, 2), end='')",
+      "answer": [1, 2, 3]
+    },
+    {
+      "exe": "print(sortInt(9, 5, 7), end='')",
+      "answer": [5, 7, 9]
+    },
+    {
+      "exe": "print(sortInt(4, 4, 4), end='')",
+      "answer": [4, 4, 4]
+    }
+  ]
+},
+{
+  "question": "Count the number of occurrence of a specific character in a string",
+  "template": "def charCount(string, char):",
+  "testCases": [
+    {
+      "exe": "print(charCount('Hello world', 'o'), end='')",
+      "answer": 2
+    },
+    {
+      "exe": "print(charCount('OpenAI is awesome!', 'e'), end='')",
+      "answer": 3
+    },
+    {
+      "exe": "print(charCount('Programming is fun', 'm'), end='')",
+      "answer": 2
+    }
+  ]
+},
+{
+  "question": "What is the ASCII value of a given letter in Python?",
+  "template": "def ascii_value(letter):",
+  "testCases": [
+      {
+          "input": "print('a'",
+          "output": "97"
+      },
+      {
+          "input": "print('Z'",
+          "output": "90"
+      },
+      {
+          "input": "print('7'",
+          "output": "55"
+      }
+  ]
+},
+{
+  "question": "Swap two variables",
+  "template": "def swapVar(a, b):",
+  "testCases": [
+    {
+      "exe": "print(swapVar(5, 10), end='')",
+      "answer": "[10, 5]"
+    },
+    {
+      "exe": "print(swapVar('Hello', 'World'), end='')",
+      "answer": "['World', 'Hello']"
+    },
+    {
+      "exe": "print(swapVar(3.14, 2.718), end='')",
+      "answer": "[2.718, 3.14]"
+    }
+  ]
+}
+
+]

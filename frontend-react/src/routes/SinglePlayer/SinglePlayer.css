@@ -1,16 +1,22 @@
+html,body{
+  padding: 0;
+  margin: 0;
+}
 body {
   background-image: url("../../assets/img/4455.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow: hidden;
+  height: 100vh;
+  width: 100vw;
 }
 
 .containerSingle {
   position: relative;
   top: 3em;
   width: 90%;
-  height: 80%;
+  height: 80vh;
   margin: auto;
   display: flex;
   padding: 20px;
@@ -95,7 +101,7 @@ body {
   margin: auto;
   display: block;
   padding: 10px;
-  height: 83%;
+  height: 94%;
 }
 .problem {
   height: 90%;
@@ -165,13 +171,11 @@ body {
   padding: 0.3em;
   margin-bottom: -0.5em;
   overflow: auto;
-  height: 5.6em;
 }
 
 
 .pane p {
   font-size: 1.5em;
-  line-height: 0.3em;
   color: white;
   margin-left: 0.5em;
   text-shadow: 1px 2px black;
@@ -213,4 +217,84 @@ body {
 
 .pane::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+
+.outer_pane{
+  height: 33%;
+}
+.pane{
+  height: 8em;
+}
+
+.bg_modal{
+  background: rgba(0, 0, 0, 0.55);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+
+}
+.modal{
+  height: 10em;
+  width: 20em;
+  padding: 1em;
+  background: #343434;
+  border-radius: .5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal_btn{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20%;
+}
+.modal_text{
+  text-align: center;
+}
+.buttonModal{
+  padding:.5em;
+  background: #000;
+  width: 5em;
+  text-align: center;
+  border-radius: .5em;
+}
+.yesBtn{
+  background-color: #3ddc7d;
+}
+.noBtn{
+  background-color: #dc4c3d;
+}
+
+/* SELECT Question */
+.bg_select{
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top:0;
+  background: rgba(0, 0, 0, 0.75);
+
+}
+.select{
+  background: #343434;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width: 20em;
+  height: 20em;
+  padding-inline: 2em;
+  border-radius: .5em;
+}
+.select h2{
+  text-align: center;
+}
+.select_entry{
+  background-color: #3ddc7d;
+  display: flex;
+  padding-inline: 1em;
+  justify-content: space-between;
+  margin-top: 1em;
 }
