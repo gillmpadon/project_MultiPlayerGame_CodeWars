@@ -20,13 +20,13 @@ singleRouter.post('/', (req, res) => {
       fs.unlinkSync(filePath);
       if (error) {
         console.error(`Error: ${error.message}`);
-        return res.status(500).send({ message: 'Internal server error' });
+        return res.status(500).send({ message: 'Internal server error' , status:false});
       }
       if (stderr) {
         console.error(`stderr: ${stderr}`);
-        return res.status(500).send({ message: 'Internal server error' });
+        return res.status(500).send({ message: 'Internal server error', status:false });
       }
-      return res.status(200).send({ message: stdout });
+      return res.status(200).send({ message: stdout, status: true });
     });
   });
 

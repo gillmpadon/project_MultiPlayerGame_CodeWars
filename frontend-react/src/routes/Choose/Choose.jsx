@@ -1,11 +1,10 @@
 import React, { useState, useEffect} from "react";
-import "./Choose.css";
+import "../../../index.css"
 import { Link } from "react-router-dom";
 import easyQ from "../../easy_questions.json";
 import mediumQ from "../../medium_questions.json";
 import hardQ from "../../hard_questions.json";
-import Cookies from 'js-cookie';
-
+import imgBg from "../../assets/img/bg.png"
 export default function Choose() {
   const [eCount, setECount] = useState([0, 0, 0]);
   const [cookieCount, setCookieCount] = useState([0, 0, 0]);
@@ -23,29 +22,41 @@ export default function Choose() {
     setCookieCount([cookieEasy, cookieMedium, cookieHard]);
   }, []);
 
+
+ const Category  = ({name , count}) =>{
   return (
-    <div className="bg_select">
-      <div className="select">
-        <h2>Question Category</h2>
-        <Link to={"/single-player?qType=easy"}>
-          <div className="select_entry">
-            <p>Easy</p>
-            <p>{cookieCount[0]}/{eCount[0]}</p>
-          </div>
-        </Link>
-        <Link to={"/single-player?qType=medium"}>
-          <div className="select_entry">
-            <p>Medium</p>
-            <p>{cookieCount[1]}/{eCount[1]}</p>
-          </div>
-        </Link>
-        <Link to={"/single-player?qType=hard"}>
-          <div className="select_entry">
-            <p>Hard</p>
-            <p>{cookieCount[2]}/{eCount[2]}</p>
-          </div>
-        </Link>
-      </div>
+    <div className="h-1/6 w-full my-4 relative border bg-[#3DDC7D] shadow-lg rounded-lg">
+      <Link to={`/single-player?qType=${name.toLowerCase()}`}>
+        <div className="flex justify-between items-center p-2">
+          <p className="text-2xl font-times">{name}</p>
+          <p className="text-2xl font-times">{cookieCount[count]}/{eCount[count]}</p>
+        </div>
+      </Link>
     </div>
-  );
+  )
+ }
+
+ return (
+  <div className="w-full h-full absolute z-10 flex justify-center items-center ">
+    <div className="w-full h-full absolute top-0 left-0 z-0">
+      <img
+        src={imgBg}
+        alt="Image background"
+        className="w-full h-full object-cover"
+        style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}
+      />
+    </div>
+    <div className="relative z-100 w-1/4 h-72 px-5 shadow-2xl bg-gradient-to-b from-custom-gradient rounded-md">
+      <div className="relative ">
+        <h2 className="-mt-10 text-5xl font-times">Question </h2>
+        <h2 className="absolute right-5 text-5xl font-times">Category</h2>
+      </div>
+      <br /><br />
+      <Category name="Easy" count={0} />
+      <Category name="Medium" count={1} />
+      <Category name="Hard" count={2} />
+    </div>
+  </div>
+);
+
 }
